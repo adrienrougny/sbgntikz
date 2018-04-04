@@ -1,0 +1,226 @@
+\pgfdeclareshape{roundedrectanglestacked}{
+
+    \savedanchor\northeast{
+        \pgfmathsetlength{\pgf@x}{\wd\pgfnodeparttextbox+2*\pgfkeysvalueof{/pgf/inner xsep}}
+        \pgf@xb=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xb>\pgf@x
+            \pgf@x=\pgf@xb
+        \fi
+        \pgfmathsetlength{\pgf@y}{\ht\pgfnodeparttextbox+\dp\pgfnodeparttextbox+2*\pgfkeysvalueof{/pgf/inner ysep}}
+        \pgf@yb=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yb>\pgf@y
+            \pgf@y=\pgf@yb
+        \fi
+        \ifdim\pgf@y>\pgf@x
+            \pgf@x=\pgf@y
+        \fi
+        \pgfmathsetlength{\pgf@x}{0.5\pgf@x+0.5\wd\pgfnodeparttextbox}
+        \pgfmathsetlength{\pgf@y}{0.5\pgf@y+0.5\ht\pgfnodeparttextbox-0.5\dp\pgfnodeparttextbox+\pgfkeysvalueof{/pgf/outer ysep}}
+    }
+
+    \savedanchor\southwest{
+        \pgfmathsetlength{\pgf@x}{\wd\pgfnodeparttextbox+2*\pgfkeysvalueof{/pgf/inner xsep}}
+        \pgf@xb=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xb>\pgf@x
+            \pgf@x=\pgf@xb
+        \fi
+        \pgfmathsetlength{\pgf@y}{\ht\pgfnodeparttextbox+\dp\pgfnodeparttextbox+2*\pgfkeysvalueof{/pgf/inner ysep}}
+        \pgf@yb=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yb>\pgf@y
+            \pgf@y=\pgf@yb
+        \fi
+        \ifdim\pgf@y>\pgf@x
+            \pgf@x=\pgf@y
+        \fi
+        \pgfmathsetlength{\pgf@x}{-0.5\pgf@x+0.5\wd\pgfnodeparttextbox}
+        \pgfmathsetlength{\pgf@y}{-0.5\pgf@y+0.5\ht\pgfnodeparttextbox-0.5\dp\pgfnodeparttextbox-\pgfkeysvalueof{/pgf/outer ysep}}
+    }
+
+    \inheritanchor[from=rectangle]{center}
+    \inheritanchor[from=rectangle]{north}
+    \inheritanchor[from=rectangle]{east}
+    \inheritanchor[from=rectangle]{west}
+    \inheritanchor[from=rectangle]{south}
+
+    \backgroundpath{
+        \def\offset{0.1}
+        \newdimen\xa
+        \newdimen\ya
+        \newdimen\xb
+        \newdimen\yb
+        \pgf@process{\southwest}
+        \xa=\pgf@x
+        \ya=\pgf@y
+        \pgf@process{\northeast}
+        \xb=\pgf@x
+        \yb=\pgf@y
+        \advance\xa by 0.5\pgflinewidth
+        \advance\ya by 0.5\pgflinewidth
+        \advance\xb by 0.5\pgflinewidth
+        \advance\yb by 0.5\pgflinewidth
+        \newdimen\width
+        \pgfmathsetlength{\width}{\xb-\xa-\offset*(\yb-\ya)}
+        \newdimen\height
+        \pgfmathsetlength{\height}{(1-\offset)*(\yb-\ya)}
+        \newdimen\radius
+        \pgfmathsetlength{\radius}{0.5*\height}
+        \pgfmathsetlength{\pgf@xc}{\xa+\radius}
+        \pgf@yc=\yb
+        \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfmathsetlength{\pgf@xc}{\xa+\width-\radius}
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfpatharc{90}{-90}{\radius}
+        \pgfmathsetlength{\pgf@xc}{\xa+\radius}
+        \pgfmathsetlength{\pgf@yc}{\yb-\height}
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfpatharc{270}{90}{\radius}
+        \pgfpathclose
+
+        \pgfmathsetlength{\pgf@xa}{\xa+\radius}
+        \pgfmathsetlength{\pgf@ya}{\yb-\radius}
+        \pgfmathsetlength{\pgf@xb}{\xa+\radius+\offset*(\yb-\ya)}
+        \pgfmathsetlength{\pgf@yb}{\ya+\radius}
+        \pgf@process{\pgfpointintersectionofcircles{\pgfpoint{\pgf@xa}{\pgf@ya}}{\pgfpoint{\pgf@xb}{\pgf@yb}}{\radius}{\radius}{1}}
+        \newdimen\ax
+        \newdimen\ay
+        \ax=\pgf@x
+        \ay=\pgf@y
+        \pgfpathmoveto{\pgfpoint{\ax}{\ay}}
+        \pgf@xc=\ax
+        \pgf@yc=\ay
+        \advance\pgf@xc by -\pgf@xb
+        \advance\pgf@yc by -\pgf@yb
+        \newdimen\anglea
+        \pgfmathsetlength{\anglea}{atan2(\pgf@yc,\pgf@xc)}
+        \pgfpatharc{\anglea}{-90}{\radius}
+        \pgfmathsetlength{\pgf@xc}{\xb-\radius}
+        \pgf@yc=\ya
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfmathsetlength{\pgf@xa}{\xa+\width-\radius}
+        \pgfmathsetlength{\pgf@ya}{\yb-\radius}
+        \pgfmathsetlength{\pgf@xb}{\xb-\radius}
+        \pgfmathsetlength{\pgf@yb}{\ya+\radius}
+        \pgf@process{\pgfpointintersectionofcircles{\pgfpoint{\pgf@xa}{\pgf@ya}}{\pgfpoint{\pgf@xb}{\pgf@yb}}{\radius}{\radius}{2}}
+        \newdimen\bx
+        \newdimen\by
+        \bx=\pgf@x
+        \by=\pgf@y
+        \pgf@xc=\bx
+        \pgf@yc=\by
+        \advance\pgf@xc by -\pgf@xb
+        \advance\pgf@yc by -\pgf@yb
+        \pgfmathsetlength{\anglea}{atan2(\pgf@yc,\pgf@xc)}
+        \pgfpatharc{-90}{\anglea}{\radius}
+        \pgf@xc=\bx
+        \pgf@yc=\by
+        \advance\pgf@xc by -\xa
+        \advance\pgf@xc by -\width
+        \advance\pgf@xc by \radius
+        \advance\pgf@yc by -\pgf@ya
+        \pgfmathsetlength{\anglea}{atan2(\pgf@yc,\pgf@xc)}
+        \pgfpatharc{\anglea}{-90}{\radius}
+        \pgfmathsetlength{\pgf@xc}{\xa+\radius}
+        \pgfmathsetlength{\pgf@yc}{\yb-\height}
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgf@xc=\ax
+        \pgf@yc=\ay
+        \advance\pgf@xc by -\xa
+        \advance\pgf@xc by -\radius
+        \advance\pgf@yc by -\pgf@ya
+        \newdimen\anglea
+        \pgfmathsetlength{\anglea}{atan2(\pgf@yc,\pgf@xc)}
+        \pgfpatharc{-90}{\anglea}{\radius}
+        \pgfpathclose
+    }
+
+    \foregroundpath{
+        \pgfkeysgetvalue{/pgf/clone}{\clone}
+        \ifx\clone\true
+            \def\cloneoffset{0.25}
+            \def\offset{0.1}
+            \newdimen\xa
+            \newdimen\ya
+            \newdimen\xb
+            \newdimen\yb
+            \pgf@process{\southwest}
+            \xa=\pgf@x
+            \ya=\pgf@y
+            \pgf@process{\northeast}
+            \xb=\pgf@x
+            \yb=\pgf@y
+            \advance\xa by 0.5\pgflinewidth
+            \advance\ya by 0.5\pgflinewidth
+            \advance\xb by 0.5\pgflinewidth
+            \advance\yb by 0.5\pgflinewidth
+            \newdimen\width
+            \pgfmathsetlength{\width}{\xb-\xa-\offset*(\yb-\ya)}
+            \newdimen\height
+            \pgfmathsetlength{\height}{(1-\offset)*(\yb-\ya)}
+            \newdimen\radius
+            \pgfmathsetlength{\radius}{0.5*\height}
+            \newdimen\cax
+            \newdimen\cay
+            \newdimen\cbx
+            \newdimen\cby
+            \newdimen\ccx
+            \newdimen\ccy
+            \newdimen\cdx
+            \newdimen\cdy
+            \pgfmathsetlength{\cax}{\xa+\radius}
+            \pgfmathsetlength{\cay}{\yb-\radius}
+            \pgfmathsetlength{\cbx}{\xa+\width-\radius}
+            \pgfmathsetlength{\cby}{\yb-\radius}
+            \pgfmathsetlength{\ccx}{\cax+\offset*(\yb-\ya)}
+            \pgfmathsetlength{\ccy}{\ya+\radius}
+            \pgfmathsetlength{\cdx}{\xb-\radius}
+            \pgfmathsetlength{\cdy}{\ya+\radius}
+
+            \pgf@yc=\yb
+            \advance\pgf@yc by -\height
+            \advance\pgf@yc by \cloneoffset\height
+            \circlefindx{\cax}{\cay}{\radius}{\pgf@yc}{1}
+            \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@yc}}
+            \circlefindx{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
+            \circlefindangle{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \pgfpatharc{\pgf@x}{-90}{\radius}
+            \pgf@y=\yb
+            \advance\pgf@y by -\height
+            \pgf@x=\xa
+            \advance\pgf@x by \radius
+            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+            \circlefindangle{\cax}{\cay}{\radius}{\pgf@yc}{1}
+            \pgfpatharc{-90}{\pgf@x}{\radius}
+            \pgfpathclose
+
+            \pgfpointintersectionofcircles{\pgfpoint{\cax}{\cay}}{\pgfpoint{\ccx}{\ccy}}{\radius}{\radius}{1}
+            \pgf@yb=\pgf@y
+            \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@yb}}
+            \circlefindangle{\ccx}{\ccy}{\radius}{\pgf@yb}{1}
+            \pgfpatharc{\pgf@x}{-90}{\radius}
+            \pgf@x=\xb
+            \advance\pgf@x by -\radius
+            \pgf@y=\ya
+            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+            \pgf@yc=\ya
+            \advance\pgf@yc by \cloneoffset\height
+            \circlefindangle{\cdx}{\cdy}{\radius}{\pgf@yc}{2}
+            \pgfpatharc{-90}{\pgf@x}{\radius}
+            \circlefindx{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
+            \circlefindangle{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \pgfpatharc{\pgf@x}{-90}{\radius}
+            \pgf@x=\xa
+            \advance\pgf@x by \radius
+            \pgf@y=\yb
+            \advance\pgf@y by -\height
+            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
+            \circlefindangle{\cax}{\cay}{\radius}{\pgf@yb}{1}
+            \pgfpatharc{-90}{\pgf@x}{\radius}
+            \pgfpathclose
+
+            \pgfsetfillcolor{\tikz@strokecolor}
+            \pgfusepath{fill, stroke}
+        \fi
+    }
+}

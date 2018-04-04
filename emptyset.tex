@@ -1,0 +1,16 @@
+\pgfdeclareshape{emptyset}{
+    \inheritsavedanchors[from=circle]
+    \inheritanchorborder[from=circle]
+    \foreach \a in {center, south east, south west, north east, north west}
+    {
+        \inheritanchor[from=circle]{\a}
+    }
+    \backgroundpath{
+        \pgfpathcircle{\centerpoint}{\radius}
+        \pgf@process{\centerpoint}
+        \pgf@xa = \pgf@x
+        \pgf@ya = \pgf@y
+        \pgfpathmoveto{\pgfpoint{\pgf@xa-\radius}{\pgf@ya-\radius}}
+        \pgfpathlineto{\pgfpoint{\pgf@xa+\radius}{\pgf@ya+\radius}}
+    }
+}

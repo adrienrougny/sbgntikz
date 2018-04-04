@@ -1,0 +1,85 @@
+\usetikzlibrary{arrows.meta,shapes,positioning,fit}
+
+\pgfkeys{/pgf/.cd, clone/.initial=\false, clone/.default=\true}
+\pgfkeys{/pgf/.cd, connectors/.initial=none}
+
+%include macros
+\input{macros.tex}
+
+%include shapes
+%processes
+\input{genericprocess.tex}
+\input{unknownprocess.tex}
+\input{association.tex}
+\input{dissociation.tex}
+\input{omittedprocess.tex}
+\input{phenotype.tex}
+
+%epns
+\input{unspecifiedentity.tex}
+\input{emptyset.tex}
+\input{simplechemical.tex}
+\input{simplechemicalmultimer.tex}
+\input{complex.tex}
+\input{complexmultimer.tex}
+\input{macromolecule.tex}
+\input{macromoleculemultimer.tex}
+\input{nucleicacidfeature.tex}
+\input{nucleicacidfeaturemultimer.tex}
+\input{perturbation.tex}
+
+%los
+\input{and.tex}
+\input{or.tex}
+\input{not.tex}
+\input{delay.tex}
+
+%styles
+\tikzset{
+    font=\sffamily,
+    macromolecule/.style={draw = black, shape = rectangleroundedcorners, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    macromoleculemultimer/.style={draw = black, shape = rectangleroundedcornersstacked, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    unspecifiedentity/.style={draw = black, shape = newellipse, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    nucleicacidfeature/.style={draw = black, shape = rectangleroundedcornersbottom, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    nucleicacidfeaturemultimer/.style={draw = black, shape = rectangleroundedcornersbottomstacked, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    perturbation/.style={draw = black, shape = rectangleinwardswidth, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    % simplechemical/.style={draw = black, shape = roundedrectangle, minimum height = 35pt, line width = 1pt},
+    simplechemicalmultimer/.style={draw = black, shape = roundedrectanglestacked, minimum height = 35pt, minimum width = 80pt, line width = 1pt},
+    complex/.style={draw = black, shape = rectanglecutcorners, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    complexmultimer/.style={draw = black, shape = rectanglecutcornersstacked, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    emptyset/.style={draw = black, shape = circlecrossed, minimum height = 40pt, minimum width = 40pt, line width = 1pt},
+    biologicalactivity/.style={draw = black, shape = rectangle, minimum height = 35pt, minimum width = 60pt, line width = 1pt},
+    sv/.style={draw = black, fill = white, shape = rounded rectangle, minimum width = 10pt, minimum height = 10pt, line width = 1pt, font = {\scriptsize\sffamily}},
+    ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, font = {\scriptsize\sffamily}},
+    % ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, font = {\scriptsize\sffamily}, inner sep=0.5pt},
+    uimacromolecule/.style={draw = black, shape = rectangleroundedcorners, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    uicomplex/.style={draw = black, shape = rectanglecutcorners, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    uiperturbation/.style={draw = black, shape = rectangleinwardswidth, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    uisimplechemical/.style={draw = black, shape = rounded rectangle, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    uinucleicacidfeature/.style={draw = black, shape = rectangleroundedcornersbottom, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    uiunspecifiedentity/.style={draw = black, shape = ellipse, fill = white, line width = 1pt, font = {\tiny\sffamily}},
+    compartment/.style={draw = black, line width = 4pt},
+    submap/.style={draw = black, shape = rectangle, minimum height = 70pt, minimum width = 100pt, line width = 1pt},
+    tag/.style={draw = black, signal, minimum height = 20pt, minimum width = 30pt, line width = 1pt},
+    and/.style={draw = black, shape = and, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    or/.style={draw = black, shape = or, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    not/.style={draw = black, shape = not, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    delay/.style={draw = black, shape = delay, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    genericprocess/.style={draw = black, shape = genericprocess, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
+    omittedprocess/.style={draw = black, shape = rectangleslashslash, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
+    unknownprocess/.style={draw = black, shape = rectangleinterrogation, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
+    association/.style={draw = black, fill = black, shape = circle, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
+    dissociation/.style={draw = black, shape = circlecircle, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
+    phenotype/.style={draw = black, shape = rectangleoutwardswidth, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    logicarc/.style={line width = 1pt},
+    equivalencearc/.style={line width = 1pt},
+    consumption/.style={line width = 1pt},
+    production/.style={line width = 1pt, -{Triangle[length=6pt, width=8pt]}},
+    reversible/.style={line width = 1pt, {Triangle[length=6pt, width=8pt]}-},
+    modulation/.style={line width = 1pt, -{Diamond[open, length=9pt, width=9pt]}},
+    stimulation/.style={line width = 1pt, -{Triangle[open, length=9pt, width=12pt]}},
+    catalysis/.style={line width = 1pt, -{Circle[open, length = 8pt, width=8pt]}},
+    inhibition/.style={line width = 1.6pt, -{Bar}},
+    absoluteinhibition/.style={line width = 1.6pt, -{Bar[sep=1] Bar}},
+    necessarystimulation/.style={line width = 1pt, -{Bar[width = 12pt, sep=1] Triangle[open, length=9pt, width=12pt]}},
+    absolutestimulation/.style={line width = 1pt, -{Triangle[fill=white, length=9pt, width=12pt, sep=-3] Triangle[fill=white, length=9pt, width=12pt]}}}

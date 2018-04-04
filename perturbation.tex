@@ -1,0 +1,31 @@
+\pgfdeclareshape{perturbation}{
+    \inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+    \inheritanchorborder[from=rectangle]
+
+    \foreach \a in {center, north, south, west, east, south east, south west, north east, north west}
+    {
+        \inheritanchor[from=rectangle]{\a}
+    }
+
+    \backgroundpath{
+        \pgf@process{\southwest}
+        \pgfgetlastxy{\xa}{\ya}
+        \pgf@process{\northeast}
+        \pgfgetlastxy{\xb}{\yb}
+        \pgf@xc = \xa \pgf@yc = \yb
+        \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgf@xc = \xb
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfmathsetlength{\pgf@yc}{\ya+0.5*(\yb-\ya)}
+        \pgfmathsetlength{\pgf@xc}{\xb-0.20*(\xb-\xa)}
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgf@xc = \xb \pgf@yc = \ya
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgf@xc = \xa \pgf@yc = \ya
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfmathsetlength{\pgf@yc}{\ya+0.5*(\yb-\ya)}
+        \pgfmathsetlength{\pgf@xc}{\xa+0.20*(\xb-\xa)}
+        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfclosepath
+    }
+}

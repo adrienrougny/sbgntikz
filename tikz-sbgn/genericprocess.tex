@@ -1,0 +1,218 @@
+\pgfdeclareshape{genericprocess}{
+    % \savedmacro\lanchor{0.75}
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \foreach \a in {center, south east, south west, north east, north west}
+    {
+        \inheritanchor[from=rectangle]{\a}
+    }
+    \savedanchor\connectoreast{
+        \def\lconnectors{0.75}
+        \pgfkeysgetvalue{/pgf/connectors}{\connectors}
+        %compute width and height without taking into account outer sep
+        \pgf@x=\wd\pgfnodeparttextbox
+        \pgf@xc=\pgfkeysvalueof{/pgf/inner xsep}
+        \advance\pgf@x by 2\pgf@xc
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xc>\pgf@x
+            \pgf@x=\pgf@xc
+        \fi
+        \pgf@y=\ht\pgfnodeparttextbox
+        \advance\pgf@y by \dp\pgfnodeparttextbox
+        \pgf@yc=\pgfkeysvalueof{/pgf/inner ysep}
+        \advance\pgf@y by 2\pgf@yc
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@y
+            \pgf@y=\pgf@yc
+        \fi
+        %store south west in xa,ya and north east in xb,yb
+        \pgf@xa=-0.5\pgf@x
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@ya=-0.5\pgf@y
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \pgf@xb=0.5\pgf@x
+        \advance\pgf@xb by 0.5\wd\pgfnodeparttextbox
+        \pgf@yb=0.5\pgf@y
+        \advance\pgf@yb by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@yb by -0.5\dp\pgfnodeparttextbox
+        %compute anchor
+        \pgf@y=0.5\pgf@yb
+        \advance\pgf@y by 0.5\pgf@ya
+        \pgf@x=\pgf@xb
+        \ifx\connectors\horizontal
+            \advance\pgf@x by \lconnectors\pgf@xb
+            \advance\pgf@x by -\lconnectors\pgf@xa
+        \fi
+    }
+    \savedanchor\connectorwest{
+        \def\lconnectors{0.75}
+        \pgfkeysgetvalue{/pgf/connectors}{\connectors}
+        %compute width and height without taking into account outer sep
+        \pgf@x=\wd\pgfnodeparttextbox
+        \pgf@xc=\pgfkeysvalueof{/pgf/inner xsep}
+        \advance\pgf@x by 2\pgf@xc
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xc>\pgf@x
+            \pgf@x=\pgf@xc
+        \fi
+        \pgf@y=\ht\pgfnodeparttextbox
+        \advance\pgf@y by \dp\pgfnodeparttextbox
+        \pgf@yc=\pgfkeysvalueof{/pgf/inner ysep}
+        \advance\pgf@y by 2\pgf@yc
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@y
+            \pgf@y=\pgf@yc
+        \fi
+        %store south west in xa,ya and north east in xb,yb
+        \pgf@xa=-0.5\pgf@x
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@ya=-0.5\pgf@y
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \pgf@xb=0.5\pgf@x
+        \advance\pgf@xb by 0.5\wd\pgfnodeparttextbox
+        \pgf@yb=0.5\pgf@y
+        \advance\pgf@yb by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@yb by -0.5\dp\pgfnodeparttextbox
+        %compute anchor
+        \pgf@y=0.5\pgf@yb
+        \advance\pgf@y by 0.5\pgf@ya
+        \pgf@x=\pgf@xa
+        \ifx\connectors\horizontal
+            \advance\pgf@x by -\lconnectors\pgf@xb
+            \advance\pgf@x by \lconnectors\pgf@xa
+        \fi
+    }
+    \savedanchor\connectornorth{
+        \def\lconnectors{0.75}
+        \pgfkeysgetvalue{/pgf/connectors}{\connectors}
+        %compute width and height without taking into account outer sep
+        \pgf@x=\wd\pgfnodeparttextbox
+        \pgf@xc=\pgfkeysvalueof{/pgf/inner xsep}
+        \advance\pgf@x by 2\pgf@xc
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xc>\pgf@x
+            \pgf@x=\pgf@xc
+        \fi
+        \pgf@y=\ht\pgfnodeparttextbox
+        \advance\pgf@y by \dp\pgfnodeparttextbox
+        \pgf@yc=\pgfkeysvalueof{/pgf/inner ysep}
+        \advance\pgf@y by 2\pgf@yc
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@y
+            \pgf@y=\pgf@yc
+        \fi
+        %store south west in xa,ya and north east in xb,yb
+        \pgf@xa=-0.5\pgf@x
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@ya=-0.5\pgf@y
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \pgf@xb=0.5\pgf@x
+        \advance\pgf@xb by 0.5\wd\pgfnodeparttextbox
+        \pgf@yb=0.5\pgf@y
+        \advance\pgf@yb by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@yb by -0.5\dp\pgfnodeparttextbox
+        %compute anchor
+        \pgf@x=0.5\pgf@xb
+        \advance\pgf@x by 0.5\pgf@xa
+        \pgf@y=\pgf@yb
+        \ifx\connectors\vertical
+            \advance\pgf@y by \lconnectors\pgf@yb
+            % \pgftext{\the\pgf@x}
+            \advance\pgf@y by -\lconnectors\pgf@ya
+        \fi
+    }
+    \savedanchor\connectorsouth{
+        \def\lconnectors{0.75}
+        \pgfkeysgetvalue{/pgf/connectors}{\lconnectors}
+        %compute width and height without taking into account outer sep
+        \pgf@x=\wd\pgfnodeparttextbox
+        \pgf@xc=\pgfkeysvalueof{/pgf/inner xsep}
+        \advance\pgf@x by 2\pgf@xc
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xc>\pgf@x
+            \pgf@x=\pgf@xc
+        \fi
+        \pgf@y=\ht\pgfnodeparttextbox
+        \advance\pgf@y by \dp\pgfnodeparttextbox
+        \pgf@yc=\pgfkeysvalueof{/pgf/inner ysep}
+        \advance\pgf@y by 2\pgf@yc
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@y
+            \pgf@y=\pgf@yc
+        \fi
+        %store south west in xa,ya and north east in xb,yb
+        \pgf@xa=-0.5\pgf@x
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@ya=-0.5\pgf@y
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \pgf@xb=0.5\pgf@x
+        \advance\pgf@xb by 0.5\wd\pgfnodeparttextbox
+        \pgf@yb=0.5\pgf@y
+        \advance\pgf@yb by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@yb by -0.5\dp\pgfnodeparttextbox
+        %compute anchor
+        \pgf@x=0.5\pgf@xb
+        \advance\pgf@x by 0.5\pgf@xa
+        \pgf@y=\pgf@ya
+        \ifx\connectors\vertical
+            \advance\pgf@y by -\lconnectors\pgf@yb
+            \advance\pgf@y by +\lconnectors\pgf@ya
+        \fi
+    }
+    \anchor{west}{\connectorwest}
+    \anchor{east}{\connectoreast}
+    \anchor{north}{\connectornorth}
+    \anchor{south}{\connectorsouth}
+
+    \backgroundpath{
+        \def\lconnectors{0.75}
+        \pgfpathrectanglecorners{\southwest}{\northeast}
+        \pgfkeysgetvalue{/pgf/connectors}{\connectors}
+        \ifx\connectors\horizontal
+            \pgf@process{\southwest}
+            \pgf@xa = \pgf@x
+            \pgf@ya = \pgf@y
+            \pgf@process{\northeast}
+            \pgf@xb = \pgf@x
+            \pgf@yb = \pgf@y
+            \pgf@xc=\pgf@x
+            \pgf@yc=\pgf@y
+            \advance\pgf@yc by -0.5\pgf@yb
+            \advance\pgf@yc by 0.5\pgf@ya
+            \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \advance\pgf@xc by \lconnectors\pgf@xb
+            \advance\pgf@xc by -\lconnectors\pgf@xa
+            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \pgf@xc=\pgf@xa
+            \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \advance\pgf@xc by -\lconnectors\pgf@xb
+            \advance\pgf@xc by \lconnectors\pgf@xa
+            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \fi
+        \ifx\connectors\vertical
+            \pgf@process{\southwest}
+            \pgf@xa = \pgf@x
+            \pgf@ya = \pgf@y
+            \pgf@process{\northeast}
+            \pgf@xb = \pgf@x
+            \pgf@yb = \pgf@y
+            \pgf@xc=\pgf@x
+            \pgf@yc=\pgf@y
+            \advance\pgf@xc by -0.5\pgf@xb
+            \advance\pgf@xc by 0.5\pgf@xa
+            \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \advance\pgf@yc by \lconnectors\pgf@yb
+            \advance\pgf@yc by -\lconnectors\pgf@ya
+            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \pgf@yc=\pgf@ya
+            \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \advance\pgf@yc by -\lconnectors\pgf@yb
+            \advance\pgf@yc by \lconnectors\pgf@ya
+            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \fi
+    }
+}
