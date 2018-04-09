@@ -1,0 +1,24 @@
+\pgfdeclareshape{svexistence}{
+    \inheritsavedanchors[from=circle]
+    \inheritanchorborder[from=circle]
+    \foreach \a in {center, east, south, north, west, south east, south west, north east, north west}
+    {
+        \inheritanchor[from=circle]{\a}
+    }
+    \backgroundpath{
+        \@tempdima = \radius
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/outer xsep}}
+        \advance\@tempdima by -\pgf@xa
+        \pgfpathcircle{\centerpoint}{\@tempdima}
+        \pgfusepath{stroke, fill}
+        \centerpoint
+        \pgf@xc = \pgf@x
+        \pgf@yc = \pgf@y
+        \advance\pgf@y by \@tempdima
+        \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@y}}
+        \pgfpatharc{90}{-90}{\@tempdima}
+        \pgfclosepath
+        \pgfsetfillcolor{\tikz@strokecolor}
+        \pgfusepath{stroke, fill}
+    }
+}

@@ -1,4 +1,4 @@
-\pgfdeclareshape{simplechemical}{
+\pgfdeclareshape{sv}{
 
     \savedanchor\northeast{
         \pgf@x = \wd\pgfnodeparttextbox
@@ -145,41 +145,5 @@
         \pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@ya}}
         \pgfpatharc{270}{90}{\radius}
         \pgfpathclose
-    }
-
-    \foregroundpath{
-        \pgfkeysgetvalue{/pgf/clone}{\clone}
-        \ifx\clone\true
-            \def\cloneoffset{0.25}
-            \pgf@process{\southwest}
-            \pgf@xa=\pgf@x
-            \pgf@ya=\pgf@y
-            \advance\pgf@xa by 0.5\pgflinewidth
-            \advance\pgf@ya by 0.5\pgflinewidth
-            \pgf@process{\northeast}
-            \pgf@xb=\pgf@x
-            \pgf@yb=\pgf@y
-            \advance\pgf@xb by -0.5\pgflinewidth
-            \advance\pgf@yb by -0.5\pgflinewidth
-            \newdimen\radius
-            \radius = 0.5\pgf@yb
-            \advance\radius by -0.5\pgf@ya
-            \pgfmathsetlength{\pgf@yc}{2*\cloneoffset*\radius-\radius}
-            \pgfmathsetlength{\pgf@xc}{sqrt(\radius^2-\pgf@yc^2)}
-            \pgfmathsetlength{\pgf@yc}{\pgf@ya+\cloneoffset*(\pgf@yb-\pgf@ya)}
-            \pgfmathsetlength{\pgf@x}{\pgf@xa+\radius-\pgf@xc}
-            \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@x}{\pgf@xb-\radius+\pgf@xc}
-            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{round(atan2(2*\cloneoffset*\radius-\radius,sqrt(\radius^2-(2*\cloneoffset*\radius-\radius)^2))}
-            \pgfpatharc{\pgf@xc}{-90}{\radius}
-            \pgfmathsetlength{\pgf@x}{\pgf@xa+\radius}
-            \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@ya}}
-            \pgfmathsetlength{\pgf@xc}{-180-\pgf@xc}
-            \pgfpatharc{-90}{\pgf@xc}{\radius}
-            \pgfpathclose
-            \pgfsetfillcolor{\tikz@strokecolor}
-            \pgfusepath{stroke, fill}
-        \fi
     }
 }

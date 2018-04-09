@@ -11,22 +11,30 @@
     \backgroundpath{
         \def\scarce{0.038}
         \pgf@process{\southwest}
-        \pgfgetlastxy{\xa}{\ya}
+        \pgf@xa = \pgf@x
+        \pgf@ya = \pgf@y
         \pgf@process{\northeast}
-        \pgfgetlastxy{\xb}{\yb}
+        \pgf@xb = \pgf@x
+        \pgf@yb = \pgf@y
+        \pgf@xc = \pgfkeysvalueof{/pgf/outer xsep}
+        \pgf@yc = \pgfkeysvalueof{/pgf/outer ysep}
+        \advance\pgf@xa by \pgf@xc
+        \advance\pgf@xb by -\pgf@xc
+        \advance\pgf@ya by \pgf@yc
+        \advance\pgf@yb by -\pgf@yc
         \newdimen\width
-        \pgfmathsetlength{\width}{\xb-\xa}
+        \pgfmathsetlength{\width}{\pgf@xb-\pgf@xa}
         \newdimen\height
-        \pgfmathsetlength{\height}{\yb-\ya}
+        \pgfmathsetlength{\height}{\pgf@yb-\pgf@ya}
 
         \pgfsetcornersarced{\pgfpoint{\scarce*\width}{\scarce*\width}}
-        \pgf@xc = \xa \pgf@yc = \yb
+        \pgf@xc = \pgf@xa \pgf@yc = \pgf@yb
         \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+\width}
+        \pgfmathsetlength{\pgf@xc}{\pgf@xa+\width}
         \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\yb-\height}
+        \pgfmathsetlength{\pgf@yc}{\pgf@yb-\height}
         \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgf@xc=\xa
+        \pgf@xc=\pgf@xa
         \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
         \pgfpathclose
     }

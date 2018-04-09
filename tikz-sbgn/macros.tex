@@ -45,25 +45,25 @@
 
 \def\circlefindx#1#2#3#4{
     \pgf@process{#1}
-    \pgf@xc=\pgf@x
-    \pgf@yc=\pgf@y
+    \@tempdima=\pgf@x
+    \@tempdimb=\pgf@y
     \pgf@xb=#2
     \pgf@y=#3
-    \advance\pgf@y by -\pgf@yc
+    \advance\pgf@y by -\@tempdimb
     \pgfmathsetlength{\pgf@x}{sqrt(\pgf@xb^2-\pgf@y^2)}
     \ifnum #4=1
         \pgf@x=-\pgf@x
     \fi
-    \advance\pgf@x by \pgf@xc
+    \advance\pgf@x by \@tempdima
 }
 
 \def\circlefindangle#1#2#3#4{%center, radius, y, sol
     \pgf@process{#1}
-    \pgf@xc=\pgf@x
-    \pgf@yc=\pgf@y
+    \@tempdima=\pgf@x
+    \@tempdimb=\pgf@y
     \pgf@xb=#2
     \pgf@y=#3
-   \advance\pgf@y by -\pgf@yc
+    \advance\pgf@y by -\@tempdimb
     \pgfmathsetlength{\pgf@x}{sqrt(\pgf@xb^2-\pgf@y^2)}
     \ifnum #4=1
         \pgf@x=-\pgf@x
@@ -109,7 +109,120 @@
     \fi
 }
 
-\pgfkeys{/pgf/.cd, clone/.initial=\false, clone/.default=\true}
-\pgfkeys{/pgf/.cd, connectors/.initial=none}
 
+%all code below is a quasi copy of the fit library code, written by Till Tantau
+%changed fit -> subunits (so no clash with the fit library)
+%added 0.1*width and 0.1*height to the dimensions of the fitting node
+\def\tikz@lib@subunits@rotate{0}
 
+\def\tikz@lib@subunits#1{%
+  \pgf@xb=-16000pt\relax%
+  \pgf@xa=16000pt\relax%
+  \pgf@yb=-16000pt\relax%
+  \pgf@ya=16000pt\relax%
+  %
+  \pgfmathsetmacro\tikz@lib@subunits@rotate{\tikz@lib@subunits@rotate}%
+  %
+  % Now iterate over the coordinates
+  \tikz@lib@subunits@scan#1\pgf@stop%
+  % Now, let's see what has happend
+  \ifdim\pgf@xa>\pgf@xa%
+    % Nothing... Ok, let's just ignore this.
+  \else%
+    % Ok, compute center and width and height
+    \pgf@x=\pgf@xb%
+    \advance\pgf@x by-\pgf@xa%
+    \pgf@y=\pgf@yb%
+    \advance\pgf@y by-\pgf@ya%
+    \advance\pgf@xa by.5\pgf@x%
+    \advance\pgf@ya by.5\pgf@y%
+    \ifdim\tikz@lib@subunits@rotate pt=0pt\relax%
+      {%
+        \pgftransforminvert%
+        \pgf@pos@transform{\pgf@xa}{\pgf@ya}% 
+        \global\pgf@xa\pgf@xa
+        \global\pgf@ya\pgf@ya
+      }
+    \else%
+      \pgf@xc=\pgf@x%
+      \pgf@yc=\pgf@y%
+      {%
+        \pgf@xc=\pgf@xa%
+        \pgf@yc=\pgf@ya%
+        \pgftransforminvert%
+        \pgf@pos@transform{\pgf@xc}{\pgf@yc}%
+        \pgftransformreset%
+        \pgftransformrotate{\tikz@lib@subunits@rotate}%
+        \pgf@pos@transform{\pgf@xc}{\pgf@yc}%
+        \global\pgf@x=\pgf@xc%
+        \global\pgf@y=\pgf@yc%
+      }%
+      \pgf@xa=\pgf@x%
+      \pgf@ya=\pgf@y%
+      \pgf@x=\pgf@xc%
+      \pgf@y=\pgf@yc%
+    \fi%
+    \advance\pgf@x by 0.1\pgf@x
+    \advance\pgf@y by 0.1\pgf@y
+    \edef\tikz@node@at{\noexpand\pgfqpoint{\the\pgf@xa}{\the\pgf@ya}}%
+    \pgfkeysalso{/tikz/anchor=center,/tikz/text badly centered}%
+    \pgfkeysalso{/tikz/text width/.expanded=\the\pgf@x}%
+    \pgf@x=\pgf@y%
+    \pgf@y=.5\pgf@y%
+    \pgfkeysalso{
+      /tikz/text height/.expanded=\the\pgf@y-.5\dp\pgfnodeparttextbox,
+      /tikz/text depth/.expanded=\the\pgf@x-\noexpand\the\ht\pgfnodeparttextbox}%
+    \pgfkeysalso{every subunits/.try}%
+  \fi%
+}
+
+\def\tikz@lib@subunits@scan{%
+  \pgfutil@ifnextchar\pgf@stop{\pgfutil@gobble}
+  {\tikz@scan@one@point\tikz@lib@subunits@scan@handle}}
+
+\def\tikz@lib@subunits@scan@handle#1{%
+  \iftikz@shapeborder%
+    % Ok, subunits all four external anchors, if they exist
+    \tikz@lib@subunits@adjust{\pgfpointanchor{\tikz@shapeborder@name}{west}}%
+    \tikz@lib@subunits@adjust{\pgfpointanchor{\tikz@shapeborder@name}{east}}%
+    \tikz@lib@subunits@adjust{\pgfpointanchor{\tikz@shapeborder@name}{north}}%
+    \tikz@lib@subunits@adjust{\pgfpointanchor{\tikz@shapeborder@name}{south}}%
+  \else%
+    \tikz@lib@subunits@adjust{#1}%
+  \fi%
+  \tikz@lib@subunits@scan%
+}
+
+\def\tikz@lib@subunits@adjust#1{%
+  \ifdim\tikz@lib@subunits@rotate pt=0pt\relax%
+    \pgf@process{\pgfpointtransformed{#1}}%
+  \else%
+    {%
+      \pgf@process{\pgfpointtransformed{#1}}%
+      \pgf@xc=\pgf@x%
+      \pgf@yc=\pgf@y%
+      \pgfgettransform\tikz@lib@subunits@transform%
+      \pgftransforminvert%
+      \pgf@pos@transform{\pgf@xc}{\pgf@yc}%
+      \pgftransformreset%
+      \pgftransformrotate{-\tikz@lib@subunits@rotate}%
+      \pgf@pos@transform{\pgf@xc}{\pgf@yc}%
+      \pgfsettransform\tikz@lib@subunits@transform%
+      \pgf@pos@transform{\pgf@xc}{\pgf@yc}%
+      \global\pgf@x=\pgf@xc%
+      \global\pgf@y=\pgf@yc%    
+    }%
+  \fi%
+  \ifdim\pgf@x<\pgf@xa%
+    \pgf@xa=\pgf@x%
+  \fi%
+  \ifdim\pgf@y<\pgf@ya%
+    \pgf@ya=\pgf@y%
+  \fi%
+  \ifdim\pgf@x>\pgf@xb%
+    \pgf@xb=\pgf@x%
+  \fi%
+  \ifdim\pgf@y>\pgf@yb%
+    \pgf@yb=\pgf@y%
+  \fi%
+}

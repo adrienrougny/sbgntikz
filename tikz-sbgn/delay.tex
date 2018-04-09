@@ -22,11 +22,7 @@
         \pgf@yc=\pgfkeysvalueof{/pgf/inner ysep}
         \advance\pgf@y by 2\pgf@yc
         \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
-        \ifdim\pgf@yc>\pgf@y
-            \pgf@y=\pgf@yc
-        \fi
-        %store south west in xa,ya and north east in xb,yb
-        \pgf@xa=-0.5\pgf@x
+        \ifdim\pgf@yc>\pgf@y \pgf@y=\pgf@yc \fi %store south west in xa,ya and north east in xb,yb \pgf@xa=-0.5\pgf@x
         \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
         \pgf@ya=-0.5\pgf@y
         \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
@@ -212,7 +208,7 @@
 
     \foregroundpath{
         \pgf@xa = \radius
-        \advance\pgf@xa by 0.2\pgf@xa
+        \advance\pgf@xa by 0.4\pgf@xa
         \pgftext{\fontsize{\pgf@xa}{\pgf@xa}\selectfont\sffamily\textcolor{\tikz@strokecolor}{$\tau$}}
     }
 }

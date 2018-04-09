@@ -1,7 +1,10 @@
-\usetikzlibrary{arrows.meta,shapes,positioning,fit}
+\usetikzlibrary{arrows.meta,shapes}
 
 \pgfkeys{/pgf/.cd, clone/.initial=\false, clone/.default=\true}
 \pgfkeys{/pgf/.cd, connectors/.initial=none}
+%quasi copy of fit library code, written by Till Tantau
+\pgfkeys{/tikz/subunits/.code=\tikz@lib@subunits{#1},
+  /tikz/rotate subunits/.code=\def\tikz@lib@subunits@rotate{#1}\pgfkeysalso{/tikz/rotate=#1}}
 
 %include macros
 \input{macros.tex}
@@ -13,7 +16,6 @@
 \input{association.tex}
 \input{dissociation.tex}
 \input{omittedprocess.tex}
-\input{phenotype.tex}
 
 %epns
 \input{unspecifiedentity.tex}
@@ -26,7 +28,11 @@
 \input{macromoleculemultimer.tex}
 \input{nucleicacidfeature.tex}
 \input{nucleicacidfeaturemultimer.tex}
-\input{perturbation.tex}
+
+%special svs
+\input{svexistence.tex}
+\input{svlocation.tex}
+\input{sv.tex}
 
 %los
 \input{and.tex}
@@ -38,20 +44,25 @@
 \tikzset{
     font=\sffamily,
     macromolecule/.style={draw = black, shape = macromolecule, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    submacromolecule/.style={draw = black, shape = macromolecule, minimum height = 36pt, minimum width = 72pt, line width = 1pt},
     macromoleculemultimer/.style={draw = black, shape = macromoleculemultimer, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     unspecifiedentity/.style={draw = black, shape = unspecifiedentity, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     nucleicacidfeature/.style={draw = black, shape = nucleicacidfeature, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     nucleicacidfeaturemultimer/.style={draw = black, shape = nucleicacidfeaturemultimer, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
-    perturbation/.style={draw = black, shape = perturbation, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    perturbation/.style={draw = black, shape = signal, signal to = nowhere, signal from = east and west, signal pointer angle = 110, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     simplechemical/.style={draw = black, shape = simplechemical, minimum height = 35pt, line width = 1pt},
     simplechemicalmultimer/.style={draw = black, shape = simplechemicalmultimer, minimum height = 35pt, minimum width = 80pt, line width = 1pt},
-    complex/.style={draw = black, shape = comples, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    complex/.style={draw = black, shape = complex, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     complexmultimer/.style={draw = black, shape = complexmultimer, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     emptyset/.style={draw = black, shape = emptyset, minimum height = 40pt, minimum width = 40pt, line width = 1pt},
     biologicalactivity/.style={draw = black, shape = rectangle, minimum height = 35pt, minimum width = 60pt, line width = 1pt},
-    sv/.style={draw = black, fill = white, shape = rectangle, minimum width = 10pt, minimum height = 10pt, line width = 1pt, font = {\scriptsize\sffamily}},
+    entity/.style={draw = black, shape = macromolecule, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    outcome/.style={draw = black, fill = black, shape = circle, inner xsep = 0pt, inner ysep = 0pt, minimum width = 4pt},
+    sv/.style={draw = black, fill = white, shape = sv, minimum width = 10pt, minimum height = 10pt, inner xsep = 2pt, inner ysep = 2pt, line width = 1pt, font = {\scriptsize\sffamily}},
+    value/.style={draw = black, fill = white, shape = sv, minimum width = 10pt, minimum height = 10pt, inner xsep = 2pt, inner ysep = 2pt, line width = 1pt, font = {\scriptsize\sffamily}},
+    svexistence/.style={draw = black, fill = white, shape = svexistence, minimum width = 10pt, minimum height = 10pt, line width = 1pt},
+    svlocation/.style={draw = black, fill = white, shape = svlocation, minimum width = 10pt, minimum height = 10pt, line width = 1pt},
     ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, font = {\scriptsize\sffamily}},
-    % ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, font = {\scriptsize\sffamily}, inner sep=0.5pt},
     uimacromolecule/.style={draw = black, shape = macromolecule, fill = white, line width = 1pt, font = {\tiny\sffamily}},
     uicomplex/.style={draw = black, shape = complex, fill = white, line width = 1pt, font = {\tiny\sffamily}},
     uiperturbation/.style={draw = black, shape = perturbation, fill = white, line width = 1pt, font = {\tiny\sffamily}},
@@ -61,25 +72,29 @@
     compartment/.style={draw = black, line width = 4pt},
     submap/.style={draw = black, shape = rectangle, minimum height = 70pt, minimum width = 100pt, line width = 1pt},
     tag/.style={draw = black, signal, minimum height = 20pt, minimum width = 30pt, line width = 1pt},
-    and/.style={draw = black, shape = and, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
-    or/.style={draw = black, shape = or, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
-    not/.style={draw = black, shape = not, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
-    delay/.style={draw = black, shape = delay, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    and/.style={draw = black, shape = and, minimum height = 18pt, minimum width = 18pt, line width = 1pt},
+    or/.style={draw = black, shape = or, minimum height = 18pt, minimum width = 18pt, line width = 1pt},
+    not/.style={draw = black, shape = not, minimum height = 18pt, minimum width = 18pt, line width = 1pt},
+    delay/.style={draw = black, shape = delay, minimum height = 18pt, minimum width = 18pt, line width = 1pt},
     genericprocess/.style={draw = black, shape = genericprocess, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
     omittedprocess/.style={draw = black, shape = omittedprocess, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
     unknownprocess/.style={draw = black, shape = unknownprocess, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
     association/.style={draw = black, fill = black, shape = association, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
     dissociation/.style={draw = black, shape = dissociation, minimum height = 15pt, minimum width = 15pt, line width = 1pt},
-    phenotype/.style={draw = black, shape = phenotype, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
+    phenotype/.style={draw = black, shape = signal, signal to = east and west, signal pointer angle = 110, minimum height = 40pt, minimum width = 80pt, line width = 1pt},
     logicarc/.style={line width = 1pt},
     equivalencearc/.style={line width = 1pt},
     consumption/.style={line width = 1pt},
-    production/.style={line width = 1pt, -{Triangle[length=6pt, width=8pt]}},
-    reversible/.style={line width = 1pt, {Triangle[length=6pt, width=8pt]}-},
+    production/.style={line width = 1pt, -{Triangle[length=8pt, width=8pt]}},
+    reversible/.style={line width = 1pt, {Triangle[length=8pt, width=8pt]}-},
     modulation/.style={line width = 1pt, -{Diamond[open, length=9pt, width=9pt]}},
-    stimulation/.style={line width = 1pt, -{Triangle[open, length=9pt, width=12pt]}},
+    stimulation/.style={line width = 1pt, -{Triangle[open, length=9pt, width=9pt]}},
     catalysis/.style={line width = 1pt, -{Circle[open, length = 8pt, width=8pt]}},
-    inhibition/.style={line width = 1.6pt, -{Bar}},
-    absoluteinhibition/.style={line width = 1.6pt, -{Bar[sep=1] Bar}},
-    necessarystimulation/.style={line width = 1pt, -{Bar[width = 12pt, sep=1] Triangle[open, length=9pt, width=12pt]}},
-    absolutestimulation/.style={line width = 1pt, -{Triangle[fill=white, length=9pt, width=12pt, sep=-3] Triangle[fill=white, length=9pt, width=12pt]}}}
+    inhibition/.style={line width = 1pt, -{Bar}},
+    absoluteinhibition/.style={line width = 1pt, -{Bar[sep=1] Bar}},
+    necessarystimulation/.style={line width = 1pt, -{Bar[width = 12pt, sep=1] Triangle[open, length=9pt, width=9pt]}},
+    absolutestimulation/.style={line width = 1pt, -{Triangle[fill=white, length=9pt, width=9pt, sep=-3] Triangle[fill=white, length=9pt, width=9pt]}},
+    assignment/.style={line width = 1pt, -{Stealth[length=10pt, width=8pt]}},
+    interaction/.style={line width = 1pt, {Stealth[length=10pt, width=8pt]}-{Stealth[length=10pt, width=8pt]}},
+    nary/.style={draw = black, fill = white, shape = circle, minimum height = 20pt, minimum width = 20pt, line width = 1pt},
+    anchorpoint/.style={shape = circle, inner xsep = 0pt, inner ysep = 0pt, outer xsep = 1pt, outer ysep = 1pt}}

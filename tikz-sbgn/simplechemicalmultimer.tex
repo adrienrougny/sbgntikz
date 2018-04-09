@@ -1,4 +1,4 @@
-\pgfdeclareshape{roundedrectanglestacked}{
+\pgfdeclareshape{simplechemicalmultimer}{
 
     \savedanchor\northeast{
         \pgfmathsetlength{\pgf@x}{\wd\pgfnodeparttextbox+2*\pgfkeysvalueof{/pgf/inner xsep}}
@@ -178,25 +178,25 @@
             \pgf@yc=\yb
             \advance\pgf@yc by -\height
             \advance\pgf@yc by \cloneoffset\height
-            \circlefindx{\cax}{\cay}{\radius}{\pgf@yc}{1}
+            \circlefindx{\pgfpoint{\cax}{\cay}}{\radius}{\pgf@yc}{1}
             \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@yc}}
-            \circlefindx{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \circlefindx{\pgfpoint{\cbx}{\cby}}{\radius}{\pgf@yc}{2}
             \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
-            \circlefindangle{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \circlefindangle{\pgfpoint{\cbx}{\cby}}{\radius}{\pgf@yc}{2}
             \pgfpatharc{\pgf@x}{-90}{\radius}
             \pgf@y=\yb
             \advance\pgf@y by -\height
             \pgf@x=\xa
             \advance\pgf@x by \radius
             \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
-            \circlefindangle{\cax}{\cay}{\radius}{\pgf@yc}{1}
+            \circlefindangle{\pgfpoint{\cax}{\cay}}{\radius}{\pgf@yc}{1}
             \pgfpatharc{-90}{\pgf@x}{\radius}
             \pgfpathclose
 
             \pgfpointintersectionofcircles{\pgfpoint{\cax}{\cay}}{\pgfpoint{\ccx}{\ccy}}{\radius}{\radius}{1}
             \pgf@yb=\pgf@y
             \pgfpathmoveto{\pgfpoint{\pgf@x}{\pgf@yb}}
-            \circlefindangle{\ccx}{\ccy}{\radius}{\pgf@yb}{1}
+            \circlefindangle{\pgfpoint{\ccx}{\ccy}}{\radius}{\pgf@yb}{1}
             \pgfpatharc{\pgf@x}{-90}{\radius}
             \pgf@x=\xb
             \advance\pgf@x by -\radius
@@ -204,18 +204,18 @@
             \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
             \pgf@yc=\ya
             \advance\pgf@yc by \cloneoffset\height
-            \circlefindangle{\cdx}{\cdy}{\radius}{\pgf@yc}{2}
+            \circlefindangle{\pgfpoint{\cdx}{\cdy}}{\radius}{\pgf@yc}{2}
             \pgfpatharc{-90}{\pgf@x}{\radius}
-            \circlefindx{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \circlefindx{\pgfpoint{\cbx}{\cby}}{\radius}{\pgf@yc}{2}
             \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
-            \circlefindangle{\cbx}{\cby}{\radius}{\pgf@yc}{2}
+            \circlefindangle{\pgfpoint{\cbx}{\cby}}{\radius}{\pgf@yc}{2}
             \pgfpatharc{\pgf@x}{-90}{\radius}
             \pgf@x=\xa
             \advance\pgf@x by \radius
             \pgf@y=\yb
             \advance\pgf@y by -\height
             \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@y}}
-            \circlefindangle{\cax}{\cay}{\radius}{\pgf@yb}{1}
+            \circlefindangle{\pgfpoint{\cax}{\cay}}{\radius}{\pgf@yb}{1}
             \pgfpatharc{-90}{\pgf@x}{\radius}
             \pgfpathclose
 
