@@ -1,0 +1,28 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc, sbgn}
+
+
+\begin{document}
+
+\begin{tikzpicture}[node distance = 2cm]
+    \node[biologicalactivity] (ras) {Ras};
+    \node[and, connectors = vertical, anchor = center, below right = 2cm and 0.5cm of ras.center] (and) {};
+    \node[biologicalactivity, anchor = center, below = of and.center, align = center] (mutant) {Mutant p53/\\P-Smad};
+    \node[biologicalactivity, anchor = center, below = of mutant.center] (p63) {p63};
+    \node[biologicalactivity, anchor = center, right = 3cm of p63.center, align = center] (metastatic) {Metastatic\\suppressor\\genes\\activity};
+    \node[phenotype, anchor = center, above = of metastatic.center, align = center] (platform) {Pro-invasion\\migration\\metastasis\\gene expression\\platform};
+    \node[biologicalactivity, anchor = center, above = 3cm of platform.center] (tgfbeta) {TGF $\beta$};
+
+    \draw[logicarc] (ras) -- (and.north);
+    \draw[logicarc] (tgfbeta) -- ($(tgfbeta.west)+(-1.5cm,0)$) -- (and.north);
+    \draw[stimulation] (and) -- (mutant);
+    \draw[inhibition] (mutant) -- (p63);
+    \draw[necessarystimulation] (p63) -- (metastatic);
+    \draw[inhibition] (metastatic) -- (platform);
+    \draw[stimulation] (tgfbeta) -- (platform);
+\end{tikzpicture}
+
+
+\end{document}
