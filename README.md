@@ -26,11 +26,13 @@ SBGN maps can then be straightforwardly drawn using a `tikzpicture` environment:
 \end{tikzpicture}
 ```
 
-Nodes and nodes attributes can be drawn using the TikZ `\node` command, while arcs can be drawn using the `\draw` or `edge` commands.
+Nodes and nodes attributes can be drawn using the TikZ `\node` command, while arcs can be drawn using the `\draw` command.
 The type of glyph to be drawn is specified using a keyword that is the name of the type (e.g `macromolecule` for the macromolecule glyph, `necessarystimulation` for the necessary stimulation glyph).
-Here is a small example:
+Here is a small SBGN PD example:
 
 ```tex
+\usetikzlibrary{positioning} %for relative positioning
+
 \begin{tikzpicture}[node distance = 1.5cm]
     %ERK
     \node[macromolecule] (erk) {ERK};
@@ -55,3 +57,7 @@ Here is a small example:
     \draw[catalysis] (pmek) -- (p);
 \end{tikzpicture}
 ```
+
+## Going further
+
+To go further, a complete [documentation]() and some [examples]() are available.
