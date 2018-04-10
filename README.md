@@ -58,6 +58,10 @@ Here is a small SBGN PD example:
 \end{tikzpicture}
 ```
 
+Here is the rendering:
+
+![alt text](https://github.com/Adrienrougny/sbgntikz/blob/master/example.png)
+
 ## Going further
 
 To go further, a complete [documentation]() and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
