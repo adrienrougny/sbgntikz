@@ -60,4 +60,4 @@ Here is a small SBGN PD example:
 
 ## Going further
 
-To go further, a complete [documentation]() and some [examples]() are available.
+To go further, a complete [documentation]() and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
