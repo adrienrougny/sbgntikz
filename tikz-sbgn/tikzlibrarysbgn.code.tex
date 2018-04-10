@@ -1,13 +1,12 @@
-\usetikzlibrary{arrows.meta,shapes}
+\usetikzlibrary{arrows.meta, shapes, fit}
 
 %include macros
 \input{macros.tex}
 
-\pgfkeys{/pgf/.cd, clone/.initial=false, clone/.default=true}
+
+\pgfkeys{/pgf/.cd, clone/.initial/.expanded=false, clone/.default/.expanded=\true}
 \pgfkeys{/pgf/.cd, connectors/.initial=none}
-%quasi copy of fit library code, written by Till Tantau
-\pgfkeys{/tikz/subunits/.code=\tikz@lib@subunits{#1},
-  /tikz/rotate subunits/.code=\def\tikz@lib@subunits@rotate{#1}\pgfkeysalso{/tikz/rotate=#1}}
+\pgfkeys{/tikz/subunits/.code=\sbgn@subunits{#1}}
 
 %include shapes
 %processes
