@@ -28,9 +28,9 @@
     \node[macromolecule, right = of p2] (pirs1-4) {IRS1-4};
     \node[sv] at (pirs1-4.north) {P};
 
-    \node[simplechemical, clone = true, above left = of p2] (atp1) {ATP};
+    \node[simplechemical, clone, above left = of p2] (atp1) {ATP};
 
-    \node[simplechemical, clone = true, above right = of p2] (adp1) {ADP};
+    \node[simplechemical, clone, above right = of p2] (adp1) {ADP};
 
     \node[genericprocess, connectors = horizontal, below = of pirs1-4] (p3) {};
 
@@ -80,9 +80,9 @@
     \node[macromolecule, right = 3.3cm of p6] (prsk) {RSK};
     \node[sv] at (prsk.north) {P};
 
-    \node[simplechemical, clone = true, above left = of p6] (atp2) {ATP};
+    \node[simplechemical, clone, above left = of p6] (atp2) {ATP};
 
-    \node[simplechemical, clone = true, above right = of p6] (adp2) {ADP};
+    \node[simplechemical, clone, above right = of p6] (adp2) {ADP};
 
     \node[genericprocess, connectors = horizontal, below = 2.5cm of prsk] (p7) {};
 
@@ -92,9 +92,9 @@
     \node[macromolecule, right = of p7] (pc-fos) {c-Fos};
     \node[sv] at (pc-fos.north) {P};
 
-    \node[simplechemical, clone = true, above left = of p7] (atp3) {ATP};
+    \node[simplechemical, clone, above left = of p7] (atp3) {ATP};
 
-    \node[simplechemical, clone = true, above right = of p7] (adp3) {ADP};
+    \node[simplechemical, clone, above right = of p7] (adp3) {ADP};
 
     \node[phenotype, below = of pc-fos, align = center] (pheno) {gene\\transcription};
 
