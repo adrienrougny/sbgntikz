@@ -18,10 +18,10 @@ The two first steps are to import the TikZ package and the *sbgntikz* library:
 \usepackage{tikz}
 \usetikzlibrary{sbgn}
 ```
-SBGN maps can then be straightforwardly drawn using a `tikzpicture` environment:
+SBGN maps can then be straightforwardly drawn using a `tikzpicture` environment together with the `sbgn` key:
 
 ```tex
-\begin{tikzpicture}
+\begin{tikzpicture}[sbgn]
   % tikz code to draw an SBGN map
 \end{tikzpicture}
 ```
@@ -33,15 +33,15 @@ Here is a small SBGN PD example:
 ```tex
 \usetikzlibrary{positioning} %for relative positioning
 
-\begin{tikzpicture}[node distance = 1.5cm]
+\begin{tikzpicture}[sbgn]
     %ERK
     \node[macromolecule] (erk) {ERK};
-    \node[sv] (sv-erk) at (erk.120) {};
+    \node[sv] at (erk.120) {};
     %process
     \node[genericprocess, connectors = horizontal, right = of erk] (p) {};
     %p-ERK
     \node[macromolecule, right = of p] (perk) {ERK};
-    \node[sv] (sv-erk) at (perk.120) {P};
+    \node[sv] at (perk.120) {P};
     %atp
     \node[simplechemical, below left = of p] (atp) {ATP};
     %adp
