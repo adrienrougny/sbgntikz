@@ -1,7 +1,7 @@
 \pgfdeclareshape{unspecifiedentity}{
     \inheritsavedanchors[from=ellipse]
     \inheritanchorborder[from=ellipse]
-    \foreach \a in {center, south east, south west, north east, north west}
+    \foreach \a in {center, south, north, east, west, south east, south west, north east, north west}
     {
         \inheritanchor[from=ellipse]{\a}
     }

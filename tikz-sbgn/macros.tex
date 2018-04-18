@@ -117,3 +117,23 @@
         /tikz/text depth/.expand once=\tikz@text@depth+10pt
     }
 }
+
+\pgfkeys{/pgf/.cd, clone/.initial/.expanded=false, clone/.default/.expanded=\true}
+\pgfkeys{/pgf/.cd, connectors/.initial=none}
+\pgfkeys{/tikz/subunits/.code=\sbgn@subunits{#1}}
+% this awesome piece of code was written by Loop Space and taken from https://tex.stackexchange.com/questions/20425/z-level-in-tikz/20426#20426
+\pgfkeys{/tikz/draw layer/.code={
+    \pgfonlayer{#1}\begingroup
+    \aftergroup\endpgfonlayer
+    \aftergroup\endgroup
+    }
+}
+
+\pgfkeys{/tikz/node layer/.code={%
+    \gdef\node@@layer{%
+      \setbox\tikz@tempbox=\hbox\bgroup\pgfonlayer{#1}\unhbox\tikz@tempbox\endpgfonlayer\egroup}
+    \aftergroup\node@layer
+  }
+}
+
+\def\node@layer{\aftergroup\node@@layer}
