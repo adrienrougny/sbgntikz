@@ -9,10 +9,12 @@
 
 \begin{document}
 
-\begin{tikzpicture}[node distance = 1.5cm]
+\begin{tikzpicture}[sbgn]
     \node[macromolecule] (subigf) {IGF};
     \node[macromolecule, below = 0.1cm of subigf] (subigfr) {IGFR};
     \node[complex, subunits = (subigf)(subigfr)] (comp) {};
+    \node[macromolecule] (subigf) {IGF};
+    \node[macromolecule, below = 0.1cm of subigf] (subigfr) {IGFR};
 
     \node[association, connectors = horizontal, left = of comp.200] (p1) {};
 
@@ -20,7 +22,7 @@
 
     \node[macromolecule, above left = 2cm and 1.5cm of p1] (igf) {IGF};
 
-    \node[genericprocess, connectors = horizontal, below = 2.5cm of comp] (p2) {};
+    \node[generic process, connectors = horizontal, below = 2.5cm of comp] (p2) {};
 
     \node[macromolecule, left = of p2] (irs1-4) {IRS1-4};
     \node[sv] at (irs1-4.north) {};
@@ -28,11 +30,11 @@
     \node[macromolecule, right = of p2] (pirs1-4) {IRS1-4};
     \node[sv] at (pirs1-4.north) {P};
 
-    \node[simplechemical, clone, above left = of p2] (atp1) {ATP};
+    \node[simple chemical, clone, above left = of p2] (atp1) {ATP};
 
-    \node[simplechemical, clone, above right = of p2] (adp1) {ADP};
+    \node[simple chemical, clone, above right = of p2] (adp1) {ADP};
 
-    \node[genericprocess, connectors = horizontal, below = of pirs1-4] (p3) {};
+    \node[generic process, connectors = horizontal, below = of pirs1-4] (p3) {};
 
     \node[macromolecule, right = of p3] (inactivegrb2) {Grb2};
     \node[sv] at (inactivegrb2.south) {inactive};
@@ -44,14 +46,15 @@
 
     \node[macromolecule, above left = of p4] (sos) {SOS};
 
-    \node[submacromolecule, below right = 1.7cm and 0.05cm of p4.south] (sub-activegrb2) {Grb2};
+    \node[macromolecule subunit, below right = 1.7cm and 0.05cm of p4.south] (sub-activegrb2) {Grb2};
     \node[sv] at (sub-activegrb2.south) {active};
-
-    \node[submacromolecule, below left = 1.7cm and 0.05cm of p4.south] (sub-sos) {SOS};
-
+    \node[macromolecule subunit, below left = 1.7cm and 0.05cm of p4.south] (sub-sos) {SOS};
     \node[complex, subunits = (sub-sos)(sub-activegrb2)] (comp2) {};
+    \node[macromolecule subunit, below right = 1.7cm and 0.05cm of p4.south] (sub-activegrb2) {Grb2};
+    \node[sv] at (sub-activegrb2.south) {active};
+    \node[macromolecule subunit, below left = 1.7cm and 0.05cm of p4.south] (sub-sos) {SOS};
 
-    \node[genericprocess, connectors = horizontal, below = of comp2] (p5) {};
+    \node[generic process, connectors = horizontal, below = of comp2] (p5) {};
 
     \node[macromolecule, left = of p5] (inactiveras) {RAS};
     \node[sv] at (inactiveras.south) {inactive};
@@ -59,9 +62,9 @@
     \node[macromolecule, right = of p5] (activeras) {RAS};
     \node[sv] at (activeras.south) {active};
 
-    \node[simplechemical, below left = of p5] (gtp) {GTP};
+    \node[simple chemical, below left = of p5] (gtp) {GTP};
 
-    \node[simplechemical, below right = of p5] (gdp) {GDP};
+    \node[simple chemical, below right = of p5] (gdp) {GDP};
 
     \node[submap, right = 0.75cm of activeras, align = center, minimum width = 120pt, fill = yellow!50] (submap) {MAPK\\cascade};
 
@@ -72,7 +75,7 @@
     \node[macromolecule, right = 0.75cm of submap] (2perk) {ERK};
     \node[sv] at (2perk.220) {2P};
 
-    \node[genericprocess, connectors = horizontal, above right = 2.5cm and 3cm of 2perk] (p6) {};
+    \node[generic process, connectors = horizontal, above right = 2.5cm and 3cm of 2perk] (p6) {};
 
     \node[macromolecule, left = of p6] (rsk) {RSK};
     \node[sv] at (rsk.north) {};
@@ -80,11 +83,11 @@
     \node[macromolecule, right = 3.3cm of p6] (prsk) {RSK};
     \node[sv] at (prsk.north) {P};
 
-    \node[simplechemical, clone, above left = of p6] (atp2) {ATP};
+    \node[simple chemical, clone, above left = of p6] (atp2) {ATP};
 
-    \node[simplechemical, clone, above right = of p6] (adp2) {ADP};
+    \node[simple chemical, clone, above right = of p6] (adp2) {ADP};
 
-    \node[genericprocess, connectors = horizontal, below = 2.5cm of prsk] (p7) {};
+    \node[generic process, connectors = horizontal, below = 2.5cm of prsk] (p7) {};
 
     \node[macromolecule, left = of p7] (c-fos) {c-Fos};
     \node[sv] at (c-fos.north) {};
@@ -92,9 +95,9 @@
     \node[macromolecule, right = of p7] (pc-fos) {c-Fos};
     \node[sv] at (pc-fos.north) {P};
 
-    \node[simplechemical, clone, above left = of p7] (atp3) {ATP};
+    \node[simple chemical, clone, above left = of p7] (atp3) {ATP};
 
-    \node[simplechemical, clone, above right = of p7] (adp3) {ADP};
+    \node[simple chemical, clone, above right = of p7] (adp3) {ADP};
 
     \node[phenotype, below = of pc-fos, align = center] (pheno) {gene\\transcription};
 
@@ -117,8 +120,8 @@
     \draw[consumption] (gtp) -- (p5.west);
     \draw[production] (p5.east) -- (activeras);
     \draw[production] (p5.east) -- (gdp);
-    \draw[equivalencearc] (activeras) -- (tagras);
-    \draw[equivalencearc] (tagerk) -- (2perk);
+    \draw[equivalence arc] (activeras) -- (tagras);
+    \draw[equivalence arc] (tagerk) -- (2perk);
     \draw[catalysis] (2perk) -| (p6);
     \draw[consumption] (rsk) -- (p6.west);
     \draw[consumption] (atp2) -- (p6.west);
