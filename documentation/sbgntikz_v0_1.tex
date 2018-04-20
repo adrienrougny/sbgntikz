@@ -232,6 +232,7 @@
     ;
 \end{tikzpicture}
 }
+\scriptsize Map adapted from SBGN PD language L1V1.3, Journal of Integrative Bioinformatics, 2015 Sep 4;12(2):263 \normalsize
 \end{center}
 
 \newpage
@@ -298,7 +299,7 @@ where
 As for arcs, they can be drawn using the following piece of code:
 
 \begin{minted}[bgcolor=gray!10]{latex}
-\node[<sbgn arc>, ...] (a) -- (b);
+\draw[<sbgn arc>, ...] (a) -- (b);
 \end{minted}
 
 where
@@ -851,6 +852,59 @@ Following are a few options that might be useful for customizing SBGN maps.\\
 
 \subsection{Positioning of nodes, arcs, and their attributes}
 
+\texttikz{} offers two ways of positioning nodes: with absolute coordinates and relatively to other nodes.
+We discourage using absolute coordinates as those cannot be changed easily through the drawing process.
+Drawing maps is far easier using relative positioning.
+For example, state variables can be placed using the border anchor of the entity pool node they decorate:
+
+\begin{code}
+\node[macromolecule] at (0,0) (m) {};
+\node[sv] at (m.140) {val@var};
+\end{code}
+
+Here, we decided to place the state variable at an angle of 140\textdegree{} on the border of the entity pool node.
+Now, if we want to change the position of the entity pool node, we don't have to change the position of the state variable:
+
+\begin{code}
+\node[macromolecule] at (0,2) (m) {};
+\node[sv] at (m.140) {val@var};
+\end{code}
+
+Nodes can also be easily be placed relatively to other nodes using the \emph{positioning} \texttikz{} library, with the following syntax:
+
+\begin{minted}[bgcolor=gray!10, breaklines]{latex}
+\node[<sbgn_node>, <direction> = <distance> of <node_name>] ...;
+\end{minted}
+
+Here, \mintinline{latex}{<direction>} defines in what direction the node should be place relatively to a previously defined node named \mintinline{latex}{<node_name>}.
+This direction can be unitary (\mintinline{latex}{left}, \mintinline{latex}{right}, \mintinline{latex}{above}, \mintinline{latex}{below}) or composed of two values (vertical direction first, e.g. \mintinline{latex}{above left}).
+The node will be placed in that direction at the distance \mintinline{latex}{<distance>} of the border of node \mintinline{latex}{<node_name>}.
+In case of a composed direction, one can define a distance for each sub-direction: \mintinline{latex}{<distance1> and <distance2>}.
+If no distance is provided, the node will be placed at a distance of 1.5cm (default in \emph{sbgntikz}).
+Following are some usage examples:
+
+\begin{code}
+\node[unspecified entity] (m) {};
+\node[generic process, below = of m] {};
+\end{code}
+
+\begin{code}
+\node[unspecified entity] (m) {};
+\node[generic process, above left = 0.5cm of m] {};
+\end{code}
+
+\begin{code}
+\node[unspecified entity] (m) {};
+\node[generic process, below left = 2cm and 0.5cm of m] {};
+\end{code}
+
+To make the node closer to the other one, a negative distance can be defined:
+
+\begin{code}
+\node[unspecified entity] (m) {};
+\node[generic process, below left = 1cm and -1cm of m] {};
+\end{code}
+
 \subsection{Bended arcs, multi-part arcs}
 \index{bended arc}
 
@@ -897,11 +951,69 @@ It can also be convenient to use the \mintinline{latex}{--+} and \mintinline{lat
 
 \subsection{Nodes along paths for ER maps}
 
-Drawing SBGN ER maps is particular considering that one might have to draw arcs targeting other arcs.
-This is not straightforwardly possible in \texttikz{}, as arcs must target points or nodes.
+In ER maps, outcomes should be drawn along interaction or assignment arcs.
+\texttikz{} provides a handy syntax to do so:
 
-\section{Examples}
-\section{License}
+\begin{code}
+    \draw[interaction] (0,0) -- (2,0) node[outcome, pos = 0.7] (o) {};
+\end{code}
+
+Here, the outcome is added along the path using the \mintinline{latex}{node} command (with no \textbackslash), as if it was a normal node.
+The \colkey{pos} option allows defining the distance of the node from the source of the arc relatively to the length of the arc.
+Here, we placed the outcome at a distance of 70\%.
+More than one outcome can be placed along an arc, by repeating the \mintinline{latex}{node} syntax:
+
+\begin{code}
+    \draw[interaction] (0,0) -- (2,0) node[outcome, pos = 0.3] (o1) {} node[outcome, pos = 0.5] (o2) {} node[outcome, pos = 0.7] (o3) {};
+\end{code}
+
+One other particularity of drawing ER maps is that one might have to draw arcs targeting other arcs.
+This is not straightforwardly possible in \texttikz{}, as arcs must target points or nodes.
+One solution provided by \emph{sbgntikz} is to draw \colkey{anchor point} coordinates along arcs, as in the following example:
+
+\begin{code}
+\draw[interaction] (0,0) -- (2,0) coordinate[anchor point, pos = 0.5] (a);
+\draw[stimulation] (1,1) -- (a);
+\end{code}
+
+Here, the \colkey{anchor point} coordinate (which has no drawing and no label) is placed halfway along the interaction arc.
+
+Often in ER maps, one wants to draw horizontal or vertical modulation arcs departing from outcomes.
+Hence, the anchor point should be placed at the X-coordinate (for a vertical arc) or Y-coordinate (for an horizontal arc) of the outcome.
+This can be achieved using \texttikz{}'s \mintinline{latex}{let} syntax for arcs, that allows using the coordinates of other nodes or points.
+Following is an example of how to draw a vertical modulation arc outgoing from an outcome:
+
+\begin{code}
+\draw[interaction] (0,0) -- (2,0) node[outcome, pos = 0.7] (o1) {};
+\draw[interaction] let \p1=(o1) in (0,-2) -- (2,-2) coordinate[anchor point] (a) at (\x1,-2) node[outcome, pos = 0.3] (o2) {};
+\draw[stimulation] (o1) -- (a);
+\end{code}
+
+In the second interaction, we define the point \mintinline{latex}{\p1} as being the outcome of the second interaction, and we use its X-coordinate defined as \mintinline{latex}{\x1} to place the anchor point.
+More coordinates can be defined and accessed using the let command, always using the syntax \mintinline{latex}{\p}i and \mintinline{latex}{\x}i,\mintinline{latex}{\y}i:
+
+\begin{code}
+\draw[interaction] (0,0) -- (2,0) node[outcome, pos = 0.7] (o1) {};
+\draw[interaction] (-0.7,-0.5) -- (1.3,-0.5) node[outcome, pos = 0.7] (o2) {};
+\draw[interaction] let \p1=(o1), \p2=(o2) in (0,-2) -- (2,-2) coordinate[anchor point] (a1) at (\x1,-2) coordinate[anchor point] (a2) at (\x2,-2);
+\draw[stimulation] (o1) -- (a1);
+\draw[absolute inhibition] (o2) -- (a2);
+\end{code}
+
+% \section{License}
+%
+% \emph{sbgntikz} is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% \emph{sbgntikz} is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with \emph{sbgntikz}.  If not, see <http://www.gnu.org/licenses/>.
 
 \bibliographystyle{unsrt}
 \bibliography{sbgntikz_v0_1}
