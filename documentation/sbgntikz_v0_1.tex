@@ -338,9 +338,9 @@ It relies on relative positioning provided by \texttikz{}'s \mintinline{tex}{pos
 \node[sv] at (pmek.120) {P};
 
 \draw[consumption] (erk) -- (p.west);   % p being the name of the process node, p.west is the tip of its left connector
-\draw[consumption] (atp) to [bend left=40] (p.west);    % arcs can be bent using a specific syntax, where "--" is replaced by "to [bend <direction>=<angle>]"
+\draw[consumption] (atp) -- (p.west);
 \draw[production] (p.east) -- (perk);
-\draw[production] (p.east) to [bend left=40] (adp);
+\draw[production] (p.east) -- (adp);
 \draw[catalysis] (pmek) -- (p);
 \end{tikzpicture}
 
@@ -354,26 +354,20 @@ Compiling the above code would produce the following figure:
 \begin{center}
 \colorbox{blue!10}{
 \begin{tikzpicture}[sbgn]
-    %ERK
-    \node[macromolecule] (erk) {ERK};
-    \node[sv] (sv-erk) at (erk.120) {};
-    %process
-    \node[generic process, connectors = horizontal, right = of erk] (p) {};
-    %p-ERK
+    \node[macromolecule] (erk) {ERK};   % this node has no absolute nor relative positioning, so it is placed at (0,0) by default
+    \node[sv] at (erk.120) {};  % the state variable is placed on the border of the node, at an angle of 120 deg
+    \node[generic process, connectors = horizontal, right = of erk] (p) {}; % we add connectors, and use relative positioning
     \node[macromolecule, right = of p] (perk) {ERK};
-    \node[sv] (sv-erk) at (perk.120) {P};
-    %atp
+    \node[sv] at (perk.120) {P};
     \node[simple chemical, below left = of p] (atp) {ATP};
-    %adp
     \node[simple chemical, below right = of p] (adp) {ADP};
-    %p-MEK
     \node[macromolecule, above = 2cm of p] (pmek) {MEK};
     \node[sv] at (pmek.120) {P};
-    %arcs
-    \draw[consumption] (erk) -- (p.west);
-    \draw[consumption] (atp) to [bend left=40] (p.west);
+
+    \draw[consumption] (erk) -- (p.west);   % p being the name of the process node, p.west is the tip of its left connector
+    \draw[consumption] (atp) -- (p.west);
     \draw[production] (p.east) -- (perk);
-    \draw[production] (p.east) to [bend left=40] (adp);
+    \draw[production] (p.east) -- (adp);
     \draw[catalysis] (pmek) -- (p);
 \end{tikzpicture}
 }
@@ -445,7 +439,7 @@ Compiling the above code would produce the following figure:
 
 \begin{entry}{Emptyset}{emptyset}{PD}
 \begin{code}
-\node[emptyset] {};
+\node[empty set] {};
 \end{code}
 \end{entry}
 
@@ -843,7 +837,7 @@ Following are a few options that might be useful for customizing SBGN maps.\\
 \end{code}
 \end{entry}
 
-\begin{entry}{Minimum height}{minimum width}{Nodes}
+\begin{entry}{Minimum height}{minimum height}{Nodes}
 \begin{code}
 \node[complex, minimum height = 20pt] (m) {};
 \node[simple chemical, minimum height = 70pt] at (0cm,-2cm) (m) {};
@@ -976,12 +970,25 @@ One solution provided by \emph{sbgntikz} is to draw \colkey{anchor point} coordi
 \draw[stimulation] (1,1) -- (a);
 \end{code}
 
-Here, the \colkey{anchor point} coordinate (which has no drawing and no label) is placed halfway along the interaction arc.
+Here, the \colkey{anchor point} coordinate (which is a circle with no drawing, no label and a radius of 2pt) is placed halfway along the interaction arc.\\
 
 Often in ER maps, one wants to draw horizontal or vertical modulation arcs departing from outcomes.
-Hence, the anchor point should be placed at the X-coordinate (for a vertical arc) or Y-coordinate (for an horizontal arc) of the outcome.
-This can be achieved using \texttikz{}'s \mintinline{latex}{let} syntax for arcs, that allows using the coordinates of other nodes or points.
-Following is an example of how to draw a vertical modulation arc outgoing from an outcome:
+These particular cases, on the other hand, can be easily achieved using \texttikz{}'s \mintinline{latex}{|-} syntax:
+
+\begin{code}
+\draw[interaction] (0,0) -- (2,0);
+\draw[stimulation] (1,1) -- (1,1 |- 2,0);
+\end{code}
+
+Additional space between the tip of the modulation arc and the target arc can be added (here 2pt, that is the anchor point's default radius):
+
+\begin{code}
+\draw[interaction] (0,0) -- (2,0);
+\draw[inhibition] (1,1) -- ($(1,1 |- 2,0)+(0,2pt)$);
+\end{code}
+
+Drawing vertical or horizontal modulation arcs can also be achieved using anchor points and \texttikz{}'s \mintinline{latex}{let} syntax, which allows to place the anchor point at the X-coordinate (for a vertical arc) or Y-coordinate (for an horizontal arc) of the outcome.
+Following is an example:
 
 \begin{code}
 \draw[interaction] (0,0) -- (2,0) node[outcome, pos = 0.7] (o1) {};
