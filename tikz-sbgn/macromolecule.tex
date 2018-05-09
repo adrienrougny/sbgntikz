@@ -1,73 +1,151 @@
 \pgfdeclareshape{macromolecule}{
 
-    \inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+    \savedmacro{\scarceratio}{\def\scarceratio{0.1}}
+
+    \savedmacro\computecoordinates{%
+        \pgf@yb = \ht\pgfnodeparttextbox
+        \advance\pgf@yb by \dp\pgfnodeparttextbox
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/inner ysep}}
+        \advance\pgf@yb by 2\pgf@xa
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@yb
+            \pgf@yb=\pgf@yc
+        \fi
+        \pgf@xb=\wd\pgfnodeparttextbox
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/inner xsep}}
+        \advance\pgf@xb by 2\pgf@xa
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \ifdim\pgf@xc>\pgf@xb
+            \pgf@xb=\pgf@xc
+        \fi
+        \ifdim\pgf@yb>\pgf@xb
+            \pgfmathsetlengthmacro\scarceoffset{\scarceratio*\pgf@xb}
+        \else
+            \pgfmathsetlengthmacro\scarceoffset{\scarceratio*\pgf@yb}
+        \fi
+        \addtosavedmacro\scarceoffset
+        \pgf@xa=-0.5\pgf@xb
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@xc=\pgf@xa %saving for later
+        \pgf@ya=0.5\pgf@yb
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \advance\pgf@ya by -\scarceoffset
+        \pgfextract@process\westnorthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\westnorthjoin}
+        \advance\pgf@ya by \scarceoffset
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\northwestjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\northwestjoin}
+        \advance\pgf@xa by \pgf@xb
+        \pgfmathaddtolength{\pgf@xa}{-2*\scarceoffset}
+        \pgfextract@process\northeastjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\northeastjoin}
+        \advance\pgf@ya by -\scarceoffset
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\eastnorthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\eastnorthjoin}
+        \advance\pgf@ya by -\pgf@yb
+        \pgfmathaddtolength{\pgf@ya}{2*\scarceoffset}
+        \pgfextract@process\eastsouthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\eastsouthjoin}
+        \advance\pgf@ya by -\scarceoffset
+        \advance\pgf@xa by -\scarceoffset
+        \pgfextract@process\southeastjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\southeastjoin}
+        \pgf@xa=\pgf@xc
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\southwestjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\southwestjoin}
+        \advance\pgf@xa by -\scarceoffset
+        \advance\pgf@ya by \scarceoffset
+        \pgfextract@process\westsouthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\westsouthjoin}
+    }
+
+    \savedanchor{\southwest}{
+        \westnorthjoin
+        \pgf@xc=\pgf@x
+        \southwestjoin
+        \pgf@x=\pgf@xc
+    }
+
+    \savedanchor{\northeast}{
+        \eastnorthjoin
+        \pgf@xc=\pgf@x
+        \northeastjoin
+        \pgf@x=\pgf@xc
+    }
+
+    \anchor{south west}{
+        \southwest
+    }
+
+    \anchor{north east}{
+        \northeast
+    }
+
+
+    \anchor{south east}{
+        \northeast
+        \pgf@xc=\pgf@x
+        \southwest
+        \pgf@x=\pgf@xc
+    }
+
+    \anchor{north west}{
+        \southwest
+        \pgf@xc=\pgf@x
+        \northeast
+        \pgf@x=\pgf@xc
+    }
+
     \inheritanchorborder[from=rectangle]
 
-    \foreach \a in {center, north, south, west, east, south east, south west, north east, north west}
+    \foreach \a in {center, north, south, west, east}
     {
         \inheritanchor[from=rectangle]{\a}
     }
 
     \backgroundpath{
-        \def\scarce{0.038}
-        \pgf@process{\southwest}
-        \pgf@xa = \pgf@x
-        \pgf@ya = \pgf@y
-        \pgf@process{\northeast}
-        \pgf@xb = \pgf@x
-        \pgf@yb = \pgf@y
-        \pgf@xc = \pgfkeysvalueof{/pgf/outer xsep}
-        \pgf@yc = \pgfkeysvalueof{/pgf/outer ysep}
-        \advance\pgf@xa by \pgf@xc
-        \advance\pgf@xb by -\pgf@xc
-        \advance\pgf@ya by \pgf@yc
-        \advance\pgf@yb by -\pgf@yc
-        \newdimen\width
-        \pgfmathsetlength{\width}{\pgf@xb-\pgf@xa}
-        \newdimen\height
-        \pgfmathsetlength{\height}{\pgf@yb-\pgf@ya}
-
-        \pgfsetcornersarced{\pgfpoint{\scarce*\width}{\scarce*\width}}
-        \pgf@xc = \pgf@xa \pgf@yc = \pgf@yb
-        \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\pgf@xa+\width}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\pgf@yb-\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgf@xc=\pgf@xa
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \pgfpathmoveto{\northwestjoin}
+        \pgfpathlineto{\northeastjoin}
+        \pgfpatharc{90}{0}{\scarceoffset}
+        \pgfpathlineto{\eastsouthjoin}
+        \pgfpatharc{0}{-90}{\scarceoffset}
+        \pgfpathlineto{\southwestjoin}
+        \pgfpatharc{-90}{-180}{\scarceoffset}
+        \pgfpathlineto{\westnorthjoin}
+        \pgfpatharc{-180}{-270}{\scarceoffset}
         \pgfpathclose
     }
 
     \foregroundpath{
         \pgfkeysgetvalue{/pgf/clone}{\clone}
         \ifx\clone\true
-            \def\cloneoffset{0.25}
-            \def\scarce{0.038}
-            \pgf@process{\southwest}
-            \pgfgetlastxy{\xa}{\ya}
-            \pgf@process{\northeast}
-            \pgfgetlastxy{\xb}{\yb}
-            \newdimen\width
-            \pgfmathsetlength{\width}{\xb-\xa}
-            \newdimen\height
-            \pgfmathsetlength{\height}{\yb-\ya}
-
-            \pgfsetcornersarced{\pgfpointorigin}
-            \pgfmathsetlength{\pgf@xc}{\xa}
-            \pgfmathsetlength{\pgf@yc}{\ya+\cloneoffset*\height}
+            \def\cloneoffsetratio{0.25}
+            \computecoordinates
+            \northwestjoin
+            \pgf@ya=\pgf@y
+            \southwestjoin
+            \advance\pgf@ya by -\pgf@y
+            \newdimen\cloneoffset
+            \cloneoffset=\cloneoffsetratio\pgf@ya
+            \pgf@yc=\pgf@y
+            \advance\pgf@yc by \cloneoffset
+            \westsouthjoin
+            \pgf@xc=\pgf@x
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgf@xc = \xb
+            \eastnorthjoin
+            \pgf@xc=\pgf@x
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgf@yc = \ya
-            \pgfsetcornersarced{\pgfpoint{\scarce*\width}{\scarce*\width}}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgf@xc = \xa
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfsetcornersarced{\pgfpointorigin}
+            \pgfpathlineto{\eastsouthjoin}
+            \pgfpatharc{0}{-90}{\scarceoffset}
+            \pgfpathlineto{\southwestjoin}
+            \pgfpatharc{-90}{-180}{\scarceoffset}
             \pgfpathclose
             \pgfsetfillcolor{\tikz@strokecolor}
-            \pgfusepath{stroke, fill}
+            \pgfusepath{fill, stroke}
         \fi
     }
 }

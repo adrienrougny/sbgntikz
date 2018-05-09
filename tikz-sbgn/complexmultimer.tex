@@ -1,5 +1,153 @@
 \pgfdeclareshape{complexmultimer}{
-    \inheritsavedanchors[from=rectangle]
+
+    \inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+
+    \savedmacro{\scarceratio}{\def\scarceratio{0.09}}
+
+    \savedmacro{\offsetratio}{\def\offsetratio{0.1}}
+
+    \savedmacro\computecoordinates{%
+        \pgf@yb = \ht\pgfnodeparttextbox
+        \advance\pgf@yb by \dp\pgfnodeparttextbox
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/inner ysep}}
+        \advance\pgf@yb by 2\pgf@xa
+        \pgfmathsetlength{\pgf@yb}{\pgf@yb/(1-\offsetratio)}
+        \pgf@yc=\pgfkeysvalueof{/pgf/minimum height}
+        \ifdim\pgf@yc>\pgf@yb
+            \pgf@yb=\pgf@yc
+        \fi
+        \pgfmathsetlengthmacro\offset{\offsetratio*\pgf@yb}
+        \addtosavedmacro\offset
+        \pgf@xb=\wd\pgfnodeparttextbox
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/inner xsep}}
+        \advance\pgf@xb by 2\pgf@xa
+        \pgf@xc=\pgfkeysvalueof{/pgf/minimum width}
+        \advance\pgf@xb by \offset
+        \ifdim\pgf@xc>\pgf@xb
+            \pgf@xb=\pgf@xc
+        \fi
+        \advance\pgf@xb by -\offset
+        \advance\pgf@yb by -\offset
+        \ifdim\pgf@yb>\pgf@xb
+            \pgfmathsetlengthmacro\scarceoffset{\scarceratio*\pgf@xb}
+        \else
+            \pgfmathsetlengthmacro\scarceoffset{\scarceratio*\pgf@yb}
+        \fi
+        \addtosavedmacro\scarceoffset
+        \pgf@xa=-0.5\pgf@xb
+        \advance\pgf@xa by 0.5\wd\pgfnodeparttextbox
+        \pgf@xc=\pgf@xa %saving for later
+        \pgf@ya=0.5\pgf@yb
+        \advance\pgf@ya by 0.5\ht\pgfnodeparttextbox
+        \advance\pgf@ya by -0.5\dp\pgfnodeparttextbox
+        \advance\pgf@ya by -\scarceoffset
+        \pgfextract@process\upperwestnorthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\upperwestnorthjoin}
+        \advance\pgf@ya by \scarceoffset
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\uppernorthwestjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppernorthwestjoin}
+        \advance\pgf@xa by \pgf@xb
+        \pgfmathaddtolength{\pgf@xa}{-2*\scarceoffset}
+        \pgfextract@process\uppernortheastjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppernortheastjoin}
+        \advance\pgf@ya by -\scarceoffset
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\uppereastnorthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppereastnorthjoin}
+        \advance\pgf@ya by -\pgf@yb
+        \pgfmathaddtolength{\pgf@ya}{2*\scarceoffset}
+        \pgfextract@process\uppereastsouthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppereastsouthjoin}
+        \advance\pgf@ya by -\scarceoffset
+        \advance\pgf@xa by -\scarceoffset
+        \pgfextract@process\uppersoutheastjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppersoutheastjoin}
+        \pgf@xa=\pgf@xc
+        \advance\pgf@xa by \scarceoffset
+        \pgfextract@process\uppersouthwestjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\uppersouthwestjoin}
+        \advance\pgf@xa by -\scarceoffset
+        \advance\pgf@ya by \scarceoffset
+        \pgfextract@process\upperwestsouthjoin{\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}
+        \addtosavedmacro{\upperwestsouthjoin}
+        \upperwestnorthjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowerwestnorthjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowerwestnorthjoin}
+        \uppernorthwestjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowernorthwestjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowernorthwestjoin}
+        \uppernortheastjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowernortheastjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowernortheastjoin}
+        \uppereastnorthjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowereastnorthjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowereastnorthjoin}
+        \uppereastsouthjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowereastsouthjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowereastsouthjoin}
+        \uppersoutheastjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowersoutheastjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowersoutheastjoin}
+        \uppersouthwestjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowersouthwestjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowersouthwestjoin}
+        \upperwestsouthjoin
+        \advance\pgf@x by \offset
+        \advance\pgf@y by -\offset
+        \pgfextract@process\lowerwestsouthjoin{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+        \addtosavedmacro{\lowerwestsouthjoin}
+        \pgf@xa=\offset
+        \pgf@xb=\scarceoffset\relax
+        \ifdim\pgf@xa>\pgf@xb
+            \lowerwestsouthjoin
+            \pgf@xc=\pgf@x
+            \uppersouthwestjoin
+            \pgfextract@process\leftintersection{\pgfpoint{\the\pgf@xc}{\the\pgf@y}}
+            \addtosavedmacro{\leftintersection}
+            \uppereastnorthjoin
+            \pgf@xc=\pgf@x
+            \lowernortheastjoin
+            \pgfextract@process\rightintersection{\pgfpoint{\the\pgf@xc}{\the\pgf@y}}
+            \addtosavedmacro{\rightintersection}
+        \else
+            \upperwestsouthjoin
+            \pgf@xa=\pgf@x
+            \pgf@ya=\pgf@y
+            \uppersouthwestjoin
+            \pgf@xb=\pgf@x
+            \pgf@yb=\pgf@y
+            \lowersouthwestjoin
+            \pgfmathsetlength{\pgf@y}{((\pgf@yb-\pgf@ya)*\pgf@x+\pgf@ya*\pgf@xb-\pgf@yb*\pgf@xa)/(\pgf@xb-\pgf@xa)}
+            \pgfextract@process\leftintersection{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+            \addtosavedmacro{\leftintersection}
+            \lowernortheastjoin
+            \pgf@xa=\pgf@x
+            \pgf@ya=\pgf@y
+            \lowereastnorthjoin
+            \pgf@xb=\pgf@x
+            \pgf@yb=\pgf@y
+            \uppereastnorthjoin
+            \pgfmathsetlength{\pgf@y}{((\pgf@yb-\pgf@ya)*\pgf@x+\pgf@ya*\pgf@xb-\pgf@yb*\pgf@xa)/(\pgf@xb-\pgf@xa)}
+            \pgfextract@process\rightintersection{\pgfpoint{\the\pgf@x}{\the\pgf@y}}
+            \addtosavedmacro{\rightintersection}
+        \fi
+    }
+
     \inheritanchorborder[from=rectangle]
 
     \foreach \a in {center, north, south, west, east, south east, south west, north east, north west}
@@ -8,127 +156,98 @@
     }
 
     \backgroundpath{
-        \def\cut{0.1}
-        \def\offset{0.1}
-        \pgf@process{\southwest}
-        \pgfgetlastxy{\xa}{\ya}
-        \pgf@process{\northeast}
-        \pgfgetlastxy{\xb}{\yb}
-        \newdimen\width
-        \pgfmathsetlength{\width}{\xb-\xa-\offset*(\yb-\ya)}
-        \newdimen\height
-        \pgfmathsetlength{\height}{(1-\offset)*(\yb-\ya)}
-
-        \pgfmathsetlength{\pgf@xc}{\xa+\cut*\width}
-        \pgf@yc=\yb
-        \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+(1-\cut)*(\width)}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+\width}
-        \pgfmathsetlength{\pgf@yc}{\yb-\cut*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+(1-\cut)*(\width)}
-        \pgfmathsetlength{\pgf@yc}{\yb-\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+\cut*(\width)}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
-        \pgf@xc = \xa
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\yb-\cut*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+        \computecoordinates
+        \pgfpathmoveto{\uppernorthwestjoin}
+        \pgfpathlineto{\uppernortheastjoin}
+        \pgfpathlineto{\uppereastnorthjoin}
+        \pgfpathlineto{\uppereastsouthjoin}
+        \pgfpathlineto{\uppersoutheastjoin}
+        \pgfpathlineto{\uppersouthwestjoin}
+        \pgfpathlineto{\upperwestsouthjoin}
+        \pgfpathlineto{\upperwestnorthjoin}
         \pgfpathclose
 
-        \pgfmathsetlength{\pgf@xc}{\xb-\width}
-        \pgfmathsetlength{\pgf@yc}{\yb-\height+\cut*\height-\offset*(\yb-\ya)/\width*\height}
-        \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\ya+\cut*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xb-\width+\cut*\width}
-        \pgf@yc=\ya
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xb-\cut*\width}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgf@xc=\xb
-        \pgfmathsetlength{\pgf@yc}{\ya+\cut*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\ya+(1-\cut)*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+\width}
-        \pgfmathsetlength{\pgf@yc}{\ya+(1-\cut)*\height+\cut*\height-\height*(\cut*\width-\offset*(\yb-\ya))/\width}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+(1-\cut)*(\width)}
-        \pgfmathsetlength{\pgf@yc}{\yb-\height}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfmathsetlength{\pgf@xc}{\xa+\cut*(\width)}
-        \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-        \pgfpathclose
+        \pgf@xa=\offset
+        \pgf@xb=\scarceoffset
+        \ifdim\pgf@xa>\pgf@xb
+            \pgfpathmoveto{\leftintersection}
+            \pgfpathlineto{\uppersoutheastjoin}
+            \pgfpathlineto{\uppereastsouthjoin}
+            \pgfpathlineto{\rightintersection}
+            \pgfpathlineto{\lowernortheastjoin}
+            \pgfpathlineto{\lowereastnorthjoin}
+            \pgfpathlineto{\lowereastsouthjoin}
+            \pgfpathlineto{\lowersoutheastjoin}
+            \pgfpathlineto{\lowersouthwestjoin}
+            \pgfpathlineto{\lowerwestsouthjoin}
+            \pgfpathclose
+        \else
+            \pgfpathmoveto{\uppersouthwestjoin}
+            \pgfpathlineto{\uppersoutheastjoin}
+            \pgfpathlineto{\uppereastsouthjoin}
+            \pgfpathlineto{\rightintersection}
+            \pgfpathlineto{\lowereastnorthjoin}
+            \pgfpathlineto{\lowereastsouthjoin}
+            \pgfpathlineto{\lowersoutheastjoin}
+            \pgfpathlineto{\lowersouthwestjoin}
+            \pgfclosepath
+        \fi
     }
+
     \foregroundpath{
         \pgfkeysgetvalue{/pgf/clone}{\clone}
         \ifx\clone\true
-            \def\cloneoffset{0.25}
-            \def\cut{0.1}
-            \def\offset{0.1}
-            \pgf@process{\southwest}
-            \pgfgetlastxy{\xa}{\ya}
-            \pgf@process{\northeast}
-            \pgfgetlastxy{\xb}{\yb}
-            \newdimen\width
-            \pgfmathsetlength{\width}{\xb-\xa-\offset*(\yb-\ya)}
-            \newdimen\height
-            \pgfmathsetlength{\height}{(1-\offset)*(\yb-\ya)}
-
-            \pgf@xc=\xa
-            \pgfmathsetlength{\pgf@yc}{\yb-(1-\cloneoffset)*(\height)}
+            \def\cloneoffsetratio{0.25}
+            \computecoordinates
+            \upperwestnorthjoin
+            \pgf@xc=\pgf@x
+            \pgf@ya=\pgf@y
+            \uppersouthwestjoin
+            \advance\pgf@ya by -\pgf@y
+            \newdimen\cloneoffset
+            \cloneoffset=\cloneoffsetratio\pgf@ya
+            \pgf@yc=\pgf@y
+            \advance\pgf@yc by \cloneoffset
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+\width}
+            \uppereastnorthjoin
+            \pgf@xc=\pgf@x
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
+            \lowersoutheastjoin
+            \pgf@yc=\pgf@y
+            \advance\pgf@yc by \cloneoffset
+            \pgf@xb=\offset
+            \advance\pgf@xb by \scarceoffset\relax
+            \ifdim\cloneoffset>\pgf@xb
+                \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \else
+                \pgfpathlineto{\uppereastsouthjoin}
+                \uppersoutheastjoin
+                \pgf@xa=\pgf@x
+                \pgf@ya=\pgf@y
+                \uppereastsouthjoin
+                \pgf@xb=\pgf@x
+                \pgf@yb=\pgf@y
+                \pgfmathsetlength{\pgf@x}{(\pgf@yc*(\pgf@xb-\pgf@xa)+\pgf@yb*\pgf@xa-\pgf@ya*\pgf@xb)/(\pgf@yb-\pgf@ya)}
+                \pgfpathlineto{\pgfpoint{\pgf@x}{\pgf@yc}}
+            \fi
+            \lowereastsouthjoin
+            \pgf@xc=\pgf@x
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+(1-\cut)*(\width)}
-            \pgfmathsetlength{\pgf@yc}{\yb-\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+\cut*(\width)}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
-            \pgf@xc = \xa
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfpathclose
-
-            \pgfmathsetlength{\pgf@xc}{\xb-\width}
-            \pgfmathsetlength{\pgf@yc}{\yb-\height+\cut*\height-\offset*(\yb-\ya)/\width*\height}
-            \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\ya+\cut*\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xb-\width+\cut*\width}
-            \pgf@yc=\ya
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xb-\cut*\width}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgf@xc=\xb
-            \pgfmathsetlength{\pgf@yc}{\ya+\cut*\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\ya+\cloneoffset*\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+\width}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\ya+(1-\cut)*\height+\cut*\height-\height*(\cut*\width-\offset*(\yb-\ya))/\width}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@yc}{\yb-(1-\cut)*\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+(1-\cut)*(\width)}
-            \pgfmathsetlength{\pgf@yc}{\yb-\height}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \pgfmathsetlength{\pgf@xc}{\xa+\cut*(\width)}
-            \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+            \pgfpathlineto{\lowereastsouthjoin}
+            \pgfpathlineto{\lowersoutheastjoin}
+            \pgfpathlineto{\lowersouthwestjoin}
+            \pgf@xa=\offset
+            \pgf@xb=\scarceoffset\relax
+            \ifdim\pgf@xa>\pgf@xb
+                \pgfpathlineto{\lowerwestsouthjoin}
+                \pgfpathlineto{\leftintersection}
+                \pgfpathlineto{\uppersouthwestjoin}
+            \fi
+            \pgfpathlineto{\upperwestsouthjoin}
             \pgfpathclose
             \pgfsetfillcolor{\tikz@strokecolor}
-            \pgfusepath{stroke, fill}
+            \pgfusepath{fill, stroke}
         \fi
+
     }
 }
