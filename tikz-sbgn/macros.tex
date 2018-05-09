@@ -14,12 +14,17 @@
     \advance\pgf@xc by 0.5\pgf@xb
     \pgf@yc = 0.5\pgf@ya
     \advance\pgf@yc by 0.5\pgf@yb
-    \pgf@process{#1}
     \advance\pgf@xb by -\pgf@xc
     \advance\pgf@yb by -\pgf@yc
+    \pgf@process{#1}
     \pgf@xa = \pgf@x
     \pgf@ya = \pgf@y
-    \pgf@process{\pgfpointborderrectangle{\pgfpoint{\pgf@xa}{\pgf@ya}}{\pgfpoint{\pgf@xb}{\pgf@yb}}}
+    \advance\pgf@xa by -\pgf@xc
+    \advance\pgf@ya by -\pgf@yc
+    \edef\pgf@marshal{
+        \noexpand\pgfpointborderrectangle{\noexpand\pgfpoint{\the\pgf@xa}{\the\pgf@ya}}{\noexpand\pgfpoint{\the\pgf@xb}{\the\pgf@yb}}
+    }
+    \pgf@process{\pgf@marshal}
     \advance\pgf@x by \pgf@xc
     \advance\pgf@y by \pgf@yc
 }
@@ -43,7 +48,7 @@
     \advance\pgf@y by \pgf@yc
 }
 
-\def\circlefindx#1#2#3#4{
+\def\circlefindx#1#2#3#4{%center, radius, y, sol
     \pgf@process{#1}
     \@tempdima=\pgf@x
     \@tempdimb=\pgf@y
@@ -80,23 +85,56 @@
     \pgf@process{#2}
     \advance\pgf@x by -\pgf@xc
     \advance\pgf@y by -\pgf@yc
-    \pgfmathsetlength{\pgf@xa}{atan2(\pgf@y,\pgf@x)}
-    \ifdim\pgf@xa<0pt
-        \advance\pgf@xa by 360pt
+    \ifdim\pgf@y=0pt
+        \ifdim\pgf@x>0pt
+            \pgf@xa=0pt
+        \else
+            \pgf@xa=180pt
+        \fi
+    \else
+        \pgfmathsetlength{\pgf@xa}{atan2(\pgf@y,\pgf@x)}
     \fi
+    % \ifdim\pgf@xa<0pt
+    %     \advance\pgf@xa by 360pt
+    % \fi
     \pgf@process{#3}
     \advance\pgf@x by -\pgf@xc
     \advance\pgf@y by -\pgf@yc
-    \pgfmathsetlength{\pgf@xb}{atan2(\pgf@y,\pgf@x)}
-    \ifdim\pgf@xb<0pt
-        \advance\pgf@xb by 360pt
+    \ifdim\pgf@y=0pt
+        \ifdim\pgf@x>0pt
+            \pgf@xb=0pt
+        \else
+            \pgf@xb=180pt
+        \fi
+    \else
+        \pgfmathsetlength{\pgf@xb}{atan2(\pgf@y,\pgf@x)}
     \fi
+    % \ifdim\pgf@xb<0pt
+    %     \advance\pgf@xb by 360pt
+    % \fi
     \pgf@process{#4}
     \advance\pgf@x by -\pgf@xc
     \advance\pgf@y by -\pgf@yc
-    \pgfmathsetlength{\pgf@ya}{atan2(\pgf@y,\pgf@x)}
-    \ifdim\pgf@ya<0pt
-        \advance\pgf@ya by 360pt
+    \ifdim\pgf@y=0pt
+        \ifdim\pgf@x>0pt
+            \pgf@ya=0pt
+        \else
+            \pgf@ya=180pt
+        \fi
+    \else
+        \pgfmathsetlength{\pgf@ya}{atan2(\pgf@y,\pgf@x)}
+    \fi
+    % \ifdim\pgf@ya<0pt
+    %     \advance\pgf@ya by 360pt
+    % \fi
+    \ifdim\pgf@xa<0pt
+        \advance\pgf@xa by 360pt
+        \ifdim\pgf@xb<0pt
+            \advance\pgf@xb by 360pt
+        \fi
+        \ifdim\pgf@ya<0pt
+            \advance\pgf@ya by 360pt
+        \fi
     \fi
     \ifdim\pgf@ya>\pgf@xa
         \global\@tempswafalse
@@ -107,6 +145,55 @@
             \global\@tempswatrue
         \fi
     \fi
+}
+
+\def\intersectionlinecircle#1#2#3#4#5{% point1, point2, center, radius, solution
+    \pgf@process{#1}
+    \pgf@xa = \pgf@x
+    \pgf@ya = \pgf@y
+    \pgf@process{#2}
+    \pgf@xb = \pgf@x
+    \pgf@yb = \pgf@y
+    \pgf@process{#3}
+    \pgf@xc = \pgf@x
+    \pgf@yc = \pgf@y
+    \newdimen\rad
+    \rad = #4
+    \c@pgf@counta=#5
+    \advance\pgf@xa by -\pgf@xc
+    \advance\pgf@xb by -\pgf@xc
+    \advance\pgf@ya by -\pgf@yc
+    \advance\pgf@yb by -\pgf@yc
+    \ifdim\pgf@xa=\pgf@xb % infinite slope set to max dimen
+        \message{the two are equal}
+        \ifnum\c@pgf@counta=1
+            \pgfmathsetlength{\pgf@y}{-sqrt(\rad^2-\pgf@xa^2)}
+        \else
+            \pgfmathsetlength{\pgf@y}{sqrt(\rad^2-\pgf@xa^2)}
+        \fi
+        \pgf@x=\pgf@xa
+    \else
+        \pgfmathsetlength{\@tempdima}{(\pgf@yb-\pgf@ya)/(\pgf@xb-\pgf@xa)}
+        \pgfmathsetlength{\@tempdimb}{\pgf@yb-\pgf@xb*\@tempdima}
+        \pgfkeys{/pgf/fpu} % for bigger dimen
+        \ifnum\c@pgf@counta=1
+
+            % \pgfmathsetlength{\pgf@x}{(-sqrt(\rad^2*\@tempdima^2+\rad^2-\@tempdimb^2) - \@tempdimb*\@tempdima)/(\@tempdima^2+1)}
+            \pgfmathparse{(-sqrt(\rad^2*\@tempdima^2+\rad^2-\@tempdimb^2) - \@tempdimb*\@tempdima)/(\@tempdima^2+1)}
+            \pgfmathfloattofixed{\pgfmathresult}
+            \pgf@x=\pgfmathresult pt
+        \else
+            % \pgftext{\the\@tempdimb}
+            \pgfmathparse{(sqrt(\rad^2*\@tempdima^2+\rad^2-\@tempdimb^2) - \@tempdimb*\@tempdima)/(\@tempdima^2+1)}
+            \pgfmathfloattofixed{\pgfmathresult}
+            \pgf@x=\pgfmathresult pt
+
+        \fi
+        \pgfkeys{/pgf/fpu=false} % for bigger dimen
+        \pgfmathsetlength{\pgf@y}{\@tempdima*\pgf@x+\@tempdimb}
+    \fi
+    \advance\pgf@x by \pgf@xc
+    \advance\pgf@y by \pgf@yc
 }
 
 \def\sbgn@subunits#1{
