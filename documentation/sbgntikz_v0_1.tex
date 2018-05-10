@@ -258,8 +258,7 @@ I believe users already familiar with \texttikz{} will mostly be interested in r
 The directory \mintinline{bash}{tikz-sbgn/} should be copied to a directory where it can be found by the \TeX{} engine:
 \begin{itemize}
     \item in the directory of your \LaTeX{} source file
-    \item in your local texmf directory (\mintinline{bash}{/home/<user>/texmf/} under Linux,
-        \\\mintinline{bash}{/Users/Library/texmf/} under MacOS).
+    \item in your local \mintinline{bash}{texmf} directory. This directory is usually \mintinline{bash}{/home/<user>/texmf/} under Linux, \mintinline{bash}{/Users/Library/texmf/} under MacOS, and \mintinline{bash}{C:/Users/<user>/texmf} under Windows, but it can depend on your OS version and \TeX{} distribution. Your \mintinline{bash}{texmf} directory can be found using the \mintinline{bash}{kpsewhich -var-value=TEXMFHOME} command.
 \end{itemize}
 
 Usually, \texttikz{} is installed within your \TeX{} distribution, so \texttikz{} and \emph{sbgntikz} can be imported directly into your \LaTeX{} source file with no further installation adding the following two commands to your preamble:

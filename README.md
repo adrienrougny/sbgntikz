@@ -6,7 +6,7 @@ All three SBGN languages (PD, AF and ER) are supported.
 
 The directory `tikz-sbgn` should be copied to a directory where it can be found by the Tex engine:
 * in the directory of your Tex source file
-* in your local `texmf` directory (`/home/<user>/texmf/` under Linux, `/Users/Library/texmf/` under MacOS).
+* in your local `texmf` directory. This directory is usually `/home/<user>/texmf/` under Linux, `/Users/Library/texmf/` under MacOS, and `C:/Users/<user>/texmf' under Windows, but it can depend on your OS version and TeX distribution. Yout `texmf` directory can be found using the `kpsewhich -var-value=TEXMFHOME` command.
 
 ## Getting started
 
