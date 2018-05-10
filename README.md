@@ -38,14 +38,14 @@ Here is a small SBGN PD example:
     \node[macromolecule] (erk) {ERK};
     \node[sv] at (erk.120) {};
     %process
-    \node[genericprocess, connectors = horizontal, right = of erk] (p) {};
+    \node[generic process, connectors = horizontal, right = of erk] (p) {};
     %p-ERK
     \node[macromolecule, right = of p] (perk) {ERK};
     \node[sv] at (perk.120) {P};
     %atp
-    \node[simplechemical, below left = of p] (atp) {ATP};
+    \node[simple chemical, below left = of p] (atp) {ATP};
     %adp
-    \node[simplechemical, below right = of p] (adp) {ADP};
+    \node[simple chemical, below right = of p] (adp) {ADP};
     %p-MEK
     \node[macromolecule, above = 2cm of p] (pmek) {MEK};
     \node[sv] at (pmek.120) {P};
