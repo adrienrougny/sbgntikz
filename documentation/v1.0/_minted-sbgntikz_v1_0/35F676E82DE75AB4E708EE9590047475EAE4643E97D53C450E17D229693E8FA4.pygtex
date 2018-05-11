@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} (0,0) \PYGZhy{}\PYGZhy{} (2,0);
-\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[stimulation]} (1,1) \PYGZhy{}\PYGZhy{} (1,1 |\PYGZhy{} 2,0);
-\end{Verbatim}

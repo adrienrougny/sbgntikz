@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} (0,0) \PYGZhy{}\PYGZhy{} (2,0) node[outcome, pos = 0.3] (o1) \PYG{n+nb}{\PYGZob{}\PYGZcb{}} node[outcome, pos = 0.5] (o2) \PYG{n+nb}{\PYGZob{}\PYGZcb{}} node[outcome, pos = 0.7] (o3) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
-\end{Verbatim}
