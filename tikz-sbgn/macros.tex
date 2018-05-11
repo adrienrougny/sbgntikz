@@ -208,6 +208,7 @@
     }
 }
 
+\pgfkeys{/tikz/isnode/.initial=false, /tikz/every node/.style={/tikz/isnode=true}}
 \pgfkeys{/pgf/.cd, clone/.initial/.expanded=false, clone/.default/.expanded=\true}
 \pgfkeys{/pgf/.cd, connectors/.initial=none}
 \pgfkeys{/tikz/subunits/.code=\sbgn@subunits{#1}}

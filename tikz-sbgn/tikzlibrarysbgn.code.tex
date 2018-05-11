@@ -39,10 +39,11 @@
 
 %styles
 \tikzset{sbgn/.style={execute at begin picture={
+    \pgfdeclarelayer{background}
     \pgfdeclarelayer{compartments}
     \pgfdeclarelayer{complexes}
     \pgfdeclarelayer{subcomplexes}
-    \pgfsetlayers{compartments,complexes,subcomplexes,main}},
+    \pgfsetlayers{background,compartments,complexes,subcomplexes,main}},
     font=\sffamily,
     node distance = 1.5cm}
 }
@@ -80,7 +81,14 @@
 \tikzset{ui simple chemical/.style={draw = black, shape = simplechemical, fill = white, line width = 1pt, font = {\tiny\sffamily}}}
 \tikzset{ui nucleic acid feature/.style={draw = black, shape = nucleicacidfeature, fill = white, line width = 1pt, font = {\tiny\sffamily}}}
 \tikzset{ui unspecified entity/.style={draw = black, shape = unspecifiedentity, fill = white, line width = 1pt, font = {\tiny\sffamily}}}
-\tikzset{compartment/.style={draw = black, line width = 4pt, fill = white, draw layer = compartments}}
+\tikzset{compartment/.style={draw = black, line width = 4pt, fill = white}, compartment/.append code={
+    \pgfkeysgetvalue{/tikz/isnode}{\isnode}
+    \ifx\isnode\true
+        \pgfkeys{/tikz/node layer=compartments}
+    \else
+        \pgfkeys{/tikz/draw layer=compartments}
+    \fi}
+}
 \tikzset{submap/.style={draw = black, fill = white, shape = rectangle, minimum height = 70pt, minimum width = 100pt, line width = 1pt}}
 \tikzset{tag/.style={draw = black, fill = white, signal, minimum height = 20pt, minimum width = 30pt, line width = 1pt}}
 \tikzset{and/.style={draw = black, fill = white, shape = and, minimum height = 18pt, minimum width = 18pt, line width = 1pt}}
@@ -98,13 +106,13 @@
 \tikzset{consumption/.style={line width = 1pt}}
 \tikzset{production/.style={line width = 1pt, -{Triangle[length=8pt, width=8pt]}}}
 \tikzset{reversible/.style={line width = 1pt, {Triangle[length=8pt, width=8pt]}-}}
-\tikzset{modulation/.style={line width = 1pt, -{Diamond[fill=white, length=9pt, width=9pt]}}}
-\tikzset{stimulation/.style={line width = 1pt, -{Triangle[fill=white, length=9pt, width=9pt]}}}
-\tikzset{catalysis/.style={line width = 1pt, -{Circle[fill=white, length = 8pt, width=8pt]}}}
+\tikzset{modulation/.style={line width = 1pt, -{Diamond[fill=#1, length=9pt, width=9pt]}}, modulation/.default=white}
+\tikzset{stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=9pt, width=9pt]}}, stimulation/.default=white}
+\tikzset{catalysis/.style={line width = 1pt, -{Circle[fill=#1, length = 8pt, width=8pt]}}, catalysis/.default=white}
 \tikzset{inhibition/.style={line width = 1pt, -{Bar}}}
 \tikzset{absolute inhibition/.style={line width = 1pt, -{Bar[sep=1] Bar}}}
-\tikzset{necessary stimulation/.style={line width = 1pt, -{Bar[width = 12pt, sep=1] Triangle[fill=white, length=9pt, width=9pt]}}}
-\tikzset{absolute stimulation/.style={line width = 1pt, -{Triangle[fill=white, length=9pt, width=9pt, sep=-3] Triangle[fill=white, length=9pt, width=9pt]}}}
+\tikzset{necessary stimulation/.style={line width = 1pt, -{Bar[width = 12pt, sep=1] Triangle[fill=#1, length=9pt, width=9pt]}}, necessary stimulation/.default=white}
+\tikzset{absolute stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=9pt, width=9pt, sep=-3] Triangle[fill=#1, length=9pt, width=9pt]}}, absolute stimulation/.default=white}
 \tikzset{assignment/.style={line width = 1pt, -{Stealth[length=10pt, width=8pt]}}}
 \tikzset{interaction/.style={line width = 1pt, {Stealth[length=10pt, width=8pt]}-{Stealth[length=10pt, width=8pt]}}}
 \tikzset{nary/.style={draw = black, fill = white, shape = circle, minimum height = 20pt, minimum width = 20pt, line width = 1pt}}
