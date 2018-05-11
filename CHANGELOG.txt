@@ -1,0 +1,4 @@
+v1.0.1
+    - added a background layer
+    - better handling of the layers for compartments
+    - added a fill color option for open tips of arcs (all types of stimulations and modulation)
