@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[biological activity]} (a) \PYG{n+nb}{\PYGZob{}}A\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[biological activity, below right = 1.5cm and 0.3 cm of a.center]} (b) \PYG{n+nb}{\PYGZob{}}B\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[stimulation]} (a.240) |\PYGZhy{} (b);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[inhibition]} (a) \PYGZhy{}| (b);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[modulation]} (b.240) \PYGZhy{}\PYGZhy{}++ (0,\PYGZhy{}1) \PYGZhy{}\PYGZhy{}++ (1,0) \PYGZhy{}\PYGZhy{}++ (0,1);
+\end{Verbatim}

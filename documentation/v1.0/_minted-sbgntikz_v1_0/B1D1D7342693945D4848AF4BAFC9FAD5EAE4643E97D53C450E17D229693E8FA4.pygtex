@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[and, connectors=horizontal]} (o) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}path}\PYG{n+na}{[draw=blue]} (o.west) circle[radius=2pt];
+\PYG{k}{\PYGZbs{}path}\PYG{n+na}{[draw=red]} (o.180) circle[radius=2pt];
+\end{Verbatim}
