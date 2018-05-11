@@ -1,5 +1,5 @@
 
-*sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](www.sbgn.org) directly into LaTex using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
+*sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTex using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
 All three SBGN languages (PD, AF and ER) are supported.
 
 ## Installation
@@ -64,4 +64,4 @@ Here is the rendering:
 
 ## Going further
 
-To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/sbgntikz_v1_0.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
+To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.0.1/sbgntikz_v1_0_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
