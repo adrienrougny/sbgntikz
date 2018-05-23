@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[entity, draw=gray!60]} (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv]} at (m.north) \PYG{n+nb}{\PYGZob{}}val@var\PYG{n+nb}{\PYGZcb{}};
+\end{Verbatim}

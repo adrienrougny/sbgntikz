@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[macromolecule]} at (0,0) (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv]} at (m.140) \PYG{n+nb}{\PYGZob{}}val@var\PYG{n+nb}{\PYGZcb{}};
+\end{Verbatim}

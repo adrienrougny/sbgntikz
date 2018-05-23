@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[generic process, connectors=horizontal, left connector length = 20pt]} \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\end{Verbatim}

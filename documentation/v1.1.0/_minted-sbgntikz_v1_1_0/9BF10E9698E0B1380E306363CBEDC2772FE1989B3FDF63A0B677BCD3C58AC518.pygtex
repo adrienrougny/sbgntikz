@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[entity, draw=gray!60]} (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv existence]} at (m.north) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\end{Verbatim}

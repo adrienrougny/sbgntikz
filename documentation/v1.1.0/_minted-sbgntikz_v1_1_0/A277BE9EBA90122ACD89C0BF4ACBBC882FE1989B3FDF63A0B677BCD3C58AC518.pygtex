@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[complex, minimum width = 20pt]} (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[simple chemical, minimum width = 70pt]} at (0cm,\PYGZhy{}2.5cm) (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\end{Verbatim}
