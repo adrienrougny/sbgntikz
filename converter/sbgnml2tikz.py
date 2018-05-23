@@ -4,7 +4,11 @@ import argparse
 
 from math import degrees
 from numpy import arctan2
-import libsbgnpy.libsbgn as libsbgn
+
+try:
+    import libsbgnpy.libsbgn as libsbgn
+except:
+    raise("Please install package libsbgnpy first\n\t pip install libsbgnpy")
 
 glyph_dic = {
     "UNSPECIFIED_ENTITY": {"sbgntikz": "unspecified entity", "super": "EPN"},
