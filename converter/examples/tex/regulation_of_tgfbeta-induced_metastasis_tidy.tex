@@ -1,0 +1,30 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[biological activity, minimum width=72.0pt, minimum height=40.0pt] (glyph5) at (80.0pt,70.0pt) {Ras};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph3) at (100.0pt,280.0pt) {Mutant p53/\\P-Smad};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt] (glyph4) at (100.0pt,455.0pt) {p63};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph1) at (340.0pt,455.0pt) {Metastatic\\suppressor\\genes\\activity};
+\node[phenotype, minimum width=130.0pt, minimum height=70.0pt, align=center] (glyph0) at (340.0pt,270.0pt) {Pro-invasion\\migration\\metastasis\\gene expression\\platform};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt] (glyph2) at (340.0pt,80.0pt) {TGF beta};
+\node[and, minimum width=42.0pt, minimum height=42.0pt, right connector length=21.0pt, connectors=vertical, left connector length=21.0pt] (glyph6) at (100.0pt,190.0pt) {};
+\draw[stimulation] (glyph2) -- (glyph0);
+\draw[stimulation] (glyph6.south) -- (glyph3);
+\draw[necessary stimulation] (glyph4) -- (glyph1);
+\draw[logic arc] (glyph5) -- (glyph6.north);
+\draw[inhibition] (glyph3) -- (glyph4);
+\draw[inhibition] (glyph1) -- (glyph0);
+\draw[logic arc] (glyph2) -- (200.0pt,80.0pt) -- (glyph6.north);%
+\end{tikzpicture}%
+\end{document}

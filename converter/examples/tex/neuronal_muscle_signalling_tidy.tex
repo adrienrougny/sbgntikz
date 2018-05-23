@@ -1,0 +1,106 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=1000.0pt, minimum height=340.0pt] (glyph1) at (550.0pt,490.0pt) {synaptic cleft};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=920.0pt, minimum height=320.0pt] (glyph0) at (550.0pt,210.0pt) {synaptic button};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=920.0pt, minimum height=720.0pt] (glyph2) at (550.0pt,970.0pt) {muscle cytosol};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=200.0pt, minimum height=120.0pt] (glyph14) at (750.0pt,240.0pt) {synaptic vesicle};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=200.0pt, minimum height=120.0pt] (glyph34) at (940.0pt,680.0pt) {ER};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph8) at (180.0pt,320.0pt) {CHT1};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph13) at (520.0pt,250.0pt) {Ach};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph4) at (600.0pt,130.0pt) {vAChT};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph18) at (600.0pt,250.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph3) at (440.0pt,130.0pt) {ChAT};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph10) at (450.0pt,425.0pt) {AChE};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph19) at (450.0pt,540.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph11) at (340.0pt,435.0pt) {acetate};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph9) at (920.0pt,320.0pt) {SNARE};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph6) at (720.0pt,250.0pt) {ACh};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=vertical, left connector length=10.0pt, right connector length=10.0pt] (glyph17) at (670.0pt,450.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph7) at (620.0pt,540.0pt) {ACh};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph20) at (410.0pt,700.0pt) {nAChR};
+\node[sv, shape=ellipse, minimum width=60.0pt, minimum height=30.0pt] (glyph20a) at (410.0pt,730.0pt) {closed};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph24) at (620.0pt,700.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph22) at (890.0pt,890.0pt) {Ca2+};
+\node[association, minimum width=20.0pt, minimum height=20.0pt, connectors=vertical, left connector length=10.0pt, right connector length=10.0pt] (glyph42) at (760.0pt,1020.0pt) {};
+\node[complex, minimum width=260.0pt, minimum height=160.0pt] (glyph38) at (760.0pt,1160.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph46) at (820.0pt,1190.0pt) {ATP};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph30) at (700.0pt,1130.0pt) {actin};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph29) at (820.0pt,1130.0pt) {myosin};
+\node[sv, shape=ellipse, minimum width=67.0pt, minimum height=30.0pt] (glyph38a) at (760.0pt,1240.0pt) {relaxed};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph33) at (550.0pt,1040.0pt) {Pi};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph43) at (550.0pt,1170.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph40) at (480.0pt,1040.0pt) {ADP};
+\node[dissociation, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph44) at (300.0pt,990.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph26) at (530.0pt,940.0pt) {actin};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph25) at (470.0pt,780.0pt) {ATP};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph27) at (350.0pt,860.0pt) {myosin};
+\node[association, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph45) at (550.0pt,860.0pt) {};
+\node[complex, minimum width=140.0pt, minimum height=140.0pt] (glyph36) at (760.0pt,900.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph35) at (760.0pt,930.0pt) {ATP};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph28) at (760.0pt,870.0pt) {myosin};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph21) at (740.0pt,700.0pt) {nAChR};
+\node[sv, shape=ellipse, minimum width=51.0pt, minimum height=28.0pt] (glyph21a) at (740.0pt,730.0pt) {open};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph5) at (290.0pt,540.0pt) {choline};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph15) at (290.0pt,320.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph12) at (290.0pt,250.0pt) {choline};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph47) at (290.0pt,170.0pt) {acetyl\\CoA};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph16) at (440.0pt,250.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph23) at (890.0pt,690.0pt) {Ca2+};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph41) at (890.0pt,790.0pt) {};
+\node[complex, minimum width=260.0pt, minimum height=120.0pt] (glyph37) at (300.0pt,1140.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph39) at (360.0pt,1130.0pt) {myosin};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph31) at (240.0pt,1130.0pt) {actin};
+\node[sv, shape=ellipse, minimum width=54.0pt, minimum height=28.0pt] (glyph37a) at (300.0pt,1200.0pt) {tense};
+\node[phenotype, minimum width=160.0pt, minimum height=60.0pt, align=center] (glyph32) at (230.0pt,1280.0pt) {muscle\\contraction};
+\draw[necessary stimulation] (glyph8) -- (glyph15);
+\draw[consumption] (glyph12) -- (glyph16.west);
+\draw[production] (glyph16.east) -- (glyph13);
+\draw[consumption] (glyph13) -- (glyph18.west);
+\draw[production] (glyph18.east) -- (glyph6);
+\draw[necessary stimulation] (glyph4) -- (glyph18);
+\draw[catalysis] (glyph3) -- (glyph16);
+\draw[catalysis] (glyph10) -- (glyph19);
+\draw[consumption] (glyph7) -- (glyph19.east);
+\draw[production] (glyph19.west) -- (glyph5);
+\draw[production] (glyph19.west) -- (glyph11.-44);
+\draw[necessary stimulation] (glyph9) -- (860.0pt,450.0pt) -- (glyph17);
+\draw[consumption] (glyph6) -- (glyph17.north);
+\draw[production] (glyph17.south) -- (glyph7.61);
+\draw[necessary stimulation] (glyph7) -- (glyph24);
+\draw[consumption] (glyph20) -- (glyph24.west);
+\draw[production] (glyph24.east) -- (glyph21);
+\draw[production] (glyph41.south) -- (glyph22);
+\draw[stimulation] (glyph22) -- (890.0pt,1020.0pt) -- (glyph42);
+\draw[consumption] (glyph36) -- (glyph42.north);
+\draw[consumption] (glyph26) -- (glyph42.north);
+\draw[production] (glyph42.south) -- (glyph38);
+\draw[consumption] (glyph38) -- (glyph43.east);
+\draw[production] (glyph43.west) -- (glyph37.-7);
+\draw[production] (glyph43.west) -- (glyph33.-90);
+\draw[production] (glyph43.west) -- (glyph40.-62);
+\draw[consumption] (glyph37) -- (glyph44.south);
+\draw[production] (glyph44.north) -- (glyph27.-111);
+\draw[production] (glyph44.north) -- (glyph26.-168);
+\draw[consumption] (glyph25) -- (glyph45.west);
+\draw[consumption] (glyph27) -- (glyph45.west);
+\draw[production] (glyph45.east) -- (glyph36);
+\draw[necessary stimulation] (glyph21) -- (740.0pt,790.0pt) -- (glyph41);
+\draw[consumption] (glyph5) -- (glyph15.south);
+\draw[production] (glyph15.north) -- (glyph12);
+\draw[consumption] (glyph47) -- (glyph16.west);
+\draw[consumption] (glyph23) -- (glyph41.north);
+\draw[stimulation] (glyph37.-137) -- (glyph32.63);%
+\end{tikzpicture}%
+\end{document}

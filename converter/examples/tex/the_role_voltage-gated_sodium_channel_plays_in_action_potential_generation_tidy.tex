@@ -1,0 +1,33 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[biological activity, minimum width=120.0pt, minimum height=100.0pt, align=center] (glyph4) at (90.0pt,80.0pt) {Membrane\\potential \\activity};
+\node[ui perturbation, minimum width=150.0pt, minimum height=65.0pt, align=center] (glyph4a) at (55.0pt,32.5pt) {increase in\\membrane\\potential};
+\node[biological activity, minimum width=120.0pt, minimum height=100.0pt, align=center] (glyph3) at (340.0pt,80.0pt) {Membrane\\potential \\activity};
+\node[ui perturbation, minimum width=150.0pt, minimum height=65.0pt, align=center] (glyph3a) at (275.0pt,32.5pt) {increase in\\membrane\\potential};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph5) at (340.0pt,200.0pt) {gating\\activity};
+\node[ui macromolecule, minimum width=47.0pt, minimum height=27.0pt, align=center] (glyph5a) at (313.0pt,170.0pt) {sodium\\channel};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph6) at (340.0pt,340.0pt) {conductance\\activity};
+\node[ui macromolecule, minimum width=47.0pt, minimum height=27.0pt, align=center] (glyph6a) at (313.0pt,310.0pt) {sodium\\channel};
+\node[phenotype, minimum width=120.0pt, minimum height=60.0pt] (glyph1) at (340.0pt,480.0pt) {depolarization};
+\node[biological activity, minimum width=108.0pt, minimum height=75.0pt, align=center] (glyph0) at (90.0pt,270.0pt) {sodium\\channel\\activity};
+\node[ui macromolecule, minimum width=47.0pt, minimum height=27.0pt, align=center] (glyph0a) at (63.0pt,232.5pt) {sodium\\channel};
+\node[phenotype, minimum width=120.0pt, minimum height=60.0pt] (glyph2) at (90.0pt,480.0pt) {depolarization};
+\draw[stimulation] (glyph4) -- (glyph0);
+\draw[stimulation] (glyph3) -- (glyph5);
+\draw[stimulation] (glyph5) -- (glyph6);
+\draw[necessary stimulation] (glyph6) -- (glyph1);
+\draw[necessary stimulation] (glyph0) -- (glyph2);%
+\end{tikzpicture}%
+\end{document}

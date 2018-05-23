@@ -1,0 +1,124 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph9) at (230.0pt,70.0pt) {hexokinase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph0) at (120.0pt,170.0pt) {glucose};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph6) at (170.0pt,260.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph8) at (230.0pt,170.0pt) {};
+\draw[consumption] (241.4pt,170.0pt) -- (250.0pt,170.0pt);
+\draw[consumption] (210.0pt,170.0pt) -- (219.4pt,170.0pt);
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph7) at (300.0pt,260.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph12) at (730.0pt,260.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph13) at (600.0pt,260.0pt) {ATP};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph1) at (350.0pt,170.0pt) {glucose\\6P};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph2) at (550.0pt,170.0pt) {fructose\\6P};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph15) at (1140.0pt,170.0pt) {triose-P\\isomerase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph3) at (760.0pt,170.0pt) {fructose\\1,6P};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph17) at (440.0pt,70.0pt) {glucose-6P\\isomerase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph10) at (440.0pt,170.0pt) {};
+\draw[consumption] (451.4pt,170.0pt) -- (460.0pt,170.0pt);
+\draw[consumption] (420.0pt,170.0pt) -- (429.4pt,170.0pt);
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph19) at (660.0pt,70.0pt) {phospho\\fructokinase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph11) at (660.0pt,170.0pt) {};
+\draw[consumption] (640.0pt,170.0pt) -- (649.4pt,170.0pt);
+\draw[consumption] (671.4pt,170.0pt) -- (680.0pt,170.0pt);
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph18) at (880.0pt,70.0pt) {adolase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph16) at (880.0pt,170.0pt) {};
+\draw[consumption] (891.4pt,170.0pt) -- (900.0pt,170.0pt);
+\draw[consumption] (860.0pt,170.0pt) -- (869.4pt,170.0pt);
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph22) at (1140.0pt,380.0pt) {GAPDH};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph4) at (990.0pt,270.0pt) {GA-3P};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph23) at (910.0pt,310.0pt) {Pi};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph24) at (1080.0pt,310.0pt) {NAD};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph25) at (1080.0pt,450.0pt) {H+};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph20) at (990.0pt,380.0pt) {};
+\draw[consumption] (990.0pt,390.0pt) -- (990.0pt,400.0pt);
+\draw[consumption] (990.0pt,370.0pt) -- (990.0pt,360.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph26) at (1080.0pt,520.0pt) {NADH};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph35) at (880.0pt,570.0pt) {PGK1};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph36) at (640.0pt,570.0pt) {PG mutase};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph37) at (410.0pt,570.0pt) {enolase};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph38) at (160.0pt,570.0pt) {pyruvate\\kinase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph21) at (990.0pt,490.0pt) {1,3 BPG};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph42) at (940.0pt,420.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph41) at (810.0pt,420.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph31) at (880.0pt,490.0pt) {};
+\draw[consumption] (860.0pt,490.0pt) -- (869.4pt,490.0pt);
+\draw[consumption] (891.4pt,490.0pt) -- (900.0pt,490.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph27) at (750.0pt,490.0pt) {3 PG};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph32) at (640.0pt,490.0pt) {};
+\draw[consumption] (620.0pt,490.0pt) -- (629.4pt,490.0pt);
+\draw[consumption] (651.4pt,490.0pt) -- (660.0pt,490.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph28) at (520.0pt,490.0pt) {2 PG};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph43) at (350.0pt,420.0pt) {H2O};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph33) at (410.0pt,490.0pt) {};
+\draw[consumption] (390.0pt,490.0pt) -- (399.4pt,490.0pt);
+\draw[consumption] (421.4pt,490.0pt) -- (430.0pt,490.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph29) at (300.0pt,490.0pt) {PEP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph39) at (240.0pt,420.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph40) at (90.0pt,420.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph34) at (160.0pt,490.0pt) {};
+\draw[consumption] (140.0pt,490.0pt) -- (149.4pt,490.0pt);
+\draw[consumption] (171.4pt,490.0pt) -- (180.0pt,490.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph30) at (60.0pt,490.0pt) {pyruvate};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph14) at (990.0pt,170.0pt) {};
+\draw[consumption] (990.0pt,160.0pt) -- (990.0pt,150.0pt);
+\draw[consumption] (990.0pt,180.0pt) -- (990.0pt,190.0pt);
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph5) at (990.0pt,70.0pt) {DHA-P};
+\draw[catalysis] (230.0pt,100.0pt) -- (230.0pt,160.0pt);
+\draw[consumption] (150.0pt,170.0pt) -- (210.0pt,170.0pt);
+\draw[production] (250.0pt,170.0pt) -- (320.0pt,170.0pt);
+\draw[consumption] (182.18416pt,232.58565pt) -- (210.0pt,170.0pt);
+\draw[production] (250.0pt,170.0pt) -- (281.5818pt,236.31943pt);
+\draw[production] (680.0pt,170.0pt) -- (711.5818pt,236.31943pt);
+\draw[consumption] (612.18414pt,232.58565pt) -- (640.0pt,170.0pt);
+\draw[consumption] (380.0pt,170.0pt) -- (420.0pt,170.0pt);
+\draw[production] (460.0pt,170.0pt) -- (520.0pt,170.0pt);
+\draw[consumption] (580.0pt,170.0pt) -- (640.0pt,170.0pt);
+\draw[production] (680.0pt,170.0pt) -- (730.0pt,170.0pt);
+\draw[production] (990.0pt,190.0pt) -- (990.0pt,240.0pt);
+\draw[catalysis] (1080.0pt,170.0pt) -- (1000.0pt,170.0pt);
+\draw[consumption] (790.0pt,170.0pt) -- (860.0pt,170.0pt);
+\draw[production] (900.0pt,170.0pt) -- (967.8018pt,90.18018pt);
+\draw[production] (900.0pt,170.0pt) -- (967.8018pt,249.81981pt);
+\draw[catalysis] (440.0pt,100.0pt) -- (440.0pt,160.0pt);
+\draw[catalysis] (660.0pt,100.0pt) -- (660.0pt,160.0pt);
+\draw[catalysis] (880.0pt,100.0pt) -- (880.0pt,160.0pt);
+\draw[catalysis] (1080.0pt,380.0pt) -- (1000.0pt,380.0pt);
+\draw[consumption] (990.0pt,300.0pt) -- (990.0pt,360.0pt);
+\draw[production] (990.0pt,400.0pt) -- (990.0pt,460.0pt);
+\draw[consumption] (935.43994pt,325.89996pt) -- (990.0pt,360.0pt);
+\draw[consumption] (1053.7753pt,324.56927pt) -- (990.0pt,360.0pt);
+\draw[production] (990.0pt,400.0pt) -- (1056.3195pt,431.5818pt);
+\draw[production] (990.0pt,400.0pt) -- (1063.7772pt,494.76465pt);
+\draw[catalysis] (880.0pt,540.0pt) -- (880.0pt,500.0pt);
+\draw[catalysis] (640.0pt,540.0pt) -- (640.0pt,500.0pt);
+\draw[catalysis] (410.0pt,540.0pt) -- (410.0pt,500.0pt);
+\draw[catalysis] (160.0pt,540.0pt) -- (160.0pt,500.0pt);
+\draw[consumption] (960.0pt,490.0pt) -- (900.0pt,490.0pt);
+\draw[consumption] (925.11584pt,446.0473pt) -- (900.0pt,490.0pt);
+\draw[production] (860.0pt,490.0pt) -- (831.2132pt,441.2132pt);
+\draw[production] (860.0pt,490.0pt) -- (780.0pt,490.0pt);
+\draw[consumption] (720.0pt,490.0pt) -- (660.0pt,490.0pt);
+\draw[production] (620.0pt,490.0pt) -- (550.0pt,490.0pt);
+\draw[consumption] (490.0pt,490.0pt) -- (430.0pt,490.0pt);
+\draw[production] (390.0pt,490.0pt) -- (369.52374pt,442.7777pt);
+\draw[production] (390.0pt,490.0pt) -- (330.0pt,490.0pt);
+\draw[consumption] (270.0pt,490.0pt) -- (180.0pt,490.0pt);
+\draw[consumption] (220.47626pt,442.7777pt) -- (180.0pt,490.0pt);
+\draw[production] (140.0pt,490.0pt) -- (111.2132pt,441.2132pt);
+\draw[production] (140.0pt,490.0pt) -- (90.0pt,490.0pt);
+\draw[production] (990.0pt,150.0pt) -- (990.0pt,100.0pt);%
+\end{tikzpicture}%
+\end{document}

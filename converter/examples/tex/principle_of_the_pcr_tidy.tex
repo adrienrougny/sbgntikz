@@ -1,0 +1,58 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph2) at (140.0pt,490.0pt) {3' primer};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph2a) at (140.0pt,520.0pt) {mt:dna};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph0) at (440.0pt,490.0pt) {5' primer};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph0a) at (440.0pt,520.0pt) {mt:dna};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph7) at (167.0pt,310.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph3) at (140.0pt,190.0pt) {Sense};
+\node[sv existence, anchor=center, minimum width=22.0pt, minimum height=0pt] (glyph3b) at (glyph3.-48) {};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph3a) at (140.0pt,160.0pt) {mt:dna};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph6) at (413.0pt,310.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph1) at (440.0pt,190.0pt) {Antisense};
+\node[sv existence, anchor=center, minimum width=22.0pt, minimum height=0pt] (glyph1b) at (glyph1.-132) {};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph1a) at (440.0pt,160.0pt) {mt:dna};
+\node[perturbation, minimum width=108.0pt, minimum height=60.0pt] (glyph4) at (290.0pt,60.0pt) {Heat};
+\node[or, minimum width=42.0pt, minimum height=42.0pt, connectors=vertical, left connector length=21.0pt, right connector length=21.0pt] (glyph5) at (290.0pt,317.0pt) {};
+\node[anchor point] (arc0_1) at (290.0pt,190.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc0_2) at (330.0pt,190.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc0_0) at (250.0pt,190.0pt) {};
+\node[anchor point] (arc1_3) at (140.0pt,270.0pt) {};
+\node[anchor point] (arc1_2) at (140.0pt,310.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_1) at (140.0pt,360.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_0) at (140.0pt,410.0pt) {};
+\node[anchor point] (arc2_2) at (440.0pt,310.0pt) {};
+\node[anchor point] (arc2_3) at (440.0pt,270.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_0) at (440.0pt,390.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_1) at (440.0pt,360.0pt) {};
+\node[anchor point] (arc3_0) at (167.0pt,270.0pt) {};
+\node[anchor point] (arc4_0) at (413.0pt,270.0pt) {};
+\draw[interaction] (glyph3) -- (glyph1);
+\draw[interaction] (glyph2) -- (glyph3);
+\draw[interaction] (glyph0) -- (glyph1);
+\draw[assignment] (glyph7.103) -- (glyph3.-52);
+\draw[assignment] (glyph6.77) -- (glyph1.-128);
+\draw[absolute inhibition] (glyph4) -- (arc0_1);
+\draw[absolute inhibition] (glyph5.north) -- (arc0_1);
+\draw[absolute inhibition] (glyph4.-66) -- (304.0pt,110.0pt) -- (550.0pt,110.0pt) -- (550.0pt,310.0pt) -- (arc2_2);
+\draw[absolute inhibition] (arc0_2) -- (330.0pt,120.0pt) -- (540.0pt,120.0pt) -- (540.0pt,270.0pt) -- (arc2_3);
+\draw[necessary stimulation] (arc2_0) -- (210.0pt,390.0pt) -- (210.0pt,270.0pt) -- (arc3_0);
+\draw[necessary stimulation] (arc1_0) -- (370.0pt,410.0pt) -- (370.0pt,270.0pt) -- (arc4_0);
+\draw[absolute inhibition] (glyph4.-114) -- (276.0pt,110.0pt) -- (30.0pt,110.0pt) -- (30.0pt,310.0pt) -- (arc1_2);
+\draw[absolute inhibition] (arc0_0) -- (250.0pt,120.0pt) -- (40.0pt,120.0pt) -- (40.0pt,270.0pt) -- (arc1_3);
+\draw[logic arc] (arc1_1) -- (glyph5.south);
+\draw[logic arc] (arc2_1) -- (glyph5.south);%
+\end{tikzpicture}%
+\end{document}

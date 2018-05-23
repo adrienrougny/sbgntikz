@@ -1,0 +1,54 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[empty set, minimum width=60.0pt, minimum height=60.0pt] (glyph8) at (340.0pt,630.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph6) at (430.0pt,630.0pt) {};
+\node[nucleic acid feature, minimum width=120.0pt, minimum height=60.0pt] (glyph3) at (560.0pt,630.0pt) {IRF1};
+\node[ui, minimum width=63.0pt, minimum height=18.0pt] (glyph3a) at (560.0pt,600.0pt) {ct:mRNA};
+\node[empty set, minimum width=60.0pt, minimum height=60.0pt] (glyph7) at (470.0pt,750.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph5) at (560.0pt,750.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph15) at (680.0pt,750.0pt) {IRF1};
+\node[ui, minimum width=53.0pt, minimum height=18.0pt] (glyph15a) at (680.0pt,720.0pt) {mt:prot};
+\node[nucleic acid feature, minimum width=120.0pt, minimum height=60.0pt] (glyph14) at (550.0pt,440.0pt) {IRF1};
+\node[ui, minimum width=55.0pt, minimum height=18.0pt] (glyph14a) at (550.0pt,410.0pt) {ct:gene};
+\node[complex, minimum width=220.0pt, minimum height=270.0pt] (glyph13) at (210.0pt,435.0pt) {};
+\node[nucleic acid feature, minimum width=120.0pt, minimum height=60.0pt] (glyph12) at (210.0pt,520.0pt) {IRF1-GAS};
+\node[ui, minimum width=42.0pt, minimum height=18.0pt] (glyph12a) at (210.0pt,490.0pt) {ct:grr};
+\node[complex, minimum width=180.0pt, minimum height=140.0pt] (glyph11) at (210.0pt,395.0pt) {};
+\node[macromolecule, minimum width=140.0pt, minimum height=60.0pt, align=center] (glyph10) at (210.0pt,395.0pt) {STAT1$\alpha$};
+\node[sv, shape=ellipse, minimum width=69.0pt, minimum height=28.0pt] (glyph10c) at (245.0pt,425.0pt) {P@Y727};
+\node[sv, shape=ellipse, minimum width=69.0pt, minimum height=28.0pt] (glyph10b) at (175.0pt,425.0pt) {P@Y701};
+\node[ui, minimum width=53.0pt, minimum height=18.0pt] (glyph10a) at (210.0pt,365.0pt) {mt:prot};
+\node[and, minimum width=40.0pt, minimum height=40.0pt, right connector length=20.0pt, connectors=vertical, left connector length=20.0pt] (glyph4) at (430.0pt,520.0pt) {};
+\node[complex, minimum width=180.0pt, minimum height=140.0pt] (glyph0) at (130.0pt,110.0pt) {};
+\node[macromolecule, minimum width=140.0pt, minimum height=60.0pt, align=center] (glyph1) at (130.0pt,110.0pt) {STAT1$\alpha$};
+\node[sv, shape=ellipse, minimum width=69.0pt, minimum height=28.0pt] (glyph1c) at (165.0pt,140.0pt) {P@Y727};
+\node[sv, shape=ellipse, minimum width=69.0pt, minimum height=28.0pt] (glyph1b) at (95.0pt,140.0pt) {P@Y701};
+\node[ui, minimum width=53.0pt, minimum height=18.0pt] (glyph1a) at (95.0pt,80.0pt) {mt:prot};
+\node[nucleic acid feature, minimum width=120.0pt, minimum height=60.0pt] (glyph2) at (330.0pt,110.0pt) {IRF1-GAS};
+\node[ui, minimum width=42.0pt, minimum height=18.0pt] (glyph2a) at (300.0pt,80.0pt) {ct:grr};
+\node[association, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph9) at (210.0pt,230.0pt) {};
+\draw[necessary stimulation] (glyph4.south) -- (glyph6);
+\draw[necessary stimulation] (glyph3) -- (glyph5);
+\draw[consumption] (glyph8) -- (glyph6.west);
+\draw[production] (glyph6.east) -- (glyph3);
+\draw[consumption] (glyph7) -- (glyph5.west);
+\draw[production] (glyph5.east) -- (glyph15);
+\draw[production] (glyph9.south) -- (glyph13);
+\draw[logic arc] (glyph14) -- (glyph4.north);
+\draw[logic arc] (glyph13) -- (glyph4.north);
+\draw[consumption] (glyph0) -- (glyph9.north);
+\draw[consumption] (glyph2) -- (glyph9.north);%
+\end{tikzpicture}%
+\end{document}

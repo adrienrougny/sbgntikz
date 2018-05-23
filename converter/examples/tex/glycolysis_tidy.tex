@@ -1,0 +1,104 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph9) at (230.0pt,70.0pt) {hexokinase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph0) at (120.0pt,170.0pt) {glucose};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph6) at (170.0pt,260.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph8) at (230.0pt,170.0pt) {};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph7) at (300.0pt,260.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph12) at (730.0pt,260.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph13) at (600.0pt,260.0pt) {ATP};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph1) at (350.0pt,170.0pt) {glucose\\6P};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph2) at (550.0pt,170.0pt) {fructose\\6P};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph15) at (1140.0pt,170.0pt) {triose-P\\isomerase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt, align=center] (glyph3) at (760.0pt,170.0pt) {fructose\\1,6P};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph17) at (440.0pt,70.0pt) {glucose-6P\\isomerase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph10) at (440.0pt,170.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph19) at (660.0pt,70.0pt) {phospho\\fructokinase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph11) at (660.0pt,170.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph18) at (880.0pt,70.0pt) {adolase};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph16) at (880.0pt,170.0pt) {};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph22) at (1140.0pt,380.0pt) {GAPDH};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph4) at (990.0pt,270.0pt) {GA-3P};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph23) at (910.0pt,310.0pt) {Pi};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph24) at (1080.0pt,310.0pt) {NAD};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph25) at (1080.0pt,450.0pt) {H+};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=vertical, left connector length=10.0pt, right connector length=10.0pt] (glyph20) at (990.0pt,380.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph26) at (1080.0pt,520.0pt) {NADH};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph35) at (880.0pt,570.0pt) {PGK1};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph36) at (640.0pt,570.0pt) {PG mutase};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt] (glyph37) at (410.0pt,570.0pt) {enolase};
+\node[macromolecule, minimum width=120.0pt, minimum height=60.0pt, align=center] (glyph38) at (160.0pt,570.0pt) {pyruvate\\kinase};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph21) at (990.0pt,490.0pt) {1,3 BPG};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph42) at (940.0pt,420.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph41) at (810.0pt,420.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph31) at (880.0pt,490.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph27) at (750.0pt,490.0pt) {3 PG};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph32) at (640.0pt,490.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph28) at (520.0pt,490.0pt) {2 PG};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph43) at (350.0pt,420.0pt) {H2O};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph33) at (410.0pt,490.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph29) at (300.0pt,490.0pt) {PEP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph39) at (240.0pt,420.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph40) at (90.0pt,420.0pt) {ATP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph34) at (160.0pt,490.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph30) at (60.0pt,490.0pt) {pyruvate};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph14) at (990.0pt,170.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph5) at (990.0pt,70.0pt) {DHA-P};
+\draw[catalysis] (glyph9) -- (glyph8);
+\draw[consumption] (glyph0) -- (glyph8.west);
+\draw[production] (glyph8.east) -- (glyph1);
+\draw[consumption] (glyph6) -- (glyph8.west);
+\draw[production] (glyph8.east) -- (glyph7.128);
+\draw[production] (glyph11.east) -- (glyph12.128);
+\draw[consumption] (glyph13) -- (glyph11.west);
+\draw[consumption] (glyph1) -- (glyph10.west);
+\draw[production] (glyph10.east) -- (glyph2);
+\draw[consumption] (glyph2) -- (glyph11.west);
+\draw[production] (glyph11.east) -- (glyph3);
+\draw[production] (glyph14.south) -- (glyph4);
+\draw[catalysis] (glyph15) -- (glyph14);
+\draw[consumption] (glyph3) -- (glyph16.west);
+\draw[production] (glyph16.east) -- (glyph5.-138);
+\draw[production] (glyph16.east) -- (glyph4.138);
+\draw[catalysis] (glyph17) -- (glyph10);
+\draw[catalysis] (glyph19) -- (glyph11);
+\draw[catalysis] (glyph18) -- (glyph16);
+\draw[catalysis] (glyph22) -- (glyph20);
+\draw[consumption] (glyph4) -- (glyph20.north);
+\draw[production] (glyph20.south) -- (glyph21);
+\draw[consumption] (glyph23) -- (glyph20.north);
+\draw[consumption] (glyph24) -- (glyph20.north);
+\draw[production] (glyph20.south) -- (glyph25.142);
+\draw[production] (glyph20.south) -- (glyph26.123);
+\draw[catalysis] (glyph35) -- (glyph31);
+\draw[catalysis] (glyph36) -- (glyph32);
+\draw[catalysis] (glyph37) -- (glyph33);
+\draw[catalysis] (glyph38) -- (glyph34);
+\draw[consumption] (glyph21) -- (glyph31.east);
+\draw[consumption] (glyph42) -- (glyph31.east);
+\draw[production] (glyph31.west) -- (glyph41.-45);
+\draw[production] (glyph31.west) -- (glyph27);
+\draw[consumption] (glyph27) -- (glyph32.east);
+\draw[production] (glyph32.west) -- (glyph28);
+\draw[consumption] (glyph28) -- (glyph33.east);
+\draw[production] (glyph33.west) -- (glyph43.-49);
+\draw[production] (glyph33.west) -- (glyph29);
+\draw[consumption] (glyph29) -- (glyph34.east);
+\draw[consumption] (glyph39) -- (glyph34.east);
+\draw[production] (glyph34.west) -- (glyph40.-45);
+\draw[production] (glyph34.west) -- (glyph30);
+\draw[production] (glyph14.north) -- (glyph5);%
+\end{tikzpicture}%
+\end{document}

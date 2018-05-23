@@ -1,0 +1,67 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=1110.0pt, minimum height=690.0pt] (glyph0) at (585.0pt,483.0pt) {cytosol};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=350.0pt, minimum height=380.0pt] (glyph1) at (460.0pt,600.0pt) {nucleus};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt, align=center] (glyph13) at (540.0pt,50.0pt) {TGF$\beta$};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph4) at (970.0pt,360.0pt) {TAK\\TAB};
+\node[ui complex, minimum width=30.0pt, minimum height=15.0pt] (glyph4a) at (943.0pt,330.0pt) {};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph11) at (970.0pt,255.0pt) {TAK};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph7) at (120.0pt,255.0pt) {RAS};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph8) at (330.0pt,165.0pt) {BAMBI};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph18) at (750.0pt,165.0pt) {FKBP12};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph2) at (540.0pt,150.0pt) {TGF$\beta$\\receptor};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph16) at (730.0pt,250.0pt) {Smurf};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph19) at (350.0pt,250.0pt) {SARA};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph6) at (540.0pt,250.0pt) {RSmad};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph14) at (730.0pt,510.0pt) {I-Smad};
+\node[ui nucleic acid feature, minimum width=30.0pt, minimum height=15.0pt] (glyph14a) at (703.0pt,490.0pt) {};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph20) at (400.0pt,450.0pt) {co-activator};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph17) at (400.0pt,510.0pt) {co-repressor};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph12) at (120.0pt,380.0pt) {p42/p44 MAPKs};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph10) at (890.0pt,470.0pt) {p38};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph9) at (1050.0pt,470.0pt) {JNK};
+\node[and, minimum width=42.0pt, minimum height=42.0pt, connectors=vertical, left connector length=21.0pt, right connector length=21.0pt] (glyph21) at (540.0pt,520.0pt) {};
+\node[or, minimum width=42.0pt, minimum height=42.0pt, connectors=vertical, left connector length=21.0pt, right connector length=21.0pt] (glyph22) at (540.0pt,630.0pt) {};
+\node[phenotype, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph5) at (540.0pt,730.0pt) {Gene\\transcription};
+\node[biological activity, minimum width=108.0pt, minimum height=40.0pt] (glyph15) at (730.0pt,420.0pt) {I-Smad};
+\node[ui macromolecule, minimum width=30.0pt, minimum height=15.0pt] (glyph15a) at (703.0pt,400.0pt) {};
+\node[biological activity, minimum width=108.0pt, minimum height=60.0pt, align=center] (glyph3) at (540.0pt,350.0pt) {RSmad\\Co-Smads};
+\node[ui complex, minimum width=30.0pt, minimum height=15.0pt] (glyph3a) at (513.0pt,320.0pt) {};
+\draw[stimulation] (glyph13) -- (glyph2);
+\draw[stimulation] (glyph14) -- (glyph15);
+\draw[stimulation] (glyph11) -- (glyph4);
+\draw[stimulation] (glyph4) -- (glyph10);
+\draw[stimulation] (glyph4) -- (glyph9);
+\draw[stimulation] (glyph2) -- (glyph11);
+\draw[stimulation] (glyph2) -- (glyph7);
+\draw[stimulation] (glyph2) -- (glyph6);
+\draw[stimulation] (glyph6) -- (glyph3);
+\draw[stimulation] (glyph7) -- (glyph12);
+\draw[inhibition] (glyph8) -- (glyph2);
+\draw[inhibition] (glyph18) -- (glyph2);
+\draw[inhibition] (glyph16) -- (glyph6);
+\draw[stimulation] (glyph19) -- (glyph6);
+\draw[necessary stimulation] (glyph5) -- (730.0pt,680.0pt) -- (glyph14);
+\draw[logic arc] (glyph20) -- (glyph21.north);
+\draw[logic arc] (glyph17) -- (glyph21.north);
+\draw[logic arc] (glyph3) -- (glyph21.north);
+\draw[logic arc] (glyph12) -- (140.0pt,570.0pt) -- (glyph22.north);
+\draw[logic arc] (glyph10) -- (880.0pt,580.0pt) -- (glyph22.north);
+\draw[logic arc] (glyph9) -- (1010.0pt,590.0pt) -- (glyph22.north);
+\draw[logic arc] (glyph21.south) -- (glyph22.north);
+\draw[necessary stimulation] (glyph22.south) -- (glyph5);
+\draw[inhibition] (glyph15) -- (730.0pt,350.0pt) -- (glyph3);%
+\end{tikzpicture}%
+\end{document}

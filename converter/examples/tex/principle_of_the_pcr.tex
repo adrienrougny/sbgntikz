@@ -1,0 +1,53 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph2) at (140.0pt,490.0pt) {3' primer};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph2a) at (140.0pt,520.0pt) {mt:dna};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph0) at (440.0pt,490.0pt) {5' primer};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph0a) at (440.0pt,520.0pt) {mt:dna};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph7) at (167.0pt,310.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph3) at (140.0pt,190.0pt) {Sense};
+\node[sv existence, minimum width=22.0pt, minimum height=0pt] (glyph3b) at (167.0pt,220.0pt) {};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph3a) at (140.0pt,160.0pt) {mt:dna};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph6) at (413.0pt,310.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph1) at (440.0pt,190.0pt) {Antisense};
+\node[sv existence, minimum width=22.0pt, minimum height=0pt] (glyph1b) at (413.0pt,220.0pt) {};
+\node[ui, minimum width=47.0pt, minimum height=17.0pt] (glyph1a) at (440.0pt,160.0pt) {mt:dna};
+\node[perturbation, minimum width=108.0pt, minimum height=60.0pt] (glyph4) at (290.0pt,60.0pt) {Heat};
+\node[or, minimum width=42.0pt, minimum height=42.0pt] (glyph5) at (290.0pt,317.0pt) {};
+\draw[consumption] (290.0pt,338.0pt) -- (290.0pt,359.0pt);
+\draw[consumption] (290.0pt,296.0pt) -- (290.0pt,275.0pt);
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc0_2) at (330.0pt,190.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc0_0) at (250.0pt,190.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_1) at (140.0pt,360.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_0) at (140.0pt,410.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_0) at (440.0pt,390.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_1) at (440.0pt,360.0pt) {};
+\draw[interaction] (194.0pt,190.0pt) -- (386.0pt,190.0pt);
+\draw[interaction] (140.0pt,460.0pt) -- (140.0pt,220.0pt);
+\draw[interaction] (440.0pt,460.0pt) -- (440.0pt,220.0pt);
+\draw[assignment] (164.75pt,300.0pt) -- (167.0pt,225.0pt);
+\draw[assignment] (415.25pt,300.0pt) -- (413.0pt,225.0pt);
+\draw[absolute inhibition] (290.0pt,90.0pt) -- (290.0pt,190.0pt);
+\draw[absolute inhibition] (290.0pt,275.0pt) -- (290.0pt,190.0pt);
+\draw[absolute inhibition] (303.5pt,90.0pt) -- (304.0pt,110.0pt) -- (550.0pt,110.0pt) -- (550.0pt,310.0pt) -- (440.0pt,310.0pt);
+\draw[absolute inhibition] (330.0pt,184.0pt) -- (330.0pt,120.0pt) -- (540.0pt,120.0pt) -- (540.0pt,270.0pt) -- (440.0pt,270.0pt);
+\draw[necessary stimulation] (434.0pt,390.0pt) -- (210.0pt,390.0pt) -- (210.0pt,270.0pt) -- (167.0pt,270.0pt);
+\draw[necessary stimulation] (146.0pt,410.0pt) -- (370.0pt,410.0pt) -- (370.0pt,270.0pt) -- (413.0pt,270.0pt);
+\draw[absolute inhibition] (276.5pt,90.0pt) -- (276.0pt,110.0pt) -- (30.0pt,110.0pt) -- (30.0pt,310.0pt) -- (140.0pt,310.0pt);
+\draw[absolute inhibition] (250.0pt,184.0pt) -- (250.0pt,120.0pt) -- (40.0pt,120.0pt) -- (40.0pt,270.0pt) -- (140.0pt,270.0pt);
+\draw[logic arc] (146.0pt,359.96pt) -- (290.0pt,359.0pt);
+\draw[logic arc] (434.0pt,359.96pt) -- (290.0pt,359.0pt);%
+\end{tikzpicture}%
+\end{document}

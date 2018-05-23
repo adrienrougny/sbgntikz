@@ -1,0 +1,78 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph04) at (300.0pt,290.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph05) at (460.0pt,290.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph07) at (150.0pt,530.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph06) at (310.0pt,530.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph010) at (470.0pt,530.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph09) at (630.0pt,530.0pt) {ADP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph02) at (530.0pt,170.0pt) {RAF};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph02a) at (530.0pt,200.0pt) {P};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph018) at (590.0pt,780.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph016) at (310.0pt,780.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph015) at (150.0pt,780.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph017) at (430.0pt,780.0pt) {ATP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph012) at (700.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=32.0pt, minimum height=22.0pt] (glyph012a) at (700.0pt,440.0pt) {2P};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph019) at (640.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=32.0pt, minimum height=22.0pt] (glyph019a) at (615.0pt,690.0pt) {2P};
+\node[tag, minimum width=100.0pt, minimum height=60.0pt] (glyph020) at (810.0pt,660.0pt) {ERK};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph01) at (380.0pt,60.0pt) {RAS};
+\node[sv, shape=ellipse, minimum width=50.0pt, minimum height=26.0pt] (glyph01a) at (380.0pt,90.0pt) {active};
+\node[tag, minimum width=100.0pt, minimum height=60.0pt] (glyph00) at (210.0pt,60.0pt) {RAS};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph024) at (360.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph024a) at (335.0pt,440.0pt) {P};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph011) at (550.0pt,410.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph025) at (230.0pt,170.0pt) {RAF};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph025a) at (230.0pt,200.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph03) at (380.0pt,170.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph023) at (80.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph023a) at (55.0pt,440.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph08) at (230.0pt,410.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph022) at (80.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph022a) at (55.0pt,690.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph013) at (510.0pt,660.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph014) at (230.0pt,660.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph021) at (360.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph021a) at (335.0pt,690.0pt) {P};
+\draw[production] (glyph03.east) -- (glyph02);
+\draw[consumption] (glyph04) -- (glyph03.west);
+\draw[production] (glyph03.east) -- (glyph05.124);
+\draw[catalysis] (glyph01) -- (glyph03);
+\draw[consumption] (glyph07) -- (glyph08.west);
+\draw[production] (glyph08.east) -- (glyph06.124);
+\draw[consumption] (glyph010) -- (glyph011.west);
+\draw[production] (glyph011.east) -- (glyph012);
+\draw[production] (glyph011.east) -- (glyph09.124);
+\draw[catalysis] (glyph02.-56) -- (glyph011.95);
+\draw[catalysis] (glyph02.-124) -- (510.0pt,360.0pt) -- (230.0pt,360.0pt) -- (glyph08);
+\draw[production] (glyph013.east) -- (glyph019);
+\draw[production] (glyph013.east) -- (glyph018.124);
+\draw[production] (glyph014.east) -- (glyph016.124);
+\draw[consumption] (glyph015) -- (glyph014.west);
+\draw[consumption] (glyph017) -- (glyph013.west);
+\draw[catalysis] (glyph012.-56) -- (720.0pt,610.0pt) -- (510.0pt,610.0pt) -- (glyph013);
+\draw[catalysis] (glyph012.-124) -- (680.0pt,590.0pt) -- (230.0pt,590.0pt) -- (glyph014);
+\draw[equivalence arc] (glyph019) -- (glyph020);
+\draw[equivalence arc] (glyph01) -- (glyph00);
+\draw[production] (glyph08.east) -- (glyph024);
+\draw[consumption] (glyph024) -- (glyph011.west);
+\draw[consumption] (glyph025) -- (glyph03.west);
+\draw[consumption] (glyph023) -- (glyph08.west);
+\draw[consumption] (glyph022) -- (glyph014.west);
+\draw[consumption] (glyph021) -- (glyph013.west);
+\draw[production] (glyph014.east) -- (glyph021);%
+\end{tikzpicture}%
+\end{document}

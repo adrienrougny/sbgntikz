@@ -1,0 +1,98 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph1) at (950.0pt,460.0pt) {CaM};
+\node[ui, minimum width=48.0pt, minimum height=17.0pt] (glyph1a) at (950.0pt,490.0pt) {mt:prot};
+\node[sv, minimum width=36.0pt, minimum height=20.0pt] (glyph9) at (233.0pt,270.0pt) {PSD};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph13) at (287.0pt,270.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph4) at (260.0pt,430.0pt) {GluR};
+\node[sv location, minimum width=22.0pt, minimum height=0pt] (glyph4c) at (233.0pt,400.0pt) {};
+\node[sv, shape=ellipse, minimum width=39.0pt, minimum height=17.0pt] (glyph4b) at (287.0pt,400.0pt) {T306};
+\node[ui, minimum width=48.0pt, minimum height=17.0pt] (glyph4a) at (260.0pt,460.0pt) {mt:prot};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph10) at (635.0pt,140.0pt) {P};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph12) at (625.0pt,60.0pt) {F};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph11) at (465.0pt,60.0pt) {T};
+\node[sv, minimum width=20.0pt, minimum height=20.0pt] (glyph14) at (923.0pt,120.0pt) {T};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph2) at (950.0pt,270.0pt) {Ca2+};
+\node[sv existence, minimum width=22.0pt, minimum height=0pt] (glyph2b) at (923.0pt,240.0pt) {};
+\node[ui, minimum width=43.0pt, minimum height=17.0pt] (glyph2a) at (977.0pt,240.0pt) {mt:ion};
+\node[phenotype, minimum width=108.0pt, minimum height=60.0pt] (glyph6) at (100.0pt,345.0pt) {LPT};
+\node[perturbation, minimum width=108.0pt, minimum height=60.0pt] (glyph5) at (1020.0pt,170.0pt) {dV};
+\node[entity, minimum width=108.0pt, minimum height=60.0pt] (glyph3) at (710.0pt,100.0pt) {PPase};
+\node[ui, minimum width=48.0pt, minimum height=17.0pt] (glyph3a) at (710.0pt,70.0pt) {mt:prot};
+\node[or, minimum width=42.0pt, minimum height=42.0pt] (glyph7) at (690.0pt,220.0pt) {};
+\draw[consumption] (648.0pt,220.0pt) -- (668.4pt,220.0pt);
+\draw[consumption] (712.4pt,220.0pt) -- (732.0pt,220.0pt);
+\node[delay, minimum width=42.0pt, minimum height=42.0pt] (glyph8) at (450.0pt,295.0pt) {};
+\draw[consumption] (472.4pt,295.0pt) -- (492.0pt,295.0pt);
+\draw[consumption] (408.0pt,295.0pt) -- (428.4pt,295.0pt);
+\node[implicit xor, minimum width=0.0pt, minimum height=0.0pt] (glyph15) at (545.0pt,140.0pt) {};
+\node[entity, minimum width=180.0pt, minimum height=60.0pt] (glyph0) at (590.0pt,320.0pt) {CaMKII};
+\node[sv, shape=ellipse, minimum width=56.0pt, minimum height=17.0pt] (glyph0c) at (545.0pt,290.0pt) {P@T286};
+\node[sv, shape=ellipse, minimum width=39.0pt, minimum height=17.0pt] (glyph0b) at (635.0pt,290.0pt) {T306};
+\node[ui, minimum width=48.0pt, minimum height=17.0pt] (glyph0a) at (590.0pt,350.0pt) {mt:prot};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc0_0) at (950.0pt,370.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_4) at (518.0pt,435.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_3) at (540.0pt,460.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_0) at (626.0pt,395.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_6) at (518.0pt,395.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc1_5) at (518.0pt,415.0pt) {};
+\node[ui, minimum width=28.5pt, minimum height=16.5pt] (arc1_7) at (573.25pt,458.25pt) {cis};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_0) at (662.0pt,425.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc2_3) at (800.0pt,460.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc3_1) at (233.0pt,345.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc4_0) at (287.0pt,310.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc6_1) at (740.0pt,340.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc6_0) at (740.0pt,300.0pt) {};
+\node[ui, minimum width=37.5pt, minimum height=16.5pt] (arc6_2) at (767.75pt,318.25pt) {trans};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc7_0) at (635.0pt,180.0pt) {};
+\node[outcome, minimum width=12.0pt, minimum height=12.0pt] (arc9_1) at (505.0pt,100.0pt) {};
+\node[ui, minimum width=28.5pt, minimum height=16.5pt] (arc11_1) at (435.25pt,228.25pt) {cis};
+\node[ui, minimum width=37.5pt, minimum height=16.5pt] (arc12_1) at (327.75pt,159.25pt) {trans};
+\node[ui, minimum width=28.5pt, minimum height=16.5pt] (glyph32) at (397.25pt,413.25pt) {cis};
+\node[ui, minimum width=28.5pt, minimum height=16.5pt] (glyph33) at (407.25pt,393.25pt) {cis};
+\draw[interaction] (950.0pt,300.0pt) -- (950.0pt,430.0pt);
+\draw[interaction] (518.0pt,350.0pt) -- (518.0pt,460.0pt) -- (626.0pt,460.0pt) -- (626.0pt,350.0pt);
+\draw[interaction] (662.0pt,350.0pt) -- (662.0pt,460.0pt) -- (896.0pt,460.0pt);
+\draw[assignment] (233.0pt,280.0pt) -- (233.0pt,395.0pt);
+\draw[assignment] (287.0pt,280.0pt) -- (287.0pt,395.0pt);
+\draw[stimulation] (500.0pt,344.0pt) -- (287.0pt,345.0pt);
+\draw[interaction] (680.0pt,300.0pt) -- (770.0pt,300.0pt) -- (770.0pt,340.0pt) -- (680.0pt,340.0pt);
+\draw[assignment] (635.0pt,150.0pt) -- (635.0pt,285.0pt);
+\draw[assignment, -{}] (615.0pt,70.0pt) -- (545.5pt,139.5pt);
+\draw[assignment, -{}] (475.0pt,70.0pt) -- (544.5pt,139.5pt);
+\draw[assignment] (923.0pt,130.0pt) -- (923.0pt,235.0pt);
+\draw[necessary stimulation] (408.0pt,295.0pt) -- (360.0pt,295.0pt) -- (360.0pt,230.0pt) -- (635.0pt,230.0pt);
+\draw[necessary stimulation] (500.0pt,320.0pt) -- (330.0pt,320.0pt) -- (330.0pt,150.0pt) -- (490.0pt,150.0pt) -- (525.0pt,120.0pt);
+\draw[stimulation] (281.0pt,310.0pt) -- (233.0pt,310.0pt);
+\draw[stimulation] (227.0pt,345.0pt) -- (154.0pt,345.0pt);
+\draw[inhibition] (656.0pt,425.0pt) -- (626.0pt,425.0pt);
+\draw[absolute inhibition] (632.0pt,395.0pt) -- (662.0pt,395.0pt);
+\draw[absolute inhibition] (740.0pt,346.0pt) -- (740.0pt,460.0pt);
+\draw[absolute inhibition] (540.0pt,466.0pt) -- (540.0pt,515.0pt) -- (30.0pt,515.0pt) -- (30.0pt,110.0pt) -- (460.0pt,110.0pt) -- (490.0pt,85.0pt);
+\draw[absolute inhibition] (505.0pt,94.0pt) -- (505.0pt,30.0pt) -- (1100.0pt,30.0pt) -- (1100.0pt,515.0pt) -- (605.0pt,515.0pt) -- (605.0pt,460.0pt);
+\draw[absolute inhibition] (512.0pt,435.0pt) -- (350.0pt,435.0pt) -- (350.0pt,345.0pt);
+\draw[stimulation] (966.0pt,170.0pt) -- (923.0pt,170.0pt);
+\draw[stimulation] (656.0pt,100.0pt) -- (585.0pt,100.0pt);
+\draw[stimulation] (944.0pt,370.0pt) -- (845.0pt,370.0pt) -- (845.0pt,460.0pt);
+\draw[logic arc] (800.0pt,454.0pt) -- (800.0pt,220.0pt) -- (732.0pt,220.0pt);
+\draw[logic arc] (740.0pt,294.0pt) -- (740.0pt,220.0pt) -- (732.0pt,220.0pt);
+\draw[absolute inhibition] (648.0pt,220.0pt) -- (635.0pt,220.0pt);
+\draw[inhibition] (641.0pt,180.0pt) -- (820.0pt,180.0pt) -- (820.0pt,460.0pt);
+\draw[logic arc] (500.0pt,296.0pt) -- (492.0pt,295.0pt);
+\draw[absolute inhibition] (512.0pt,415.0pt) -- (375.0pt,415.0pt) -- (375.0pt,320.0pt);
+\draw[absolute inhibition] (512.0pt,395.0pt) -- (400.0pt,395.0pt) -- (400.0pt,295.0pt);
+\draw[assignment] (545.125pt,140.5pt) -- (545.0pt,285.0pt);%
+\end{tikzpicture}%
+\end{document}

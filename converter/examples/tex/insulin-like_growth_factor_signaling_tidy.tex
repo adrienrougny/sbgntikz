@@ -1,0 +1,101 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=1240.0pt, minimum height=1000.0pt] (glyph1) at (660.0pt,680.0pt) {cytosol};
+\node[compartment, shape=rectangle, rounded corners=20pt, minimum width=1240.0pt, minimum height=120.0pt] (glyph40) at (660.0pt,100.0pt) {extracellular};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph2) at (120.0pt,230.0pt) {IGFR};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph0) at (170.0pt,110.0pt) {IGF};
+\node[association, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph6) at (240.0pt,230.0pt) {};
+\node[complex, minimum width=140.0pt, minimum height=160.0pt] (glyph5) at (380.0pt,180.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph4) at (380.0pt,212.0pt) {IGFR};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph3) at (380.0pt,151.0pt) {IGF};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph9) at (300.0pt,320.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph10) at (450.0pt,320.0pt) {ADP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph12) at (640.0pt,540.0pt) {Grb2};
+\node[sv, shape=ellipse, minimum width=60.0pt, minimum height=28.0pt] (glyph12a) at (640.0pt,570.0pt) {inactive};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph13) at (520.0pt,540.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph20) at (150.0pt,910.0pt) {RAS};
+\node[sv, shape=ellipse, minimum width=60.0pt, minimum height=28.0pt] (glyph20a) at (150.0pt,940.0pt) {inactive};
+\node[complex, minimum width=260.0pt, minimum height=100.0pt] (glyph18) at (280.0pt,760.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph17) at (340.0pt,760.0pt) {Grb2};
+\node[sv, shape=ellipse, minimum width=50.0pt, minimum height=26.0pt] (glyph17a) at (340.0pt,790.0pt) {active};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph16) at (219.0pt,760.0pt) {SOS};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph22) at (200.0pt,1030.0pt) {GTP};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph19) at (280.0pt,910.0pt) {};
+\node[simple chemical, minimum width=60.0pt, minimum height=60.0pt] (glyph23) at (370.0pt,1030.0pt) {GDP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph29) at (970.0pt,660.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph28) at (830.0pt,660.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph33) at (1110.0pt,890.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph34) at (980.0pt,890.0pt) {ATP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph30) at (1050.0pt,760.0pt) {RSK};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph30a) at (1100.0pt,760.0pt) {P};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph35) at (1200.0pt,990.0pt) {c-Fos};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph35a) at (1250.0pt,990.0pt) {P};
+\node[phenotype, minimum width=140.0pt, minimum height=60.0pt, align=center] (glyph36) at (1200.0pt,1110.0pt) {gene\\transcription};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph7) at (520.0pt,410.0pt) {IRS1-4};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph7a) at (570.0pt,410.0pt) {P};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph31) at (870.0pt,910.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=32.0pt, minimum height=22.0pt] (glyph31a) at (845.0pt,940.0pt) {2P};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph21) at (420.0pt,910.0pt) {RAS};
+\node[sv, shape=ellipse, minimum width=50.0pt, minimum height=26.0pt] (glyph21a) at (420.0pt,940.0pt) {active};
+\node[submap, minimum width=220.0pt, minimum height=120.0pt, align=center] (glyph24) at (630.0pt,910.0pt) {MAPK\\cascade};
+\node[tag, orientation=left, anchor=east, minimum width=80.0pt, minimum height=45.0pt] (glyph42) at (glyph24.0) {ERK};
+\node[tag, orientation=right, anchor=west, minimum width=80.0pt, minimum height=45.0pt] (glyph41) at (glyph24.180) {RAS};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph37) at (900.0pt,990.0pt) {c-Fos};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph37a) at (950.0pt,990.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph32) at (1050.0pt,990.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph38) at (240.0pt,410.0pt) {IRS1-4};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph38a) at (290.0pt,410.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, connectors=horizontal, left connector length=10.0pt, right connector length=10.0pt] (glyph8) at (380.0pt,410.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph39) at (750.0pt,760.0pt) {RSK};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph39a) at (800.0pt,760.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=horizontal, left connector length=10.0pt] (glyph27) at (900.0pt,760.0pt) {};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph14) at (170.0pt,540.0pt) {SOS};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph11) at (390.0pt,540.0pt) {Grb2};
+\node[sv, shape=ellipse, minimum width=50.0pt, minimum height=26.0pt] (glyph11a) at (390.0pt,570.0pt) {active};
+\node[association, minimum width=20.0pt, minimum height=20.0pt, right connector length=10.0pt, connectors=vertical, left connector length=10.0pt] (glyph15) at (280.0pt,650.0pt) {};
+\draw[consumption] (glyph2) -- (glyph6.west);
+\draw[production] (glyph6.east) -- (glyph5.-145);
+\draw[consumption] (glyph0) -- (glyph6.west);
+\draw[catalysis] (glyph5) -- (glyph8);
+\draw[consumption] (glyph9) -- (glyph8.west);
+\draw[production] (glyph8.east) -- (glyph10.-128);
+\draw[stimulation] (glyph7) -- (glyph13);
+\draw[consumption] (glyph12) -- (glyph13.east);
+\draw[production] (glyph13.west) -- (glyph11);
+\draw[production] (glyph15.south) -- (glyph18);
+\draw[consumption] (glyph20) -- (glyph19.west);
+\draw[production] (glyph19.east) -- (glyph21);
+\draw[stimulation] (glyph18) -- (glyph19);
+\draw[consumption] (glyph22) -- (glyph19.west);
+\draw[production] (glyph19.east) -- (glyph23.127);
+\draw[production] (glyph27.east) -- (glyph30);
+\draw[production] (glyph27.east) -- (glyph29.-125);
+\draw[consumption] (glyph28) -- (glyph27.west);
+\draw[catalysis] (glyph31) -- (glyph27);
+\draw[production] (glyph32.east) -- (glyph35);
+\draw[production] (glyph32.east) -- (glyph33.-121);
+\draw[consumption] (glyph34) -- (glyph32.west);
+\draw[catalysis] (glyph30) -- (glyph32);
+\draw[stimulation] (glyph35) -- (glyph36);
+\draw[production] (glyph8.east) -- (glyph7);
+\draw[equivalence arc] (glyph31) -- (glyph42);
+\draw[equivalence arc] (glyph21) -- (glyph41);
+\draw[consumption] (glyph37) -- (glyph32.west);
+\draw[consumption] (glyph38) -- (glyph8.west);
+\draw[consumption] (glyph39) -- (glyph27.west);
+\draw[consumption] (glyph14) -- (glyph15.north);
+\draw[consumption] (glyph11) -- (glyph15.north);%
+\end{tikzpicture}%
+\end{document}

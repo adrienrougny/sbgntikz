@@ -1,0 +1,88 @@
+\documentclass{standalone}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[utf8]{inputenc}%
+\usepackage{tikz}%
+\usetikzlibrary{sbgn}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[sbgn, yscale=-1]%
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph4) at (300.0pt,290.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph5) at (460.0pt,290.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph7) at (150.0pt,530.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph6) at (310.0pt,530.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph10) at (470.0pt,530.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph9) at (630.0pt,530.0pt) {ADP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph2) at (530.0pt,170.0pt) {RAF};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph2a) at (530.0pt,200.0pt) {P};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph18) at (590.0pt,780.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph16) at (310.0pt,780.0pt) {ADP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph15) at (150.0pt,780.0pt) {ATP};
+\node[simple chemical, clone, minimum width=60.0pt, minimum height=60.0pt] (glyph17) at (430.0pt,780.0pt) {ATP};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph12) at (700.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=32.0pt, minimum height=22.0pt] (glyph12a) at (700.0pt,440.0pt) {2P};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph19) at (640.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=32.0pt, minimum height=22.0pt] (glyph19a) at (615.0pt,690.0pt) {2P};
+\node[tag, minimum width=100.0pt, minimum height=60.0pt] (glyph20) at (810.0pt,660.0pt) {ERK};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph1) at (380.0pt,60.0pt) {RAS};
+\node[sv, shape=ellipse, minimum width=50.0pt, minimum height=26.0pt] (glyph1a) at (380.0pt,90.0pt) {active};
+\node[tag, minimum width=100.0pt, minimum height=60.0pt] (glyph0) at (210.0pt,60.0pt) {RAS};
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph24) at (360.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph24a) at (335.0pt,440.0pt) {P};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph11) at (550.0pt,410.0pt) {};
+\draw[consumption] (561.4pt,410.0pt) -- (570.0pt,410.0pt);
+\draw[consumption] (530.0pt,410.0pt) -- (539.4pt,410.0pt);
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph25) at (230.0pt,170.0pt) {RAF};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph25a) at (230.0pt,200.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph3) at (380.0pt,170.0pt) {};
+\draw[consumption] (360.0pt,170.0pt) -- (369.4pt,170.0pt);
+\draw[consumption] (391.4pt,170.0pt) -- (400.0pt,170.0pt);
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph23) at (80.0pt,410.0pt) {MEK};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph23a) at (55.0pt,440.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph8) at (230.0pt,410.0pt) {};
+\draw[consumption] (241.4pt,410.0pt) -- (250.0pt,410.0pt);
+\draw[consumption] (210.0pt,410.0pt) -- (219.4pt,410.0pt);
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph22) at (80.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=20.0pt, minimum height=22.0pt] (glyph22a) at (55.0pt,690.0pt) {};
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph13) at (510.0pt,660.0pt) {};
+\draw[consumption] (490.0pt,660.0pt) -- (499.4pt,660.0pt);
+\draw[consumption] (521.4pt,660.0pt) -- (530.0pt,660.0pt);
+\node[generic process, minimum width=20.0pt, minimum height=20.0pt] (glyph14) at (230.0pt,660.0pt) {};
+\draw[consumption] (210.0pt,660.0pt) -- (219.4pt,660.0pt);
+\draw[consumption] (241.4pt,660.0pt) -- (250.0pt,660.0pt);
+\node[macromolecule, minimum width=100.0pt, minimum height=60.0pt] (glyph21) at (360.0pt,660.0pt) {ERK};
+\node[sv, shape=ellipse, minimum width=25.0pt, minimum height=22.0pt] (glyph21a) at (335.0pt,690.0pt) {P};
+\draw[production] (400.0pt,170.0pt) -- (480.0pt,170.0pt);
+\draw[consumption] (313.4164pt,263.16718pt) -- (360.0pt,170.0pt);
+\draw[production] (400.0pt,170.0pt) -- (443.359pt,265.03848pt);
+\draw[catalysis] (380.0pt,102.0pt) -- (380.0pt,160.0pt);
+\draw[consumption] (163.41641pt,503.16718pt) -- (210.0pt,410.0pt);
+\draw[production] (250.0pt,410.0pt) -- (293.359pt,505.03848pt);
+\draw[consumption] (483.4164pt,503.16718pt) -- (530.0pt,410.0pt);
+\draw[production] (570.0pt,410.0pt) -- (650.0pt,410.0pt);
+\draw[production] (570.0pt,410.0pt) -- (613.359pt,505.03848pt);
+\draw[catalysis] (550.0pt,200.0pt) -- (549.1667pt,400.0pt);
+\draw[catalysis] (510.0pt,200.0pt) -- (510.0pt,360.0pt) -- (230.0pt,360.0pt) -- (230.0pt,400.0pt);
+\draw[production] (530.0pt,660.0pt) -- (590.0pt,660.0pt);
+\draw[production] (530.0pt,660.0pt) -- (573.359pt,755.0385pt);
+\draw[production] (250.0pt,660.0pt) -- (293.359pt,755.0385pt);
+\draw[consumption] (163.41641pt,753.1672pt) -- (210.0pt,660.0pt);
+\draw[consumption] (443.4164pt,753.1672pt) -- (490.0pt,660.0pt);
+\draw[catalysis] (720.0pt,440.0pt) -- (720.0pt,610.0pt) -- (510.0pt,610.0pt) -- (510.0pt,650.0pt);
+\draw[catalysis] (680.0pt,440.0pt) -- (680.0pt,590.0pt) -- (230.0pt,590.0pt) -- (230.0pt,650.0pt);
+\draw[equivalence arc] (690.0pt,660.0pt) -- (760.0pt,660.0pt);
+\draw[equivalence arc] (330.0pt,60.0pt) -- (260.0pt,60.0pt);
+\draw[production] (250.0pt,410.0pt) -- (310.0pt,410.0pt);
+\draw[consumption] (410.0pt,410.0pt) -- (530.0pt,410.0pt);
+\draw[consumption] (280.0pt,170.0pt) -- (360.0pt,170.0pt);
+\draw[consumption] (130.0pt,410.0pt) -- (210.0pt,410.0pt);
+\draw[consumption] (130.0pt,660.0pt) -- (210.0pt,660.0pt);
+\draw[consumption] (410.0pt,660.0pt) -- (490.0pt,660.0pt);
+\draw[production] (250.0pt,660.0pt) -- (310.0pt,660.0pt);%
+\end{tikzpicture}%
+\end{document}
