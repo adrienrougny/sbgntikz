@@ -1,4 +1,3 @@
-
 *sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTex using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
 All three SBGN languages (PD, AF and ER) are supported.
 
@@ -11,7 +10,7 @@ The directory `tikz-sbgn` should be copied to a directory where it can be found 
 ## Getting started
 
 *sbgntikz* is a TikZ package.
-Usually, TikZ is installed within your Tex distribution, so it can be imported directly into your LaTex source file.
+Usually, TikZ is installed within your Tex distribution, so it can be imported directly into your LaTeX source file.
 The two first steps are to import the TikZ package and the *sbgntikz* library:
 
 ```tex
@@ -65,3 +64,16 @@ Here is the rendering:
 ## Going further
 
 To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.0.1/sbgntikz_v1_0_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
+
+*sbgntikz* also ships an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ converter.
+Basic usage is as follows:
+
+```shell
+sbgnml2tikz.py [options] INPUT
+```
+
+All options can be listed using using the following:
+
+```shell
+sbgnml2tikz.py --help
+```
