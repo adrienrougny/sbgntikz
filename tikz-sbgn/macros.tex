@@ -5,6 +5,10 @@
 \def\false{false}
 \def\vertical{vertical}
 \def\horizontal{horizontal}
+\def\oup{up}
+\def\odown{down}
+\def\oright{right}
+\def\oleft{left}
 
 \def\pointborderrectanglecorners#1#2#3{%point, southwest, northeast
     \pgf@process{#2}
@@ -77,7 +81,7 @@
         \pgf@x=-\pgf@x
     \fi
     % \pgfmathsetlength{\pgf@x}{atan2(\pgf@y,\pgf@x)}
-    \pgfmathsetlength{\pgf@x}{round(atan2(\pgf@y,\pgf@x))}
+    \pgfmathsetlength{\pgf@x}{atan2(\pgf@y,\pgf@x)}
 }
 
 \def\belongstocone#1#2#3#4{%center, point1, point2, point
@@ -168,7 +172,6 @@
     \advance\pgf@ya by -\pgf@yc
     \advance\pgf@yb by -\pgf@yc
     \ifdim\pgf@xa=\pgf@xb % infinite slope set to max dimen
-        \message{the two are equal}
         \ifnum\c@pgf@counta=1
             \pgfmathsetlength{\pgf@y}{-sqrt(\rad^2-\pgf@xa^2)}
         \else
@@ -202,15 +205,18 @@
 \def\sbgn@subunits#1{
     \pgfkeysalso{/tikz/fit=#1}
     \pgfkeysalso{
-        /tikz/text width/.expand once=\tikz@text@width+10pt,
-        /tikz/text height/.expand once=\tikz@text@height+8pt,
-        /tikz/text depth/.expand once=\tikz@text@depth+10pt
+        /tikz/text width/.expand once=\tikz@text@width+20pt,
+        /tikz/text height/.expand once=\tikz@text@height+16pt,
+        /tikz/text depth/.expand once=\tikz@text@depth+20pt
     }
 }
 
 \pgfkeys{/tikz/isnode/.initial=false, /tikz/every node/.style={/tikz/isnode=true}}
 \pgfkeys{/pgf/.cd, clone/.initial/.expanded=false, clone/.default/.expanded=\true}
 \pgfkeys{/pgf/.cd, connectors/.initial=none}
+\pgfkeys{/pgf/.cd, left connector length/.initial=8pt}
+\pgfkeys{/pgf/.cd, right connector length/.initial=8pt}
+\pgfkeys{/pgf/.cd, orientation/.initial=right}
 \pgfkeys{/tikz/subunits/.code=\sbgn@subunits{#1}}
 % this awesome piece of code was written by Loop Space and taken from https://tex.stackexchange.com/questions/20425/z-level-in-tikz/20426#20426
 \pgfkeys{/tikz/draw layer/.code={

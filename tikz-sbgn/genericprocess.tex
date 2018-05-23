@@ -9,8 +9,8 @@
     {
         \inheritanchor[from=rectangle]{\a}
     }
+
     \savedanchor\connectoreast{
-        \def\lconnectors{0.75}
         \pgfkeysgetvalue{/pgf/connectors}{\connectors}
         %compute width and height without taking into account outer sep
         \pgf@x=\wd\pgfnodeparttextbox
@@ -44,12 +44,12 @@
         \advance\pgf@y by 0.5\pgf@ya
         \pgf@x=\pgf@xb
         \ifx\connectors\horizontal
-            \advance\pgf@x by \lconnectors\pgf@xb
-            \advance\pgf@x by -\lconnectors\pgf@xa
+            \pgfkeysgetvalue{/pgf/right connector length}{\lconnector}
+            \advance\pgf@x by \lconnector
         \fi
     }
+
     \savedanchor\connectorwest{
-        \def\lconnectors{0.75}
         \pgfkeysgetvalue{/pgf/connectors}{\connectors}
         %compute width and height without taking into account outer sep
         \pgf@x=\wd\pgfnodeparttextbox
@@ -83,12 +83,12 @@
         \advance\pgf@y by 0.5\pgf@ya
         \pgf@x=\pgf@xa
         \ifx\connectors\horizontal
-            \advance\pgf@x by -\lconnectors\pgf@xb
-            \advance\pgf@x by \lconnectors\pgf@xa
+            \pgfkeysgetvalue{/pgf/left connector length}{\lconnector}
+            \advance\pgf@x by -\lconnector
         \fi
     }
+
     \savedanchor\connectornorth{
-        \def\lconnectors{0.75}
         \pgfkeysgetvalue{/pgf/connectors}{\connectors}
         %compute width and height without taking into account outer sep
         \pgf@x=\wd\pgfnodeparttextbox
@@ -122,14 +122,13 @@
         \advance\pgf@x by 0.5\pgf@xa
         \pgf@y=\pgf@yb
         \ifx\connectors\vertical
-            \advance\pgf@y by \lconnectors\pgf@yb
-            % \pgftext{\the\pgf@x}
-            \advance\pgf@y by -\lconnectors\pgf@ya
+            \pgfkeysgetvalue{/pgf/left connector length}{\lconnector}
+            \advance\pgf@y by \lconnector
         \fi
     }
+
     \savedanchor\connectorsouth{
-        \def\lconnectors{0.75}
-        \pgfkeysgetvalue{/pgf/connectors}{\lconnectors}
+        \pgfkeysgetvalue{/pgf/connectors}{\connectors}
         %compute width and height without taking into account outer sep
         \pgf@x=\wd\pgfnodeparttextbox
         \pgf@xc=\pgfkeysvalueof{/pgf/inner xsep}
@@ -162,20 +161,22 @@
         \advance\pgf@x by 0.5\pgf@xa
         \pgf@y=\pgf@ya
         \ifx\connectors\vertical
-            \advance\pgf@y by -\lconnectors\pgf@yb
-            \advance\pgf@y by +\lconnectors\pgf@ya
+            \pgfkeysgetvalue{/pgf/right connector length}{\lconnector}
+            \advance\pgf@y by -\lconnector
         \fi
     }
+
     \anchor{west}{\connectorwest}
     \anchor{east}{\connectoreast}
     \anchor{north}{\connectornorth}
     \anchor{south}{\connectorsouth}
 
     \backgroundpath{
-        \def\lconnectors{0.75}
         \pgfpathrectanglecorners{\southwest}{\northeast}
         \pgfkeysgetvalue{/pgf/connectors}{\connectors}
         \ifx\connectors\horizontal
+            \pgfkeysgetvalue{/pgf/left connector length}{\lconnector}
+            \pgfkeysgetvalue{/pgf/right connector length}{\rconnector}
             \pgf@process{\southwest}
             \pgf@xa = \pgf@x
             \pgf@ya = \pgf@y
@@ -187,16 +188,16 @@
             \advance\pgf@yc by -0.5\pgf@yb
             \advance\pgf@yc by 0.5\pgf@ya
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \advance\pgf@xc by \lconnectors\pgf@xb
-            \advance\pgf@xc by -\lconnectors\pgf@xa
+            \advance\pgf@xc by \rconnector
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
             \pgf@xc=\pgf@xa
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \advance\pgf@xc by -\lconnectors\pgf@xb
-            \advance\pgf@xc by \lconnectors\pgf@xa
+            \advance\pgf@xc by -\lconnector
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
         \fi
         \ifx\connectors\vertical
+            \pgfkeysgetvalue{/pgf/left connector length}{\lconnector}
+            \pgfkeysgetvalue{/pgf/right connector length}{\rconnector}
             \pgf@process{\southwest}
             \pgf@xa = \pgf@x
             \pgf@ya = \pgf@y
@@ -208,13 +209,11 @@
             \advance\pgf@xc by -0.5\pgf@xb
             \advance\pgf@xc by 0.5\pgf@xa
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \advance\pgf@yc by \lconnectors\pgf@yb
-            \advance\pgf@yc by -\lconnectors\pgf@ya
+            \advance\pgf@yc by \rconnector
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
             \pgf@yc=\pgf@ya
             \pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
-            \advance\pgf@yc by -\lconnectors\pgf@yb
-            \advance\pgf@yc by \lconnectors\pgf@ya
+            \advance\pgf@yc by -\lconnector
             \pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}
         \fi
     }
