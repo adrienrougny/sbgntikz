@@ -12,36 +12,36 @@
 
 \begin{tikzpicture}[sbgn, node distance = 2cm]
 
-    \node[entity, minimum width = 110pt] (camkii) {CaMKII};
+    \node[entity, minimum width = 110pt, minimum width = 150pt] (camkii) {CaMKII};
     \node[sv] (t286) at (camkii.130) {P@T286};
     \node[sv] (t306) at (camkii.50) {T306};
     \node[ui] at (camkii.270) {mt:prot};
 
-    \node[entity, below right = 0.5cm and 3cm of camkii] (cam) {CaM};
+    \node[entity, below right = 1cm and 4cm of camkii] (cam) {CaM};
     \node[ui] at (cam.270) {mt:prot};
 
-    \node[value, above = 1.3cm of t306] (t306-varp) {P};
+    \node[value, above = 2cm of t306] (t306-varp) {P};
 
-    \node[entity, above = 1cm of cam] (ca) {Ca$^{2+}$};
+    \node[entity, above = 2cm of cam] (ca) {Ca$^{2+}$};
     \node[sv existence] (ex) at (ca.130) {};
     \node[ui] at (ca.50) {mt:ion};
 
     \node[value, above = 1.3cm of ex] (catrue) {T};
 
-    \node[perturbation, minimum width = 40pt, minimum height = 20pt, above right = 0.8cm and -0.3cm of ca] (dv) {dV};
+    \node[perturbation, minimum width = 60pt, minimum height = 30pt, above right = 0.8cm and -0.3cm of ca] (dv) {dV};
 
-    \node[entity, below left = 0.5cm and 2cm of camkii] (glur) {GluR};
+    \node[entity, below left = 0.5cm and 3cm of camkii] (glur) {GluR};
     \node[sv location] (location) at (glur.130) {};
-    \node[value] (glurp) at (glur.50) {P};
+    \node[sv] (glurp) at (glur.50) {P};
     \node[ui] at (glur.270) {mt:prot};
 
-    \node[value, above = 1.3cm of glurp] (glurptrue) {T};
+    \node[value, above = 2cm of glurp] (glurptrue) {T};
 
-    \node[value, above = 1.3cm of location] (psd) {PSD};
+    \node[value, above = 2cm of location] (psd) {PSD};
 
-    \node[value, above left = 2.3cm and 0.1cm of t286] (t286true) {T};
-    \node[value, above right = 2.3cm and 0.1cm of t286] (t286false) {F};
-    \coordinate[above = 1.5cm of t286] (truefalse);
+    \node[value, above left = 3cm and 0.1cm of t286] (t286true) {T};
+    \node[value, above right = 3cm and 0.1cm of t286] (t286false) {F};
+    \coordinate[above = 2cm of t286] (truefalse);
 
     \draw[assignment] (t286true) -- (truefalse)
         coordinate[anchor point, pos = 0.25] (t286true-truefalse-c1)
@@ -54,19 +54,19 @@
         -- (t286)
     ;
 
-    \node[entity, right = 1cm of t286false-truefalse-c1] (ppase) {PPase};
+    \node[entity, right = 2cm of t286false-truefalse-c1] (ppase) {PPase};
     \node[ui] at (ppase.90) {mt:prot};
 
     \draw[stimulation] (ppase) -- (t286false-truefalse-c1);
 
-    \coordinate (camkii-camkii-trans-dep) at (camkii.10);
-    \coordinate (camkii-camkii-trans-arr) at (camkii.350);
-    \draw[interaction] (camkii-camkii-trans-dep) -- ($(camkii-camkii-trans-dep)+(1cm,0)$)
-        node[outcome, pos = 0.5] (camkii-camkii-trans-o1) {}
-        -- ($(camkii-camkii-trans-arr)+(1cm,0)$)
-        node[ui, pos = 0.5] {trans}
+    \coordinate (camkii-camkii-trans-dep) at (camkii.15);
+    \coordinate (camkii-camkii-trans-arr) at (camkii.345);
+    \draw[interaction] (camkii-camkii-trans-dep) -- ($(camkii-camkii-trans-dep)+(1.5cm,0)$)
+        node[outcome, pos = 0.6] (camkii-camkii-trans-o1) {}
+        -- ($(camkii-camkii-trans-arr)+(1.5cm,0)$)
+        node[ui, pos = 0.6] {trans}
         -- (camkii-camkii-trans-arr)
-        node[outcome, pos = 0.5] (camkii-camkii-trans-o2) {}
+        node[outcome, pos = 0.4] (camkii-camkii-trans-o2) {}
     ;
 
     \coordinate (camkii-cam-dep) at (camkii.335);
@@ -82,9 +82,9 @@
     \coordinate (camkii-camkii-cis-dep) at (camkii.205);
     \coordinate (camkii-camkii-cis-arr) at (camkii.315);
     \draw[interaction] let \p1=(camkii-camkii-cis-dep), \p2=(camkii-camkii-cis-arr), \p3=(camkii-cam-arr), \p4=(camkii-cam-o1) in (\x1,\y1) -- (\x1,\y3)
-        node[outcome, pos = 0.3] (camkii-camkii-cis-o1) {}
-        node[outcome, pos = 0.55] (camkii-camkii-cis-o2) {}
-        node[outcome, pos = 0.8] (camkii-camkii-cis-o3) {}
+        node[outcome, pos = 0.37] (camkii-camkii-cis-o1) {}
+        node[outcome, pos = 0.62] (camkii-camkii-cis-o2) {}
+        node[outcome, pos = 0.87] (camkii-camkii-cis-o3) {}
         -- (\x2,\y3)
         node[outcome, pos = 0.25] (camkii-camkii-cis-o4) {}
         node[ui, pos = 0.5] {cis}
@@ -125,7 +125,7 @@
     ;
 
 
-    \node[or, minimum width = 10pt, minimum height = 18pt, connectors = horizontal, right = 0.5cm of t306-varp-c1] (or) {};
+    \node[or, minimum width = 30pt, minimum height = 30pt, connectors = horizontal, right = 0.5cm of t306-varp-c1] (or) {};
 
     \draw[inhibition] (t306-varp-o1) -| (camkii-cam-c3);
 
@@ -139,7 +139,7 @@
 
     \draw[stimulation] (glurptrue-glurp-o1) -- (psd-location-c1);
 
-    \node[phenotype, minimum width = 40pt, minimum height = 20pt, left = 1cm of psd-location-o1] (ltp) {LTP};
+    \node[phenotype, minimum width = 60pt, minimum height = 30pt, left = 1cm of psd-location-o1] (ltp) {LTP};
 
     \draw[stimulation] (psd-location-o1) -- (ltp);
 
@@ -149,7 +149,7 @@
 
     \draw[absolute inhibition] (camkii-camkii-cis-o3) -| (camkii-glurptrue-glurp-c1);
 
-    \node[delay, above left = 0.0cm and 0.5cm of camkii] (delay) {};
+    \node[delay, minimum width = 30pt, minimum height = 30pt, above left = 0.0cm and 0.5cm of camkii] (delay) {};
     \draw[logic arc] (camkii.170) -| (delay);
     \draw[necessary stimulation] (delay) |- (t306-varp-c1)
         coordinate[anchor point, pos = 0.57] (delay-t306-varp-c1)
@@ -157,7 +157,7 @@
     ;
 
     \draw[absolute inhibition] (camkii-camkii-cis-o1) -| (delay-t306-varp-c1)
-        node[ui, pos = 0.57] {cis}
+        node[ui, pos = 0.54] {cis}
     ;
 
     \draw[necessary stimulation] let \p1=(delay), \p2=(camkii.west), \p3=(t286true-truefalse-c2) in

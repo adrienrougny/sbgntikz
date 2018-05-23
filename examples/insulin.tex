@@ -20,9 +20,9 @@
 
     \node[macromolecule, left = of p1] (igfr) {IGFR};
 
-    \node[macromolecule, above left = 2cm and 1.5cm of p1] (igf) {IGF};
+    \node[macromolecule, above left = 3cm and 1.5cm of p1] (igf) {IGF};
 
-    \node[generic process, connectors = horizontal, below = 2.5cm of comp] (p2) {};
+    \node[generic process, connectors = horizontal, below = 3.5cm of comp] (p2) {};
 
     \node[macromolecule, left = of p2] (irs1-4) {IRS1-4};
     \node[sv] at (irs1-4.north) {};
@@ -66,28 +66,28 @@
 
     \node[simple chemical, below right = of p5] (gdp) {GDP};
 
-    \node[submap, right = 0.75cm of activeras, align = center, minimum width = 120pt, fill = yellow!50] (submap) {MAPK\\cascade};
+    \node[submap, right = 0.75cm of activeras, align = center, minimum width = 200pt, minimum height = 100pt, fill = yellow!50] (submap) {MAPK\\cascade};
 
-    \node[tag, signal to = east, anchor = west, fill = yellow!50] at (submap.west) (tagras) {RAS};
+    \node[tag, orientation = right, anchor = west, fill = yellow!50] at (submap.west) (tagras) {RAS};
 
-    \node[tag, signal to = west, anchor = east, fill = yellow!50] at (submap.east) (tagerk) {ERK};
+    \node[tag, orientation = left, anchor = east, fill = yellow!50] at (submap.east) (tagerk) {ERK};
 
     \node[macromolecule, right = 0.75cm of submap] (2perk) {ERK};
     \node[sv] at (2perk.220) {2P};
 
-    \node[generic process, connectors = horizontal, above right = 2.5cm and 3cm of 2perk] (p6) {};
+    \node[generic process, connectors = horizontal, above right = 3.5cm and 3cm of 2perk] (p6) {};
 
     \node[macromolecule, left = of p6] (rsk) {RSK};
     \node[sv] at (rsk.north) {};
 
-    \node[macromolecule, right = 3.3cm of p6] (prsk) {RSK};
+    \node[macromolecule, right = 4.5cm of p6] (prsk) {RSK};
     \node[sv] at (prsk.north) {P};
 
     \node[simple chemical, clone, above left = of p6] (atp2) {ATP};
 
     \node[simple chemical, clone, above right = of p6] (adp2) {ADP};
 
-    \node[generic process, connectors = horizontal, below = 2.5cm of prsk] (p7) {};
+    \node[generic process, connectors = horizontal, below = 3.5cm of prsk] (p7) {};
 
     \node[macromolecule, left = of p7] (c-fos) {c-Fos};
     \node[sv] at (c-fos.north) {};
