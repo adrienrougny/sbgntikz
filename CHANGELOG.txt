@@ -1,3 +1,9 @@
+v1.1.0
+    - added an SBGN-ML to TikZ converter
+    - added new layers
+    - tag is now a custom shape for better size control
+    - default width and height of glyphs are set to those of SBGN-ED
+    - added the implicit xor node
 v1.0.1
     - added a background layer
     - better handling of the layers for compartments
