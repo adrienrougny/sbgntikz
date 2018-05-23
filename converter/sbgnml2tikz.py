@@ -9,7 +9,7 @@ from numpy import arctan2
 try:
     import libsbgnpy.libsbgn as libsbgn
 except:
-    raise("Please install package libsbgnpy first\n\t pip install libsbgnpy")
+    raise(ImportError("Please install package libsbgnpy first\n\t pip install libsbgnpy"))
 
 glyph_dic = {
     "UNSPECIFIED_ENTITY": {"sbgntikz": "unspecified entity", "super": "EPN"},
@@ -410,7 +410,7 @@ def tikzpicture_to_pdf(s, output):
     try:
         from pylatex import Document, NoEscape
     except:
-        raise("Please install package pylatex first\n\t pip install pylatex")
+        raise(ImportError("Please install package pylatex first\n\t pip install pylatex"))
     if output.endswith(".pdf"):
         output = output[:-4]
     doc = Document(documentclass = "standalone")
