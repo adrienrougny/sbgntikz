@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}tikz\PYG{n+nb}{\PYGZcb{}}
-\PYG{k}{\PYGZbs{}usetikzlibrary}\PYG{n+nb}{\PYGZob{}}sbgn\PYG{n+nb}{\PYGZcb{}}
-\end{Verbatim}

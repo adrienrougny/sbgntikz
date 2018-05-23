@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[unspecified entity subunit]} (m1) \PYG{n+nb}{\PYGZob{}}A\PYG{n+nb}{\PYGZcb{}};
-\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[unspecified entity subunit, below=0.1cm of m1]} (m2) \PYG{n+nb}{\PYGZob{}}B\PYG{n+nb}{\PYGZcb{}};
-\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[complex, subunits=(m1)(m2)]} \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
-\end{Verbatim}

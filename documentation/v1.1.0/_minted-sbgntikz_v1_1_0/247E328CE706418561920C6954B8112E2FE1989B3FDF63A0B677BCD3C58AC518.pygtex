@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} (0,0) \PYGZhy{}\PYGZhy{} (3,0);
-\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[inhibition]} (1,1) \PYGZhy{}\PYGZhy{} (\PYG{l+s}{\PYGZdl{}}\PYG{o}{(}\PYG{l+m}{1}\PYG{n+nb}{,}\PYG{l+m}{1}\PYG{n+nb}{ |}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{ }\PYG{l+m}{3}\PYG{n+nb}{,}\PYG{l+m}{0}\PYG{o}{)+(}\PYG{l+m}{0}\PYG{n+nb}{,}\PYG{l+m}{2}\PYG{n+nb}{pt}\PYG{o}{)}\PYG{l+s}{\PYGZdl{}});
-\end{Verbatim}
