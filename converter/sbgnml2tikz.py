@@ -191,42 +191,25 @@ def sbgn_node_to_string(node, nodes_dic, ports_dic, tidy = False, keep_sizes = T
         l += sbgn_subnode_to_string(subnode, node, nodes_dic, tidy, keep_sizes, unit)
     if glyph_dic[class_name]["super"] == "PROCESS" or glyph_dic[class_name]["super"] == "LOGICAL_OPERATOR":
         ports = node.get_port()
-        if tidy:
-            for port in ports:
-                if port.x < bbox.x:
-                    keys["connectors"] = "horizontal"
-                    if keep_sizes:
-                        keys["left connector length"] = float_to_distance(bbox.x - port.x, unit)
+        for port in ports:
+            if port.x < bbox.x:
+                keys["connectors"] = "horizontal"
+                keys["left connector length"] = float_to_distance(bbox.x - port.x, unit)
+                if tidy:
                     ports_dic[port.get_id()] = ("{}.west".format(name),)
-                elif port.x > bbox.x + bbox.w:
-                    if keep_sizes:
-                        keys["right connector length"] = float_to_distance(port.x - (bbox.x + bbox.w), unit)
-
+            elif port.x > bbox.x + bbox.w:
+                keys["right connector length"] = float_to_distance(port.x - (bbox.x + bbox.w), unit)
+                if tidy:
                     ports_dic[port.get_id()] = ("{}.east".format(name),)
-                elif port.y < bbox.y:
-                    keys["connectors"] = "vertical"
-                    if keep_sizes:
-                        keys["left connector length"] = float_to_distance(bbox.y - port.y, unit)
+            elif port.y < bbox.y:
+                keys["connectors"] = "vertical"
+                keys["left connector length"] = float_to_distance(bbox.y - port.y, unit)
+                if tidy:
                     ports_dic[port.get_id()] = ("{}.north".format(name),)
-                elif port.y > bbox.y + bbox.h:
-                    if keep_sizes:
-                        keys["right connector length"] = float_to_distance(port.y - (bbox.y + bbox.h), unit)
-
+            elif port.y > bbox.y + bbox.h:
+                keys["right connector length"] = float_to_distance(port.y - (bbox.y + bbox.h), unit)
+                if tidy:
                     ports_dic[port.get_id()] = ("{}.south".format(name),)
-        else:
-            for port in ports:
-                if port.x < bbox.x:
-                    positions = [(float_to_distance(port.x, unit), float_to_distance(port.y, unit)), (float_to_distance(bbox.x - 0.6, unit), float_to_distance(port.y, unit))]
-                    l.append(arc_string(positions, {"consumption": None}))
-                elif port.x > bbox.x + bbox.w:
-                    positions = [(float_to_distance(bbox.x + bbox.w + 1.4, unit), float_to_distance(port.y, unit)), (float_to_distance(port.x, unit), float_to_distance(port.y, unit))]
-                    l.append(arc_string(positions, {"consumption": None}))
-                elif port.y < bbox.y:
-                    positions = [(float_to_distance(bbox.x + bbox.w/2, unit), float_to_distance(bbox.y, unit)), (float_to_distance(bbox.x + bbox.w/2, unit), float_to_distance(port.y, unit))]
-                    l.append(arc_string(positions, {"consumption": None}))
-                elif port.y > bbox.y + bbox.h:
-                    positions = [(float_to_distance(bbox.x + bbox.w/2, unit), float_to_distance(bbox.y + bbox.h, unit)), (float_to_distance(bbox.x + bbox.w/2, unit), float_to_distance(port.y, unit))]
-                    l.append(arc_string(positions, {"consumption": None}))
     l.append(node_string(label_text, name, position, keys))
     l = reversed(l)
     return l
