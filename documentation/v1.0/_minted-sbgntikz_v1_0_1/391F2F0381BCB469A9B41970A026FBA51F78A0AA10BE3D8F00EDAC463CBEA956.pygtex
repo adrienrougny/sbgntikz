@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}tikzset}\PYG{n+nb}{\PYGZob{}}sbgn/.append style=\PYG{n+nb}{\PYGZob{}}execute at begin picture=\PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}pgfdeclarelayer}\PYG{n+nb}{\PYGZob{}}includedcompartments\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}pgfsetlayers}\PYG{n+nb}{\PYGZob{}}background,compartments,
+        includedcompartments,complexes,subcomplexes,main\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+    \PYG{n+nb}{\PYGZcb{}}
+\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[stimulation, draw layer=background]} (0,\PYGZhy{}1) \PYGZhy{}\PYGZhy{} (0,1);
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[biological activity]} \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\end{Verbatim}

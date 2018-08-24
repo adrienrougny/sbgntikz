@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} (0,0) \PYGZhy{}\PYGZhy{} (2,0) node[outcome, pos = 0.7] (o1) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} let \PYG{k}{\PYGZbs{}p}1=(o1) in (0,\PYGZhy{}2) \PYGZhy{}\PYGZhy{} (2,\PYGZhy{}2) coordinate[anchor point] (a) at (\PYG{k}{\PYGZbs{}x}1,\PYGZhy{}2) node[outcome, pos = 0.3] (o2) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[stimulation]} (o1) \PYGZhy{}\PYGZhy{} (a);
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[generic process, draw = red]} (p) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[unspecified entity, draw = blue, below = of p]} (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[production, draw = green]} (p) \PYGZhy{}\PYGZhy{} (m);
+\end{Verbatim}

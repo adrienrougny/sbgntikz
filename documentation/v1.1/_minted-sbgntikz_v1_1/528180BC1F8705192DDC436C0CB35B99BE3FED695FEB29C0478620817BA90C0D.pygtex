@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}documentclass}\PYG{n+nb}{\PYGZob{}}standalone\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}tikz\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}usetikzlibrary}\PYG{n+nb}{\PYGZob{}}positioning, sbgn\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}tikzpicture\PYG{n+nb}{\PYGZcb{}}[sbgn]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[macromolecule]} (erk) \PYG{n+nb}{\PYGZob{}}ERK\PYG{n+nb}{\PYGZcb{}};   \PYG{c}{\PYGZpc{} this node has no absolute nor relative positioning, so it is placed at (0,0) by default}
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv]} at (erk.120) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};  \PYG{c}{\PYGZpc{} the state variable is placed on the border of the node, at an angle of 120 deg}
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[generic process, connectors = horizontal, right = of erk]} (p) \PYG{n+nb}{\PYGZob{}\PYGZcb{}}; \PYG{c}{\PYGZpc{} we add connectors, and use relative positioning}
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[macromolecule, right = of p]} (perk) \PYG{n+nb}{\PYGZob{}}ERK\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv]} at (perk.120) \PYG{n+nb}{\PYGZob{}}P\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[simple chemical, below left = of p]} (atp) \PYG{n+nb}{\PYGZob{}}ATP\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[simple chemical, below right = of p]} (adp) \PYG{n+nb}{\PYGZob{}}ADP\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[macromolecule, above = 2cm of p]} (pmek) \PYG{n+nb}{\PYGZob{}}MEK\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv]} at (pmek.120) \PYG{n+nb}{\PYGZob{}}P\PYG{n+nb}{\PYGZcb{}};
+
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[consumption]} (erk) \PYGZhy{}\PYGZhy{} (p.west);   \PYG{c}{\PYGZpc{} p being the name of the process node, p.west is the tip of its left connector}
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[consumption]} (atp) \PYGZhy{}\PYGZhy{} (p.west);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[production]} (p.east) \PYGZhy{}\PYGZhy{} (perk);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[production]} (p.east) \PYGZhy{}\PYGZhy{} (adp);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[catalysis]} (pmek) \PYGZhy{}\PYGZhy{} (p);
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}tikzpicture\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[entity]} (e) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[sv location]} (loc) at (e.90) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[value, above left = 2cm and 0.3cm of loc]} (t) \PYG{n+nb}{\PYGZob{}}T\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[value, above right = 2cm and 0.3cm of loc]} (f) \PYG{n+nb}{\PYGZob{}}F\PYG{n+nb}{\PYGZcb{}};
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[implicit xor, above = 1.5cm of e]} (xor) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[assignment, \PYGZhy{}\PYGZob{}\PYGZcb{}]} (t) \PYGZhy{}\PYGZhy{} (xor);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[assignment, \PYGZhy{}\PYGZob{}\PYGZcb{}]} (f) \PYGZhy{}\PYGZhy{} (xor);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[assignment]} (xor) \PYGZhy{}\PYGZhy{} (loc);
+\end{Verbatim}

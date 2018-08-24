@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}node}\PYG{n+na}{[unspecified entity, line width = 3pt]} (m) \PYG{n+nb}{\PYGZob{}\PYGZcb{}};
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[absolute stimulation, line width = 0.2pt]} (m) \PYGZhy{}\PYGZhy{} (0cm,\PYGZhy{}3cm);
+\end{Verbatim}

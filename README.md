@@ -63,7 +63,7 @@ Here is the rendering:
 
 ## Going further
 
-To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.0.1/sbgntikz_v1_0_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
+To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
 
 *sbgntikz* also includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ converter.
 Basic usage is as follows:

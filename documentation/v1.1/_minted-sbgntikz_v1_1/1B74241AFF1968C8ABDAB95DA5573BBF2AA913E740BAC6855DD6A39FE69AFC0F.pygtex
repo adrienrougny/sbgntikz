@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[interaction]} (0,0) \PYGZhy{}\PYGZhy{} coordinate[anchor point, pos = 0.5] (a) (3,0);
+\PYG{k}{\PYGZbs{}draw}\PYG{n+na}{[stimulation]} (1,1) \PYGZhy{}\PYGZhy{} (a);
+\end{Verbatim}
