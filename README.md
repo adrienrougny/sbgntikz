@@ -1,16 +1,16 @@
-*sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTex using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
+*sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTeX using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
 All three SBGN languages (PD, AF and ER) are supported.
 
 ## Installation
 
-The directory `tikz-sbgn` should be copied to a directory where it can be found by the Tex engine:
-* in the directory of your Tex source file
+The directory `tikz-sbgn` should be copied to a directory where it can be found by the TeX engine:
+* in the directory of your TeX source file
 * in your local `texmf` directory. This directory is usually `/home/<user>/texmf/` under Linux, `/Users/Library/texmf/` under MacOS, and `C:/Users/<user>/texmf` under Windows, but it can depend on your OS version and TeX distribution. Yout `texmf` directory can be found using the `kpsewhich -var-value=TEXMFHOME` command.
 
 ## Getting started
 
 *sbgntikz* is a TikZ package.
-Usually, TikZ is installed within your Tex distribution, so it can be imported directly into your LaTeX source file.
+Usually, TikZ is installed within your TeX distribution, so it can be imported directly into your LaTeX source file.
 The two first steps are to import the TikZ package and the *sbgntikz* library:
 
 ```tex
@@ -26,7 +26,7 @@ SBGN maps can then be straightforwardly drawn using a `tikzpicture` environment 
 ```
 
 Nodes and nodes attributes can be drawn using the TikZ `\node` command, while arcs can be drawn using the `\draw` command.
-The type of glyph to be drawn is specified using a keyword that is the name of the type (e.g `macromolecule` for the macromolecule glyph, `necessarystimulation` for the necessary stimulation glyph).
+The type of glyph to be drawn is specified using a keyword that is the name of the type (e.g `macromolecule` for the macromolecule glyph, `necessary stimulation` for the necessary stimulation glyph).
 Here is a small SBGN PD example:
 
 ```tex
@@ -65,7 +65,7 @@ Here is the rendering:
 
 To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
 
-*sbgntikz* also includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ converter.
+*sbgntikz* also includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
 Basic usage is as follows:
 
 ```shell
