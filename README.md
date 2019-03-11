@@ -74,7 +74,7 @@ Basic usage is as follows:
 sbgnml2tikz.py [options] INPUT
 ```
 
-All options can be listed using using the following:
+All options can be listed using the following:
 
 ```shell
 sbgnml2tikz.py --help
