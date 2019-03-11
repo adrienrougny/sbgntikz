@@ -11,7 +11,7 @@
 %
 \begin{document}%
 \normalsize%
-\begin{tikzpicture}[sbgn, yscale=-1]%
+\begin{tikzpicture}[sbgn, yscale=-1]
 \node[compartment, shape=rectangle, rounded corners=20pt, minimum width=1110.0pt, minimum height=690.0pt] (glyph0) at (585.0pt,483.0pt) {cytosol};
 \node[compartment, shape=rectangle, rounded corners=20pt, minimum width=350.0pt, minimum height=380.0pt] (glyph1) at (460.0pt,600.0pt) {nucleus};
 \node[biological activity, minimum width=108.0pt, minimum height=40.0pt, align=center] (glyph13) at (540.0pt,50.0pt) {TGF$\beta$};
@@ -62,6 +62,6 @@
 \draw[logic arc] (glyph9) -- (1010.0pt,590.0pt) -- (glyph22.north);
 \draw[logic arc] (glyph21.south) -- (glyph22.north);
 \draw[necessary stimulation] (glyph22.south) -- (glyph5);
-\draw[inhibition] (glyph15) -- (730.0pt,350.0pt) -- (glyph3);%
+\draw[inhibition] (glyph15) -- (730.0pt,350.0pt) -- (glyph3);
 \end{tikzpicture}%
 \end{document}

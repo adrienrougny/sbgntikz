@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
-    <map language="activity flow" id="map1">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="activity flow">
         <glyph id="glyph4" class="biological activity">
             <label text="Membrane&#xA;potential &#xA;activity"/>
             <bbox y="30.0" x="30.0" h="100.0" w="120.0"/>

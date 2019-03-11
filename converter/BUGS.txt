@@ -1,0 +1,3 @@
+- coordinates for start and/or end points of arcs are wrong in some configurations (it seem to be sometimes the case for arcs outgoing from variable values, outcomes, nary interactions, perturbations)
+- although existence and location state variables are circles, their exported height and width are not equal
+- the target of an assignment arc should be set to the state variable and not the entity

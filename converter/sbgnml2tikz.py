@@ -1,5 +1,6 @@
 #!/bin/python
 # -*- coding: utf-8 -*-
+from os import remove
 from collections import OrderedDict
 import argparse
 
@@ -23,7 +24,7 @@ glyph_dic = {
     "COMPLEX_MULTIMER": {"sbgntikz": "complex multimer", "super": "EPN"},
     "SOURCE_AND_SINK": {"sbgntikz": "empty set", "super": "EPN"},
     "PERTURBING_AGENT": {"sbgntikz": "perturbation", "super": "EPN"},
-    "PERTURATION": {"sbgntikz": "perturbation", "super": "ACTIVITY"},
+    "PERTURBATION": {"sbgntikz": "perturbation", "super": "ACTIVITY"},
     "SUB_UNSPECIFIED_ENTITY": {"sbgntikz": "unspecified entity subunit", "super": "SUBUNIT"},
     "SUB_SIMPLE_CHEMICAL": {"sbgntikz": "simple chemical subunit", "super": "SUBUNIT"},
     "SUB_MACROMOLECULE": {"sbgntikz": "macromolecule subunit", "super": "SUBUNIT"},
@@ -397,7 +398,19 @@ def tikzpicture_to_pdf(s, output):
     if output.endswith(".pdf"):
         output = output[:-4]
     doc = Document(documentclass = "standalone")
-    doc.preamble.append(NoEscape("\\usepackage[utf8]{inputenc}"))
+    doc.preamble.append(NoEscape("\\usepackage{tikz}"))
+    doc.preamble.append(NoEscape("\\usetikzlibrary{sbgn}"))
+    doc.append(NoEscape(s))
+    doc.generate_pdf(output, clean = True, clean_tex = True)
+
+def tikzpicture_to_png(s, output):
+    try:
+        from pylatex import Document, NoEscape
+    except:
+        raise("Please install package pylatex first\n\t pip install pylatex")
+    if output.endswith(".png"):
+        output = output[:-4]
+    doc = Document(documentclass = "standalone", document_options = [NoEscape("convert={density=300 -strip,size=1080x800,outext=.png}")])
     doc.preamble.append(NoEscape("\\usepackage{tikz}"))
     doc.preamble.append(NoEscape("\\usetikzlibrary{sbgn}"))
     doc.append(NoEscape(s))
@@ -408,15 +421,30 @@ def tikzpicture_to_tex(s, output):
     f.write(s)
     f.close()
 
+def tikzpicture_to_tex_standalone(s, output):
+    try:
+        from pylatex import Document, NoEscape
+    except:
+        raise("Please install package pylatex first\n\t pip install pylatex")
+    if output.endswith(".tex"):
+        output = output[:-4]
+    doc = Document(documentclass = "standalone")
+    doc.preamble.append(NoEscape("\\usepackage{tikz}"))
+    doc.preamble.append(NoEscape("\\usetikzlibrary{sbgn}"))
+    doc.append(NoEscape(s))
+    doc.generate_tex(output)
+
 def tikzpicture_to_string(s): #someday we might add some fancy stuff
     return s
 
 if __name__ == '__main__':
     usage = "%(prog)s SBGN-ML FILE"
     parser = argparse.ArgumentParser(usage = usage)
-    parser.add_argument("--no-tidy", dest = "tidy", action = "store_false", default = True, help = "draw the map only using coordinates")
+    parser.add_argument("--no-tidy", dest = "tidy", action = "store_false", default = True, help = "draw the map using coordinates only")
     parser.add_argument("--tex", dest = "tex", default = None, help="output to a tex file")
+    parser.add_argument("--tex-standalone", dest = "tex_standalone", default = None, help="output to a standalone tex file")
     parser.add_argument("--pdf", dest = "pdf", default = None, help="output to a pdf file")
+    parser.add_argument("--png", dest = "png", default = None, help="output to a png file")
     parser.add_argument("--unit", dest = "unit", default = "pt", help="the length unit to be used (pt, cm, in, px)")
     parser.add_argument("input", help="SBGN-ML FILE")
 
@@ -425,7 +453,16 @@ if __name__ == '__main__':
     s = sbgnml_to_tikzpicture(args.input, args.tidy, True, args.unit)
     if args.pdf:
         tikzpicture_to_pdf(s, args.pdf)
+    if args.png:
+        tikzpicture_to_png(s, args.png)
+        if not args.pdf:
+            if args.png.endswith(".png"):
+                pdf = args.png[:-4]
+            pdf += ".pdf"
+            remove(pdf)
     if args.tex:
         tikzpicture_to_tex(s, args.tex)
-    if not args.pdf and not args.tex:
+    if args.tex_standalone:
+        tikzpicture_to_tex_standalone(s, args.tex_standalone)
+    if not args.pdf and not args.tex and not args.png and not args.tex_standalone:
         print(tikzpicture_to_string(s))
