@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
-    <map language="activity flow" id="map1">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="activity flow">
         <glyph compartmentOrder="-48.0" id="glyph0" class="compartment">
             <label text="cytosol">
                 <bbox y="1549.0" x="1013.5" h="18.0" w="53.0"/>

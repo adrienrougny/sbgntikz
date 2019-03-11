@@ -4,41 +4,43 @@
 \usetikzlibrary{arrows.meta, shapes, fit, backgrounds, intersections, fpu}
 
 %include macros
-\input{macros.tex}
+\input{tikzlibrarysbgn.macros.tex}
 
 %include shapes
-%processes
-\input{genericprocess.tex}
-\input{uncertainprocess.tex}
-\input{association.tex}
-\input{dissociation.tex}
-\input{omittedprocess.tex}
-
-%epns
-\input{unspecifiedentity.tex}
-\input{emptyset.tex}
-\input{simplechemical.tex}
-\input{simplechemicalmultimer.tex}
-\input{complex.tex}
-\input{complexmultimer.tex}
-\input{macromolecule.tex}
-\input{macromoleculemultimer.tex}
-\input{nucleicacidfeature.tex}
-\input{nucleicacidfeaturemultimer.tex}
-
-%special svs
-\input{svexistence.tex}
-\input{svlocation.tex}
-\input{sv.tex}
-
-%los
-\input{and.tex}
-\input{or.tex}
-\input{not.tex}
-\input{delay.tex}
-
-%tag
-\input{tag.tex}
+\input{tikzlibrarysbgn.shapes.tex}
+% %processes
+% \input{genericprocess.tex}
+% \input{uncertainprocess.tex}
+% \input{association.tex}
+% \input{dissociation.tex}
+% \input{omittedprocess.tex}
+%
+% %epns
+% \input{unspecifiedentity.tex}
+% \input{emptyset.tex}
+% \input{simplechemical.tex}
+% \input{simplechemicalmultimer.tex}
+% \input{complex.tex}
+% \input{complexmultimer.tex}
+% \input{macromolecule.tex}
+% \input{macromoleculemultimer.tex}
+% \input{nucleicacidfeature.tex}
+% \input{nucleicacidfeaturemultimer.tex}
+%
+% %special svs
+% \input{svexistence.tex}
+% \input{svlocation.tex}
+% \input{sv.tex}
+%
+% %los
+% \input{and.tex}
+% \input{or.tex}
+% \input{not.tex}
+% \input{delay.tex}
+% \input{equivalence.tex}
+%
+% %tag
+% \input{tag.tex}
 
 %styles
 \tikzset{sbgn/.style={execute at begin picture={
@@ -49,46 +51,46 @@
     \pgfdeclarelayer{subcomplexes}
     \pgfdeclarelayer{subunits}
     \pgfdeclarelayer{attributes}
-    \pgfsetlayers{background,compartments,nodes,arcs,subcomplexes,subunits,attributes,main}},
-    font=\Large\sffamily,
+    \pgfsetlayers{background,compartments,nodes,arcs,main,subcomplexes,subunits,attributes}},
+    font=\huge\sffamily,
     node distance = 2cm}
 }
 
-\tikzset{macromolecule/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{macromolecule subunit/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subunits}}
-\tikzset{macromolecule multimer/.style={draw = black, fill = white, shape = macromoleculemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{macromolecule multimer subunit/.style={draw = black, fill = white, shape = macromoleculemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subunits}}
-\tikzset{unspecified entity/.style={draw = black, fill = white, shape = unspecifiedentity, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{unspecified entity subunit/.style={draw = black, fill = white, shape = unspecifiedentity, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subunits}}
-\tikzset{nucleic acid feature/.style={draw = black, fill = white, shape = nucleicacidfeature, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{nucleic acid feature subunit/.style={draw = black, fill = white, shape = nucleicacidfeature, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subunits}}
-\tikzset{nucleic acid feature multimer/.style={draw = black, fill = white, shape = nucleicacidfeaturemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{nucleic acid feature multimer subunit/.style={draw = black, fill = white, shape = nucleicacidfeaturemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subunits}}
-\tikzset{perturbation/.style={draw = black, fill = white, shape = signal, signal to = nowhere, signal from = east and west, signal pointer angle = 110, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{simple chemical/.style={draw = black, fill = white, shape = simplechemical, minimum height = 60pt, minimum width = 60pt, line width = 1pt, node layer = nodes}}
-\tikzset{simple chemical subunit/.style={draw = black, fill = white, shape = simplechemical, minimum height = 60pt, minimum width = 60pt, line width = 1pt, node layer = subunits}}
-\tikzset{simple chemical multimer/.style={draw = black, fill = white, shape = simplechemicalmultimer, minimum height = 60pt, minimum width = 60pt, line width = 1pt, node layer = nodes}}
-\tikzset{simple chemical multimer subunit/.style={draw = black, fill = white, shape = simplechemicalmultimer, minimum height = 60pt, minimum width = 60pt, line width = 1pt, node layer = subunits}}
-\tikzset{complex/.style={draw = black, shape = complex, fill = white, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{complex subunit/.style={draw = black, fill = white, shape = complex, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = subcomplexes}}
-\tikzset{complex multimer/.style={draw = black, fill = white, shape = complexmultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{complex multimer subunit/.style={draw = black, fill = white, shape = complexmultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
+\tikzset{macromolecule/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{macromolecule subunit/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{macromolecule multimer/.style={draw = black, fill = white, shape = macromoleculemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{macromolecule multimer subunit/.style={draw = black, fill = white, shape = macromoleculemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{unspecified entity/.style={draw = black, fill = white, shape = unspecifiedentity, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{unspecified entity subunit/.style={draw = black, fill = white, shape = unspecifiedentity, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{nucleic acid feature/.style={draw = black, fill = white, shape = nucleicacidfeature, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{nucleic acid feature subunit/.style={draw = black, fill = white, shape = nucleicacidfeature, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{nucleic acid feature multimer/.style={draw = black, fill = white, shape = nucleicacidfeaturemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{nucleic acid feature multimer subunit/.style={draw = black, fill = white, shape = nucleicacidfeaturemultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{perturbation/.style={draw = black, fill = white, shape = signal, signal to = nowhere, signal from = east and west, signal pointer angle = 110, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{simple chemical/.style={draw = black, fill = white, shape = simplechemical, minimum height = 60pt, minimum width = 60pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{simple chemical subunit/.style={draw = black, fill = white, shape = simplechemical, minimum height = 60pt, minimum width = 60pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{simple chemical multimer/.style={draw = black, fill = white, shape = simplechemicalmultimer, minimum height = 60pt, minimum width = 60pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{simple chemical multimer subunit/.style={draw = black, fill = white, shape = simplechemicalmultimer, minimum height = 60pt, minimum width = 60pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subunits}}
+\tikzset{complex/.style={draw = black, shape = complex, fill = white, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{complex subunit/.style={draw = black, fill = white, shape = complex, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = subcomplexes}}
+\tikzset{complex multimer/.style={draw = black, fill = white, shape = complexmultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{complex multimer subunit/.style={draw = black, fill = white, shape = complexmultimer, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
 \tikzset{empty set/.style={draw = black, fill = white, shape = emptyset, minimum height = 60pt, minimum width = 60pt, line width = 1pt, node layer = subunits}}
-\tikzset{biological activity/.style={draw = black, fill = white, shape = rectangle, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
-\tikzset{entity/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
+\tikzset{biological activity/.style={draw = black, fill = white, shape = rectangle, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+\tikzset{entity/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
 \tikzset{outcome/.style={draw = black, fill = black, shape = circle, inner xsep = 0pt, inner ysep = 0pt, minimum height = 12pt, minimum width = 12pt, node layer = attributes}}
-\tikzset{sv/.style={draw = black, fill = white, shape = sv, minimum height = 22pt, inner xsep = 2pt, inner ysep = 2pt, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{value/.style={draw = black, fill = white, shape = sv, minimum height = 22pt, inner xsep = 2pt, inner ysep = 2pt, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{sv/.style={draw = black, fill = white, shape = sv, minimum height = 22pt, inner xsep = 6pt, inner ysep = 6pt, line width = 1pt, font = {\large\sffamily}, node layer = attributes}}
+\tikzset{value/.style={draw = black, fill = white, shape = sv, minimum height = 22pt, inner xsep = 2pt, inner ysep = 2pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, font = {\normalsize\sffamily}, node layer = attributes}}
 \tikzset{sv existence/.style={draw = black, fill = white, shape = svexistence, minimum width = 22pt, minimum height = 22pt, line width = 1pt, node layer = attributes}}
 \tikzset{sv location/.style={draw = black, fill = white, shape = svlocation, minimum width = 22pt, minimum height = 22pt, line width = 1pt, node layer = attributes}}
-\tikzset{ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui macromolecule/.style={draw = black, shape = macromolecule, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui complex/.style={draw = black, shape = complex, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui perturbation/.style={draw = black, shape = signal, signal to = nowhere, signal from = east and west, signal pointer angle = 110, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui simple chemical/.style={draw = black, shape = simplechemical, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui nucleic acid feature/.style={draw = black, shape = nucleicacidfeature, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{ui unspecified entity/.style={draw = black, shape = unspecifiedentity, fill = white, line width = 1pt, font = {\normalsize\sffamily}, node layer = attributes}}
-\tikzset{compartment/.style={draw = black, line width = 4pt, fill = white}, compartment/.append code={
+\tikzset{ui/.style={draw = black, fill = white, shape = rectangle, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, font = {\large\sffamily}, node layer = attributes}}
+\tikzset{ui macromolecule/.style={draw = black, shape = macromolecule, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{ui complex/.style={draw = black, shape = complex, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{ui perturbation/.style={draw = black, shape = signal, signal to = nowhere, signal from = east and west, signal pointer angle = 110, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{ui simple chemical/.style={draw = black, shape = simplechemical, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{ui nucleic acid feature/.style={draw = black, shape = nucleicacidfeature, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{ui unspecified entity/.style={draw = black, shape = unspecifiedentity, fill = white, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, minimum width = 30pt, minimum height = 20pt, font = {\normalsize\sffamily}, node layer = attributes}}
+\tikzset{compartment/.style={draw = black, line width = 6pt, fill = white}, compartment/.append code={
     \pgfkeysgetvalue{/tikz/isnode}{\isnode}
     \ifx\isnode\true
         \pgfkeys{/tikz/node layer=compartments}
@@ -96,32 +98,36 @@
         \pgfkeys{/tikz/draw layer=compartments}
     \fi}
 }
-\tikzset{submap/.style={draw = black, fill = white, shape = rectangle, minimum height = 60pt, minimum width = 108pt, line width = 1pt, outer xsep = 0pt, outer ysep = 0pt, node layer = nodes}}
-\tikzset{tag/.style={draw = black, fill = white, shape = tag, minimum height = 40pt, minimum width = 60pt, line width = 1pt, node layer = nodes}}
+\tikzset{submap/.style={draw = black, fill = white, shape = rectangle, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, outer xsep = 0pt, outer ysep = 0pt, node layer = nodes}}
+\tikzset{tag/.style={draw = black, fill = white, shape = tag, minimum height = 40pt, minimum width = 60pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
 \tikzset{and/.style={draw = black, fill = white, shape = and, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = nodes}}
 \tikzset{or/.style={draw = black, fill = white, shape = or, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = nodes}}
 \tikzset{not/.style={draw = black, fill = white, shape = not, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = nodes}}
 \tikzset{delay/.style={draw = black, fill = white, shape = delay, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = nodes}}
-\tikzset{generic process/.style={draw = black, fill = white, shape = genericprocess, minimum height = 24pt, minimum width = 24pt, line width = 1pt, node layer = nodes}}
-\tikzset{omitted process/.style={draw = black, fill = white, shape = omittedprocess, minimum height = 24pt, minimum width = 24pt, line width = 1pt, node layer = nodes}}
-\tikzset{uncertain process/.style={draw = black, fill = white, shape = uncertainprocess, minimum height = 24pt, minimum width = 24pt, line width = 1pt, node layer = nodes}}
-\tikzset{association/.style={draw = black, fill = black, shape = association, minimum height = 24pt, minimum width = 24pt, line width = 1pt, node layer = nodes}}
-\tikzset{dissociation/.style={draw = black, fill = white, shape = dissociation, minimum height = 24pt, minimum width = 24pt, line width = 1pt, node layer = nodes}}
-\tikzset{phenotype/.style={draw = black, fill = white, shape = signal, signal to = east and west, signal pointer angle = 110, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}
+\tikzset{equivalence/.style={draw = black, fill = white, shape = equivalence, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = nodes}}
+\tikzset{generic process/.style={draw = black, fill = white, shape = genericprocess, minimum height = 26pt, minimum width = 26pt, line width = 1pt, node layer = nodes}}
+\tikzset{omitted process/.style={draw = black, fill = white, shape = omittedprocess, minimum height = 26pt, minimum width = 26pt, line width = 1pt, node layer = nodes}}
+\tikzset{uncertain process/.style={draw = black, fill = white, shape = uncertainprocess, minimum height = 26pt, minimum width = 26pt, line width = 1pt, node layer = nodes}}
+\tikzset{association/.style={draw = black, fill = black, shape = association, minimum height = 26pt, minimum width = 26pt, line width = 1pt, node layer = nodes}}
+\tikzset{dissociation/.style={draw = black, fill = white, shape = dissociation, minimum height = 26pt, minimum width = 26pt, line width = 1pt, node layer = nodes}}
+\tikzset{phenotype/.style={draw = black, fill = white, shape = signal, signal to = east and west, signal pointer angle = 110, minimum height = 60pt, minimum width = 108pt, line width = 1pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
 \tikzset{logic arc/.style={line width = 1pt, draw layer = arcs}}
 \tikzset{equivalence arc/.style={line width = 1pt, draw layer = arcs}}
 \tikzset{consumption/.style={line width = 1pt, draw layer = arcs}}
-\tikzset{production/.style={line width = 1pt, -{Triangle[length=14pt, width=14pt]}, draw layer = arcs}}
-\tikzset{reversible/.style={line width = 1pt, {Triangle[length=14pt, width=14pt]}-, draw layer = arcs}}
-\tikzset{modulation/.style={line width = 1pt, -{Diamond[fill=#1, length=14pt, width=14pt]}, draw layer = arcs}, modulation/.default=white}
-\tikzset{stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=14pt, width=14pt]}, draw layer = arcs}, stimulation/.default=white}
+\tikzset{production/.style={line width = 1pt, -{Triangle[length=16pt, width=16pt]}, draw layer = arcs}}
+\tikzset{reversible/.style={line width = 1pt, {Triangle[length=16pt, width=16pt]}-, draw layer = arcs}}
+\tikzset{modulation/.style={line width = 1pt, -{Diamond[fill=#1, length=16pt, width=16pt]}, draw layer = arcs}, modulation/.default=white}
+\tikzset{stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=16pt, width=16pt]}, draw layer = arcs}, stimulation/.default=white}
 \tikzset{catalysis/.style={line width = 1pt, -{Circle[fill=#1, length = 12pt, width=12pt]}, draw layer = arcs}, catalysis/.default=white}
-\tikzset{inhibition/.style={line width = 1pt, -{Bar[width = 14pt]}, draw layer = arcs}}
-\tikzset{absolute inhibition/.style={line width = 1pt, -{Bar[sep=1, width = 14pt] Bar[width = 14pt]}, draw layer = arcs}}
-\tikzset{necessary stimulation/.style={line width = 1pt, -{Bar[width = 16pt, sep=2] Triangle[fill=#1, length=14pt, width=14pt]}, draw layer = arcs}, necessary stimulation/.default=white}
-\tikzset{absolute stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=14pt, width=14pt, sep=-3] Triangle[fill=#1, length=14pt, width=14pt]}, draw layer = arcs}, absolute stimulation/.default=white}
+\tikzset{inhibition/.style={line width = 1pt, -{Bar[width = 16pt]}, draw layer = arcs, shorten >= 0.05cm}}
+\tikzset{absolute inhibition/.style={line width = 1pt, -{Bar[sep=1, width = 16pt] Bar[width = 16pt]}, draw layer = arcs, shorten >= 0.05cm}}
+\tikzset{necessary stimulation/.style={line width = 1pt, -{Bar[width = 16pt, sep=2] Triangle[fill=#1, length=16pt, width=16pt]}, draw layer = arcs}, necessary stimulation/.default=white}
+\tikzset{absolute stimulation/.style={line width = 1pt, -{Triangle[fill=#1, length=16pt, width=16pt, sep=-3] Triangle[fill=#1, length=16pt, width=16pt]}, draw layer = arcs}, absolute stimulation/.default=white}
 \tikzset{assignment/.style={line width = 1pt, -{Stealth[length=16pt, width=12pt]}, draw layer = arcs}}
 \tikzset{interaction/.style={line width = 1pt, {Stealth[length=16pt, width=12pt]}-{Stealth[length=16pt, width=12pt]}, draw layer = arcs}}
 \tikzset{nary/.style={draw = black, fill = white, shape = circle, minimum height = 42pt, minimum width = 42pt, line width = 1pt, node layer = attributes}}
-\tikzset{anchor point/.style={shape = circle, inner xsep = 0pt, inner ysep = 0pt, outer xsep = 1pt, outer ysep = 1pt, node layer = nodes}}
+\tikzset{anchor point/.style={shape = circle, inner xsep = 0pt, inner ysep = 0pt, outer xsep = 0pt, outer ysep = 0pt, node layer = nodes}}
 \tikzset{implicit xor/.style={draw = black, shape = circle, inner xsep = 0pt, inner ysep = 0pt, minimum width = 1pt, minimum height = 1pt, node layer = nodes}}
+\tikzset{annotation/.style={draw = black, fill = white, shape = rectangle callout, line width = 1pt, minimum height = 50pt, inner xsep = 6pt, inner ysep = 6pt, node layer = nodes}}
+
+% \tikzset{macromolecule/.style={draw = black, fill = white, shape = macromolecule, minimum height = 60pt, minimum width = 108pt, line width = 1pt, node layer = nodes}}

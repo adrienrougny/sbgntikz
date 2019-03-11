@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
-    <map language="activity flow" id="map1">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="activity flow">
         <glyph id="glyph5" class="biological activity">
             <label text="Ras"/>
             <bbox y="50.0" x="44.0" h="40.0" w="72.0"/>
