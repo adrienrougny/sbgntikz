@@ -1,0 +1,161 @@
+%sbgntikz example file
+%This SBGN PD map represents the IGFR-triggered signaling cascade.
+%It is a reproduction in sbgntikz of the map depicted in the SBGN PD specification [The SBGN PD language Level 1 Version 1.3 – Available at Journal of Integrative Bioinformatics, 2015 Sep 4;12(2):263 (doi: 10.2390/biecoll-jib-2015-263)]
+
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc, sbgn}
+
+\begin{document}
+
+\begin{tikzpicture}[sbgn,
+    simple chemical/.append style={fill=blue!40},
+    complex/.append style={fill=red!40},
+    macromolecule/.append style={fill=orange!40},
+    phenotype/.append style={fill=green!40},
+    submap/.append style={fill=yellow!40},
+    compartment/.append style={fill=brown!10}]
+
+\node[macromolecule] (subigf) {IGF};
+\node[macromolecule, below = 0.1cm of subigf] (subigfr) {IGFR};
+\node[complex, subunits = (subigf)(subigfr)] (comp) {};
+\node[macromolecule] (subigf) {IGF};
+\node[macromolecule, below = 0.1cm of subigf] (subigfr) {IGFR};
+
+\node[association, connectors = horizontal, left = of comp.200] (p1) {};
+
+\node[macromolecule, left = of p1] (igfr) {IGFR};
+
+\node[macromolecule, above left = 3cm and 1.5cm of p1] (igf) {IGF};
+
+\node[generic process, connectors = horizontal, below = 3.5cm of comp] (p2) {};
+
+\node[macromolecule, left = of p2] (irs1-4) {IRS1-4};
+\node[sv] at (irs1-4.north) {};
+
+\node[macromolecule, right = of p2] (pirs1-4) {IRS1-4};
+\node[sv] at (pirs1-4.north) {P};
+
+\node[simple chemical, clone, above left = of p2] (atp1) {ATP};
+
+\node[simple chemical, clone, above right = of p2] (adp1) {ADP};
+
+\node[generic process, connectors = horizontal, below = of pirs1-4] (p3) {};
+
+\node[macromolecule, right = of p3] (inactivegrb2) {Grb2};
+\node[sv] at (inactivegrb2.south) {inactive};
+
+\node[macromolecule, left = of p3] (activegrb2) {Grb2};
+\node[sv] at (activegrb2.south) {active};
+
+\node[association, connectors = vertical, below left = of activegrb2] (p4) {};
+
+\node[macromolecule, above left = of p4] (sos) {SOS};
+
+\node[macromolecule subunit, below right = 1.7cm and 0.05cm of p4.south] (sub-activegrb2) {Grb2};
+\node[sv] at (sub-activegrb2.south) {active};
+\node[macromolecule subunit, below left = 1.7cm and 0.05cm of p4.south] (sub-sos) {SOS};
+\node[complex, subunits = (sub-sos)(sub-activegrb2)] (comp2) {};
+\node[macromolecule subunit, below right = 1.7cm and 0.05cm of p4.south] (sub-activegrb2) {Grb2};
+\node[sv] at (sub-activegrb2.south) {active};
+\node[macromolecule subunit, below left = 1.7cm and 0.05cm of p4.south] (sub-sos) {SOS};
+
+\node[generic process, connectors = horizontal, below = of comp2] (p5) {};
+
+\node[macromolecule, left = of p5] (inactiveras) {RAS};
+\node[sv] at (inactiveras.south) {inactive};
+
+\node[macromolecule, right = of p5] (activeras) {RAS};
+\node[sv] at (activeras.south) {active};
+
+\node[simple chemical, below left = of p5] (gtp) {GTP};
+
+\node[simple chemical, below right = of p5] (gdp) {GDP};
+
+\node[submap, right = 0.75cm of activeras, align = center, minimum width = 200pt, minimum height = 100pt, fill = yellow!50] (submap) {MAPK\\cascade};
+
+\node[tag, orientation = right, anchor = west, fill = yellow!50] at (submap.west) (tagras) {RAS};
+
+\node[tag, orientation = left, anchor = east, fill = yellow!50] at (submap.east) (tagerk) {ERK};
+
+\node[macromolecule, right = 0.75cm of submap] (2perk) {ERK};
+\node[sv] at (2perk.220) {2P};
+
+\node[generic process, connectors = horizontal, above right = 3.5cm and 3cm of 2perk] (p6) {};
+
+\node[macromolecule, left = of p6] (rsk) {RSK};
+\node[sv] at (rsk.north) {};
+
+\node[macromolecule, right = 4.5cm of p6] (prsk) {RSK};
+\node[sv] at (prsk.north) {P};
+
+\node[simple chemical, clone, above left = of p6] (atp2) {ATP};
+
+\node[simple chemical, clone, above right = of p6] (adp2) {ADP};
+
+\node[generic process, connectors = horizontal, below = 3.5cm of prsk] (p7) {};
+
+\node[macromolecule, left = of p7] (c-fos) {c-Fos};
+\node[sv] at (c-fos.north) {};
+
+\node[macromolecule, right = of p7] (pc-fos) {c-Fos};
+\node[sv] at (pc-fos.north) {P};
+
+\node[simple chemical, clone, above left = of p7] (atp3) {ATP};
+
+\node[simple chemical, clone, above right = of p7] (adp3) {ADP};
+
+\node[phenotype, below = of pc-fos, align = center] (pheno) {gene\\transcription};
+
+\draw[consumption] (igf) -- (p1.west);
+\draw[consumption] (igfr) -- (p1.west);
+\draw[production] (p1.east) -- (comp.200);
+\draw[catalysis] (comp) -- (p2);
+\draw[consumption] (atp1) -- (p2.west);
+\draw[consumption] (irs1-4) -- (p2.west);
+\draw[production] (p2.east) -- (adp1);
+\draw[production] (p2.east) -- (pirs1-4);
+\draw[stimulation] (pirs1-4) -- (p3);
+\draw[consumption] (inactivegrb2) -- (p3.east);
+\draw[production] (p3.west) -- (activegrb2);
+\draw[consumption] (activegrb2) -- (p4.north);
+\draw[consumption] (sos) -- (p4.north);
+\draw[production] (p4.south) -- (comp2);
+\draw[stimulation] (comp2) -- (p5);
+\draw[consumption] (inactiveras) -- (p5.west);
+\draw[consumption] (gtp) -- (p5.west);
+\draw[production] (p5.east) -- (activeras);
+\draw[production] (p5.east) -- (gdp);
+\draw[equivalence arc] (activeras) -- (tagras);
+\draw[equivalence arc] (tagerk) -- (2perk);
+\draw[catalysis] (2perk) -| (p6);
+\draw[consumption] (rsk) -- (p6.west);
+\draw[consumption] (atp2) -- (p6.west);
+\draw[production] (p6.east) -- (prsk);
+\draw[production] (p6.east) -- (adp2);
+\draw[catalysis] (prsk) -- (p7);
+\draw[consumption] (c-fos) -- (p7.west);
+\draw[consumption] (atp3) -- (p7.west);
+\draw[production] (p7.east) -- (pc-fos);
+\draw[production] (p7.east) -- (adp3);
+\draw[stimulation] (pc-fos) -- (pheno);
+\draw[compartment, rounded corners=10pt] let \p1=(comp.160), \p2=(igfr.west), \p3=(pheno.south east), \p4=(comp.20) in
+(\p1) -- ($(\x2,\y1)+(-1cm,0)$)
+-- ($(\x2,\y3)+(-1cm,-1cm)$)
+-- ($(\x3,\y3)+(1cm,-1cm)$)
+-- ($(\x3,\y4)+(1cm,0)$)
+-- (\p4)
+node[below, pos = 0.8] {\huge cytosol}
+;
+\draw[compartment, rounded corners=10pt] let \p1=(comp.150), \p2=(igfr.west), \p3=(pheno.south east), \p4=(comp.30), \p5=(igf.north) in
+(\p1) -- ($(\x2,\y1)+(-1cm,0)$)
+-- ($(\x2,\y5)+(-1cm,1cm)$)
+-- ($(\x3,\y5)+(1cm,1cm)$)
+node[below, pos = 0.46] {\huge extracelullar}
+-- ($(\x3,\y4)+(1cm,0)$)
+-- (\p4)
+;
+
+\end{tikzpicture}
+\end{document}
