@@ -21,12 +21,12 @@
     \node[nucleic acid feature, above right = 1.5cm and 0.5cm of p1] (irf1-gas) {IRF1-GAS};
     \node[ui] (ui7) at (irf1-gas.90) {ct:grr};
 
-    \node[macromolecule subunit, below = 2cm of p1] (substat1-2) {STAT1$\alpha$};
+    \node[macromolecule subunit, below = 3cm of p1] (substat1-2) {STAT1$\alpha$};
     \node[ui] (ui2) at (substat1-2.90) {mt:prot};
     \node[sv] (sv3) at (substat1-2.228) {P@Y701};
     \node[sv] (sv4) at (substat1-2.312) {P@Y727};
     \node[complex subunit, subunits = (substat1-2)(ui2)(sv3)(sv4)] (comp2) {};
-    \node[nucleic acid feature subunit, below = 0.3cm of comp2] (subirf1-gas) {IRF1-GAS};
+    \node[nucleic acid feature subunit, below = 0.5cm of comp2] (subirf1-gas) {IRF1-GAS};
     \node[ui] (ui3) at (subirf1-gas.90) {ct:grr};
     \node[complex, subunits = (comp2)(subirf1-gas)(ui3)] (comp3) {};
 
