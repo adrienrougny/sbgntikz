@@ -62,11 +62,9 @@ Here is the rendering:
 
 ![alt text](https://github.com/Adrienrougny/sbgntikz/blob/master/example.png)
 
-## Going further
+## SBGN-ML to SBGNTi*k*Z converter
 
-To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
-
-*sbgntikz* also includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
+SBGNTi*k*Z includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
 Basic usage is as follows:
 
 ```shell
