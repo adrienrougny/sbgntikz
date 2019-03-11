@@ -548,7 +548,7 @@
     }
     \backgroundpath{
         \@tempdima = \radius
-        % \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/outer xsep}}
+        \pgfmathsetlength{\pgf@xa}{\pgfkeysvalueof{/pgf/outer xsep}}
         \advance\@tempdima by -\pgf@xa
         \pgfpathcircle{\centerpoint}{\@tempdima}
         \pgfusepath{stroke, fill}
