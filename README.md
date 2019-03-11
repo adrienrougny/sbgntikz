@@ -6,7 +6,7 @@ A complete documentation is available [here](https://github.com/Adrienrougny/sbg
 
 The directory `tikz-sbgn` should be copied to a directory where it can be found by the TeX engine:
 * in the directory of your TeX source file
-* in your local `texmf` directory, at `texmf/tex/generic/pgf/`. This directory is usually located at `/home/<user>/` under Linux, `/Users/Library/` under MacOS, and `C:/Users/<user>/` under Windows, but it can depend on your OS version and TeX distribution. Yout `texmf` directory can usually be found using the `kpsewhich -var-value=TEXMFHOME` command.
+* in your local `texmf` directory, at `texmf/tex/generic/pgf/tikz-sbgn`. The `texmf` directory is usually located at `/home/<user>/texmf/` under Linux, `/Users/Library/texmf` under MacOS, and `C:/Users/<user>/texmf` under Windows, but it can depend on your OS version and TeX distribution. Your `texmf` directory can sometimes be found using the `kpsewhich -var-value=TEXMFHOME` command.
 
 Ti*k*Z should already be installed within your TeX distribution.
 If not, you may download the latest build [here](http://www.texample.net/tikz/builds/).
@@ -14,8 +14,8 @@ If not, you may download the latest build [here](http://www.texample.net/tikz/bu
 ## Getting started
 
 *sbgntikz* is a TikZ package.
-Usually, TikZ is installed within your TeX distribution, so it can be imported directly into your LaTeX source file.
-The two first steps are to import the TikZ package and the *sbgntikz* library:
+Usually, Ti*k*Z is installed within your TeX distribution, so it can be imported directly into your LaTeX source file.
+The two first steps are to import the Ti*k*Z package and the *sbgntikz* library:
 
 ```tex
 \usepackage{tikz}
@@ -29,7 +29,7 @@ SBGN maps can then be straightforwardly drawn using a `tikzpicture` environment 
 \end{tikzpicture}
 ```
 
-Nodes and nodes attributes can be drawn using the TikZ `\node` command, while arcs can be drawn using the `\draw` command.
+Nodes and nodes attributes can be drawn using the Ti*k*Z `\node` command, while arcs can be drawn using the `\draw` command.
 The type of glyph to be drawn is specified using a keyword that is the name of the type (e.g `macromolecule` for the macromolecule glyph, `necessary stimulation` for the necessary stimulation glyph).
 Here is a small SBGN PD example:
 
@@ -67,7 +67,7 @@ Here is the rendering:
 
 ## SBGN-ML to SBGNTi*k*Z converter
 
-SBGNTi*k*Z includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
+SBGNTi*k*Z includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to Ti*k*Z [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
 Basic usage is as follows:
 
 ```shell
@@ -79,4 +79,4 @@ All options can be listed using using the following:
 ```shell
 sbgnml2tikz.py --help
 ```
-Examples of rendering using the converter are available [here](https://github.com/Adrienrougny/sbgntikz/tree/master/converter/examples/)
+Examples of rendering using the converter are available [here](https://github.com/Adrienrougny/sbgntikz/tree/master/converter/examples/).
