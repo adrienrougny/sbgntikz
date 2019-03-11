@@ -10,14 +10,14 @@
 
 \begin{document}
 
-\begin{tikzpicture}[sbgn]
+\begin{tikzpicture}[sbgn, node distance = 3cm]
     \node[biological activity] (ras) {Ras};
-    \node[and, connectors = vertical, anchor = center, below right = 2cm and 0.5cm of ras.center] (and) {};
+    \node[and, connectors = vertical, anchor = center, below right = 3cm and 0.5cm of ras.center] (and) {};
     \node[biological activity, anchor = center, below = of and.center, align = center] (mutant) {Mutant p53/\\P-Smad};
     \node[biological activity, anchor = center, below = of mutant.center] (p63) {p63};
-    \node[biological activity, anchor = center, right = 3cm of p63.center, align = center] (metastatic) {Metastatic\\suppressor\\genes\\activity};
+    \node[biological activity, anchor = center, right = 5cm of p63.center, align = center] (metastatic) {Metastatic\\suppressor\\genes\\activity};
     \node[phenotype, anchor = center, above = of metastatic.center, align = center] (platform) {Pro-invasion\\migration\\metastasis\\gene expression\\platform};
-    \node[biological activity, anchor = center, above = 3cm of platform.center] (tgfbeta) {TGF $\beta$};
+    \node[biological activity, anchor = center, above = 4cm of platform.center] (tgfbeta) {TGF $\beta$};
 
     \draw[logic arc] (ras) -- (and.north);
     \draw[logic arc] (tgfbeta) -- ($(tgfbeta.west)+(-1.5cm,0)$) -- (and.north);

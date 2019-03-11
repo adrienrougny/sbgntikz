@@ -10,7 +10,7 @@
 
 \begin{document}
 
-\begin{tikzpicture}[sbgn, node distance = 2cm]
+\begin{tikzpicture}[sbgn, node distance = 3cm]
 
     \node[entity, minimum width = 110pt, minimum width = 150pt] (camkii) {CaMKII};
     \node[sv] (t286) at (camkii.130) {P@T286};
@@ -39,8 +39,8 @@
 
     \node[value, above = 2cm of location] (psd) {PSD};
 
-    \node[value, above left = 3cm and 0.1cm of t286] (t286true) {T};
-    \node[value, above right = 3cm and 0.1cm of t286] (t286false) {F};
+    \node[value, above left = 3.5cm and 0.1cm of t286] (t286true) {T};
+    \node[value, above right = 3.5cm and 0.1cm of t286] (t286false) {F};
     \coordinate[above = 2cm of t286] (truefalse);
 
     \draw[assignment] (t286true) -- (truefalse)
@@ -61,10 +61,10 @@
 
     \coordinate (camkii-camkii-trans-dep) at (camkii.15);
     \coordinate (camkii-camkii-trans-arr) at (camkii.345);
-    \draw[interaction] (camkii-camkii-trans-dep) -- ($(camkii-camkii-trans-dep)+(1.5cm,0)$)
+    \draw[interaction] (camkii-camkii-trans-dep) -- ($(camkii-camkii-trans-dep)+(1.2cm,0)$)
         node[outcome, pos = 0.6] (camkii-camkii-trans-o1) {}
-        -- ($(camkii-camkii-trans-arr)+(1.5cm,0)$)
-        node[ui, pos = 0.6] {trans}
+        -- ($(camkii-camkii-trans-arr)+(1.2cm,0)$)
+        node[ui, pos = 0.5] {trans}
         -- (camkii-camkii-trans-arr)
         node[outcome, pos = 0.4] (camkii-camkii-trans-o2) {}
     ;
@@ -149,7 +149,7 @@
 
     \draw[absolute inhibition] (camkii-camkii-cis-o3) -| (camkii-glurptrue-glurp-c1);
 
-    \node[delay, minimum width = 30pt, minimum height = 30pt, above left = 0.0cm and 0.5cm of camkii] (delay) {};
+    \node[delay, minimum width = 30pt, minimum height = 30pt, above left = 0.0cm and 0.8cm of camkii] (delay) {};
     \draw[logic arc] (camkii.170) -| (delay);
     \draw[necessary stimulation] (delay) |- (t306-varp-c1)
         coordinate[anchor point, pos = 0.57] (delay-t306-varp-c1)
@@ -157,7 +157,7 @@
     ;
 
     \draw[absolute inhibition] (camkii-camkii-cis-o1) -| (delay-t306-varp-c1)
-        node[ui, pos = 0.54] {cis}
+        node[ui, pos = 0.6] {cis}
     ;
 
     \draw[necessary stimulation] let \p1=(delay), \p2=(camkii.west), \p3=(t286true-truefalse-c2) in
