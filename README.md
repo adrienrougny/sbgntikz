@@ -6,7 +6,7 @@ A complete documentation is available [here](https://github.com/Adrienrougny/sbg
 
 The directory `tikz-sbgn` should be copied to a directory where it can be found by the TeX engine:
 * in the directory of your TeX source file
-* in your local `texmf` directory. This directory is usually `/home/<user>/texmf/` under Linux, `/Users/Library/texmf/` under MacOS, and `C:/Users/<user>/texmf` under Windows, but it can depend on your OS version and TeX distribution. Yout `texmf` directory can be found using the `kpsewhich -var-value=TEXMFHOME` command.
+* in your local `texmf` directory, at `texmf/tex/generic/pgf/`. This directory is usually located at `/home/<user>/` under Linux, `/Users/Library/` under MacOS, and `C:/Users/<user>/` under Windows, but it can depend on your OS version and TeX distribution. Yout `texmf` directory can usually be found using the `kpsewhich -var-value=TEXMFHOME` command.
 
 ## Getting started
 
