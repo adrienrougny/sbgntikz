@@ -1,5 +1,6 @@
 *sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTeX using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
 All three SBGN languages (PD, AF and ER) are supported.
+A complete documentation is available [here](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf), as well as a set of [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples).
 
 ## Installation
 
@@ -61,11 +62,9 @@ Here is the rendering:
 
 ![alt text](https://github.com/Adrienrougny/sbgntikz/blob/master/example.png)
 
-## Going further
+## SBGN-ML to SBGNTi*k*Z converter
 
-To go further, a complete [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) and some [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples) are available.
-
-*sbgntikz* also includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
+SBGNTi*k*Z includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to TikZ [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
 Basic usage is as follows:
 
 ```shell
@@ -77,3 +76,4 @@ All options can be listed using using the following:
 ```shell
 sbgnml2tikz.py --help
 ```
+Examples of rendering using the converter are available [here](https://github.com/Adrienrougny/sbgntikz/tree/master/converter/examples/)
