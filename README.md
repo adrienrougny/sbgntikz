@@ -76,3 +76,4 @@ All options can be listed using using the following:
 ```shell
 sbgnml2tikz.py --help
 ```
+Examples of rendering using the converter are available [here](https://github.com/Adrienrougny/sbgntikz/tree/master/converter/examples/)
