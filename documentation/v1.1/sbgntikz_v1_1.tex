@@ -265,9 +265,11 @@ I believe users already familiar with \texttikz{} will mostly be interested in r
 \subsection{Installation and usage}
 
 The directory \mintinline{bash}{tikz-sbgn/} should be copied to a directory where it can be found by the \TeX{} engine:
+
 \begin{itemize}
-    \item in the directory of your \LaTeX{} source file
-    \item in your local \mintinline{bash}{texmf} directory. This directory is usually \mintinline{bash}{/home/<user>/texmf/} under Linux, \mintinline{bash}{/Users/Library/texmf/} under MacOS, and \mintinline{bash}{C:/Users/<user>/texmf} under Windows, but it can depend on your OS version and \TeX{} distribution. Your \mintinline{bash}{texmf} directory can be found using the \mintinline{bash}{kpsewhich -var-value=TEXMFHOME} command.
+    \item in the directory of your \LaTeX{} source file or
+    \item in your local \mintinline{bash}{texmf} directory, at \mintinline{bash}{texmf/tex/generic/pgf/}.
+        The \mintinline{bash}{texmf} directory is usually located at \mintinline{bash}{/home/<user>/texmf/} under Linux, \mintinline{bash}{/Users/Library/texmf/} under MacOS, and \mintinline{bash}{C:/Users/<user>/texmf/} under Windows, but it can depend on your OS version and \TeX{} distribution. Your \mintinline{bash}{texmf} directory can sometimes be found using the \mintinline{bash}{kpsewhich -var-value=TEXMFHOME} command.
 \end{itemize}
 
 Usually, \texttikz{} is installed within your \TeX{} distribution, so \texttikz{} and \emph{sbgntikz} can be imported directly into your \LaTeX{} source file with no further installation adding the following two commands to your preamble:
@@ -1114,7 +1116,7 @@ One solution provided by \emph{sbgntikz} is to draw \colkey{anchor point} coordi
 \draw[stimulation] (1,1) -- (a);
 \end{code}
 
-Here, the \colkey{anchor point} coordinate (which is a circle with no drawing, no label and a radius of 2pt) is placed halfway along the interaction arc.\\
+Here, the \colkey{anchor point} coordinate (which is a circle with no drawing, no label and a radius of 0pt) is placed halfway along the interaction arc.\\
 
 Often in ER maps, one wants to draw horizontal or vertical modulation arcs departing from outcomes.
 These particular cases, on the other hand, can be easily achieved using \texttikz{}'s \mintinline{latex}{|-} syntax:
@@ -1124,7 +1126,7 @@ These particular cases, on the other hand, can be easily achieved using \texttik
 \draw[stimulation] (1,1) -- (1,1 |- 3,0);
 \end{code}
 
-Additional space between the tip of the modulation arc and the target arc can be added (here 2pt, that is the anchor point's default radius):
+Additional space between the tip of the modulation arc and the target arc can be added (here 2pt):
 
 \begin{code}
 \draw[interaction] (0,0) -- (3,0);
