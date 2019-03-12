@@ -9,7 +9,8 @@ The directory `tikz-sbgn` should be copied to a directory where it can be found 
 * in a local `texmf` directory, whose location depends on the OS you are using:
   * Linux: in `/home/<user>/texmf/tex/generic/pgf/`. The index must then be updated using the `texhash /home/<user>/texmf` command.
   * MacOs: in `/Users/Library/texmf/tex/generic/pgf/`.
-  * Windows: in `C:\Users\<user>\texmf\`. In the case you are using MikTeX you will need to add this directory to the TEXMF root directories in the `Directories` tab of the `Settings` page. 
+  * Windows: in `C:\Users\<user>\texmf\tex\generic\pgf\`.
+  In all cases, the `texmf` directory has to be created if it does not already exist. In the case you are using MikTeX, you will need to add this directory to the TEXMF root directories in the `Directories` tab of the `Settings` page. 
 
 Ti*k*Z should already be installed within your TeX distribution.
 If not, you may install it via your TeX distribution, or download the latest build [here](http://www.texample.net/tikz/builds/).
