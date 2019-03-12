@@ -2,6 +2,7 @@ v1.1.2
     - bug correction
     - changed style of some glyphs (default size, default font,...)
     - refactored code tree (merged files)
+    - added option --tex-standalone to the converter
 v1.1.1
     - bug correction
 v1.1.0
