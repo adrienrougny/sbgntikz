@@ -70,6 +70,9 @@ Here is the rendering:
 
 ![alt text](https://github.com/Adrienrougny/sbgntikz/blob/master/example.png)
 
+All features offered by default in Ti*k*Z and by additional Ti*k*Z libraries (such as the positioning and fit libraries) are compatible with *sbgntikz*.
+You may refer to the [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) for a list of features that might be useful to customize SBGN maps drawn with *sbgntikz*.
+
 ## SBGN-ML to SBGNTi*k*Z converter
 
 SBGNTi*k*Z includes an [SBGN-ML](https://github.com/sbgn/sbgn/wiki/SBGN_ML) to Ti*k*Z [converter](https://github.com/Adrienrougny/sbgntikz/tree/master/converter).
