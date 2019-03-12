@@ -1,4 +1,4 @@
-*sbgntikz* is a [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTeX using the powerfull [TikZ](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
+*sbgntikz* is a [Ti*k*Z](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) library that allows drawing [SBGN maps](http://www.sbgn.org) directly into LaTeX using the powerfull [Ti*k*Z](https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ) package.
 All three SBGN languages (PD, AF and ER) are supported.
 A complete documentation for the latest version is available [here](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf), as well as a set of [examples](https://github.com/Adrienrougny/sbgntikz/tree/master/examples).
 
@@ -13,7 +13,7 @@ If not, you may download the latest build [here](http://www.texample.net/tikz/bu
 
 ## Getting started
 
-*sbgntikz* is a TikZ package.
+*sbgntikz* is a Ti*k*Z package.
 Usually, Ti*k*Z is installed within your TeX distribution, so it can be imported directly into your LaTeX source file.
 The two first steps are to import the Ti*k*Z package and the *sbgntikz* library:
 
