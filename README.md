@@ -5,8 +5,8 @@ A complete documentation for the latest version is available [here](https://gith
 ## Installation
 
 The directory `tikz-sbgn` should be copied to a directory where it can be found by your TeX engine:
-* in the directory of your TeX source file or
-* in a local `texmf` directory, whose location depends on the OS you are using:
+* to the directory of your TeX source file or
+* to a local `texmf` directory, whose location depends on the OS you are using:
   * Linux: in `/home/<user>/texmf/tex/generic/pgf/`. The index must then be updated using the `texhash /home/<user>/texmf` command.
   * MacOs: in `/Users/Library/texmf/tex/generic/pgf/`.
   * Windows: in `C:\Users\<user>\texmf\tex\generic\pgf\`.
