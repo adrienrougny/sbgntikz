@@ -71,7 +71,7 @@ Here is the rendering:
 ![alt text](https://github.com/Adrienrougny/sbgntikz/blob/master/example.png)
 
 All features offered by default in Ti*k*Z and by additional Ti*k*Z libraries (such as the positioning and fit libraries) are compatible with *sbgntikz*.
-You may refer to the [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) for a list of features that might be useful to easily customize SBGN maps (such as colors, size of the glyphs,...).
+You may refer to the [documentation](https://github.com/Adrienrougny/sbgntikz/blob/master/documentation/v1.1/sbgntikz_v1_1.pdf) for a list of features that might be useful to easily customize SBGN maps (such as colors, size of the glyphs, ...).
 
 ## SBGN-ML to SBGNTi*k*Z converter
 
