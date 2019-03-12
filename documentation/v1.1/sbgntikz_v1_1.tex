@@ -33,6 +33,7 @@
 \def\textpgf{\texttt{PGF}}
 \def\tikzmanual{\textpgf/\texttikz{} manual}
 \def\sbgntikz{SBGN\texttikz}
+\def\backslash{char `\\}
 
 \def\colkey#1{\textcolor{red!80}{\texttt{#1}}}
 
@@ -264,15 +265,20 @@ I believe users already familiar with \texttikz{} will mostly be interested in r
 
 \subsection{Installation and usage}
 
-The directory \mintinline{bash}{tikz-sbgn/} should be copied to a directory where it can be found by the \TeX{} engine:
-
+The directory \mintinline{ini}{tikz-sbgn} should be copied to a directory where it can be found by your \TeX{} engine:
 \begin{itemize}
-    \item in the directory of your \LaTeX{} source file or
-    \item in your local \mintinline{bash}{texmf} directory, at \mintinline{bash}{texmf/tex/generic/pgf/}.
-        The \mintinline{bash}{texmf} directory is usually located at \mintinline{bash}{/home/<user>/texmf/} under Linux, \mintinline{bash}{/Users/Library/texmf/} under MacOS, and \mintinline{bash}{C:/Users/<user>/texmf/} under Windows, but it can depend on your OS version and \TeX{} distribution. Your \mintinline{bash}{texmf} directory can sometimes be found using the \mintinline{bash}{kpsewhich -var-value=TEXMFHOME} command.
+    \item to the directory of your \TeX{} source file or
+    \item to a local \mintinline{ini}{texmf} directory, whose location depends on the OS you are using:
+        \begin{itemize}
+            \item Linux: to \mintinline{ini}{/home/<user>/texmf/tex/generic/pgf/}. The index must then be updated using the \mintinline{bash}{texhash /home/<user>/texmf} command.
+            \item MacOs: to \mintinline{ini}{/Users/Library/texmf/tex/generic/pgf/}.
+            \item Windows: to \mintinline{ini}{C:\Users\<user>\texmf\tex\generic\pgf\backslash}.
+        \end{itemize}
+        In all cases, the \mintinline{ini}{texmf} directory has to be created if it does not already exist. In the case you are using MikTeX, you will need to add this directory to the TEXMF root directories in the Directories tab of the Settings page.
 \end{itemize}
 
-Usually, \texttikz{} is installed within your \TeX{} distribution, so \texttikz{} and \emph{sbgntikz} can be imported directly into your \LaTeX{} source file with no further installation adding the following two commands to your preamble:
+\texttikz{} should already be installed within your \TeX{} distribution.
+If not, you may install it via your \TeX{} distribution, or download the latest build \href{http://www.texample.net/tikz/builds/}{here}. Once installed, \texttikz{} and \emph{sbgntikz} can be imported into your \LaTeX{} by adding the following two commands to your preamble:
 
 \begin{minted}[bgcolor=gray!10]{latex}
 \usepackage{tikz}
@@ -1196,9 +1202,10 @@ If no option is supplied, the \texttikz{} picture will be output as text on the 
 Options are the following:
 
 \begin{itemize}
-    \item \mintinline[bgcolor=gray!10]{bash}{--tex=<OUTPUT FILE>}: writes the output \texttikz{} picture to a tex file
-    \item \mintinline[bgcolor=gray!10]{bash}{--tex-standalone=<OUTPUT FILE>}: writes the output \texttikz{} picture to a standalone tex file
-    \item \mintinline[bgcolor=gray!10]{bash}{--pdf=<OUTPUT FILE>}: renders the output \texttikz{} picture in a pdf file. This option necessitates the installation of the python package \href{https://jeltef.github.io/PyLaTeX/current/}{PyLaTeX} to compile the \texttikz{} picture.
+    \item \mintinline[bgcolor=gray!10]{bash}{--tex=<OUTPUT FILE>}: writes the output \texttikz{} picture to a \TeX{} file.
+    \item \mintinline[bgcolor=gray!10]{bash}{--tex-standalone=<OUTPUT FILE>}: writes the output \texttikz{} picture to a standalone \TeX{} file. This option necessitates the installation of the python package \href{https://jeltef.github.io/PyLaTeX/current/}{PyLaTeX} to output the \TeX{} file.
+    \item \mintinline[bgcolor=gray!10]{bash}{--pdf=<OUTPUT FILE>}: renders the output \texttikz{} picture in a PDF file. This option necessitates the installation of the python package \href{https://jeltef.github.io/PyLaTeX/current/}{PyLaTeX} to compile the \texttikz{} picture into a PDF file.
+    \item \mintinline[bgcolor=gray!10]{bash}{--png=<OUTPUT FILE>}: renders the output \texttikz{} picture in a PNG file. This option necessitates the installation of the python package \href{https://jeltef.github.io/PyLaTeX/current/}{PyLaTeX} to compile the \texttikz{} picture, and of the \href{https://imagemagick.org/index.php}{ImageMagick} package to convert the output PDF to a PNG image.
     \item \mintinline[bgcolor=gray!10]{bash}{--no-tidy}: desactivates relative positioning. Arcs and attributes are drawn using their absolute coordinates.
     \item \mintinline[bgcolor=gray!10]{bash}{--unit=<dimension unit>}: the length unit to use. Default is ``pt'' (points). Other available units are ``cm'' (centimeters), ``in'' (inches), ``px'' (pixels).
 \end{itemize}
